@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Moneyfrog — Your Investment Needs Trust, Expertise, Consistency</title>
+  <meta name="description" content="Investment, wealth and budgeting platform. Effortlessly save, invest, and take control of your finances with Moneyfrog." />
+  <meta name="theme-color" content="#2fa86d" />
+
+  <!-- FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      --brand: #90c740;
+      --brand-600: #25955f;
+      --brand-700: #1e7a4d;
+      --ink: #101828; /* dark text */
+      --muted: #667085; /* muted text */
+      --line: #e6efe9; /* soft borders */
+      --bg-soft: #f3faf6; /* pale green */
+      --bg-hero: url(assets/img/moneyfrog_hero_img.jpg); 
+      --radius-2xl: 1.25rem;
+    }
+
+    html, body { height: 100%; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji';
+      color: var(--ink);
+      scroll-behavior: smooth;
+      background: #fff;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      transition: all .25s ease;
+      background: rgb(255 255 255 / 0%);
+      backdrop-filter: saturate(180%) blur(12px);
+      -webkit-backdrop-filter: saturate(180%) blur(12px);
+    }
+    .navbar.scrolled {
+      box-shadow: 0 6px 24px rgba(16,24,40,.08);
+      background: #fff;
+      padding-top: .35rem !important;
+      padding-bottom: .35rem !important;
+    }
+    .navbar .nav-link { color: #5e5e5e; font-weight: 500; }
+    .navbar .nav-link:hover { color: var(--brand); }
+    .btn-brand { background: var(--brand); border-color: var(--brand); color: #fff; }
+    .btn-brand:hover { background: var(--brand-600); border-color: var(--brand-600); color: #fff; }
+    .navbar {
+      height: 72px; /* match design */
+      padding: 0 24px;
+    }
+    .navbar-brand span.fw-bold {
+      font-size: 20px; /* adjust if design shows different */
+      letter-spacing: -0.3px;
+    }
+    .navbar .nav-link {
+      font-size: 16px;
+      padding: 0 16px;
+    }
+
+    /* HERO 
+    .hero {
+      background: var(--bg-hero);
+      padding-top: 7.5rem; 
+      padding-bottom: 3rem;
+    }*/
+    .hero {
+      background: var(--bg-hero);
+      padding-top: 9.5rem;
+      padding-bottom: 3rem;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-size: .85rem; font-weight: 600; color: var(--brand-700);
+      background: #eaf6f0; border: 1px solid var(--line); border-radius: 999px; padding: .35rem .75rem;
+    }
+    .hero h1 { font-weight: 800;
+    letter-spacing: 0.03em;
+    color: #5e5e5e;
+    line-height: 5rem;}
+    .hero p.lead { color: var(--muted); font-size: .90rem; font-weight: 600; padding-bottom: 5%;}
+
+    .hero-visual {
+      position: relative; isolation: isolate;
+    }
+    .hero-blob {
+      position: absolute; inset: -2rem -2rem auto auto; width: 340px; height: 340px; border-radius: 50%;
+      background: radial-gradient(60% 60% at 50% 50%, rgba(47,168,109,.25) 0%, rgba(47,168,109,0) 70%);
+      z-index: 0;
+    }
+    .consult-card {
+      position: relative; z-index: 1;
+      background: #ffffffa1; border: 1px solid var(--line); border-radius: var(--radius-2xl);
+      box-shadow: 0 20px 40px rgba(16,24,40,.06);
+    }
+
+    /* STATS */
+    .stats { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: #fff; }
+    .stat { display:flex; align-items:center; gap:.75rem; }
+    .stat i { color: var(--brand); font-size: 1.25rem; }
+    .stat .value { font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--brand);}
+    .stat .label { color: var(--muted); font-size: .9rem; }
+    .hero_icon{ font-size: 50px !important; width: 50px; height: 50px; }
+    /* SECTION BASE */
+    section.section { padding: 64px 0; }
+    .section .section-title { font-weight: 800; letter-spacing: -.02em; }
+    .section .section-subtitle { color: var(--muted); }
+
+    /* SERVICES */
+    .service-card {
+      background:#fff; border: 1px solid var(--line); border-radius: 16px; padding: 24px; height:100%;
+      transition: box-shadow .2s ease, transform .2s ease;
+    }
+    .service-card:hover { box-shadow: 0 16px 32px rgba(16,24,40,.08); transform: translateY(-2px); }
+    .service-icon { width:44px; height:44px; border-radius: 12px; background: #eaf6f0; color: var(--brand); display:grid; place-items:center; font-size: 20px; }
+    .service-card h6 { margin-top: 12px; font-weight: 700; }
+    .service-card p { color: var(--muted); }
+
+    /* ACCOUNTS GRID */
+    .mini-card { background:#fff; border:1px solid var(--line); border-radius:16px; padding: 20px; height:100%; }
+    .spark { width: 100%; height: 120px; background: linear-gradient(180deg,#eef6f1,#fff); border-radius: 12px; border:1px dashed #d7e7de; display:grid; place-items:center; color:#7aa88f; font-size:.9rem; }
+
+    /* FEATURES STRIP */
+    .feature {
+      background:#fff; border:1px solid var(--line); border-radius:16px; padding:18px; height:100%;
+    }
+    .feature i { color: var(--brand); font-size: 20px; }
+
+    /* TESTIMONIALS */
+    .testimonial { background:#fff; border:1px solid var(--line); border-radius:16px; padding:22px; }
+    .avatar { width:40px; height:40px; border-radius:50%; background:#e2efe7; display:inline-flex; align-items:center; justify-content:center; font-weight:700; color:var(--brand-700); }
+
+    /* ACADEMY */
+    .article-card { background:#fff; border:1px solid var(--line); border-radius:16px; overflow:hidden; height:100%; }
+    .article-thumb { background: linear-gradient(180deg,#eaf6f0,#ffffff); height:120px; }
+    .article-body { padding:16px; }
+    .badge-cat { background:#eaf6f0; color:var(--brand-700); }
+
+    /* CALCULATOR */
+    .calc-card { background:#fff; border:1px solid var(--line); border-radius:16px; padding:20px; }
+
+    /* FOOTER */
+    footer { background:#0b1320; color: #cbd5e1; }
+    footer a { color:#cbd5e1; text-decoration:none; }
+    footer a:hover { color:#fff; }
+
+    /* Back to top */
+    #backToTop { position: fixed; right: 16px; bottom: 16px; display:none; z-index:999; }
+
+    /* Utilities */
+    .text-brand { color: #5e5e5e !important;
+    text-transform: uppercase;
+    font-size: 55px;
+    font-weight: 700; }
+    .bg-soft { background: var(--bg-soft) !important; }
+
+    /*logo*/
+    .logo{width: 200px;}
+
+    @media (min-width: 992px) {
+      .navbar .dropdown:hover .dropdown-menu {
+        display: block;
+        margin-top: 0;
+      }
+    }
+
+    /* CSS */
+    .custom-btn {
+      background: #7cc83d;              /* Green background */
+      color: #000;                      /* Text color */
+      font-size: 16px;
+      font-weight: 500;
+      padding: 12px 28px;
+      border: none;
+      border-radius: 50px;              /* Pill shape */
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;                         /* Space between text & icon */
+      box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+      transition: all 0.3s ease;
+    }
+
+    .custom-btn:hover {
+      background: #6ab12e;              /* Darker green on hover */
+      transform: translateY(-2px);
+    }
+
+    .icon {
+      font-size: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    /* CSS */
+    .custom-btn2 {
+      background: #7cc83d;              /* Green background */
+      color: #000;                      /* Text color */
+      font-size: 16px;
+      font-weight: 500;
+      padding: 5px 15px;
+      border: none;
+      border-radius: 50px;              /* Pill shape */
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;                         /* Space between text & icon */
+      box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+      transition: all 0.3s ease;
+    }
+
+    .custom-btn2:hover {
+      background: #6ab12e;              /* Darker green on hover */
+      transform: translateY(-2px);
+    }
+
+    .icon {
+      font-size: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .pt5pb10{
+      padding-top: 5%;
+      padding-bottom: 10%;
+    }
+
+    #services
+    {
+        background-color: #f4eee9;
+    }
+
+    .custom-hr {
+        width: 10%;
+        height: 5px;
+        background-color: #7cc83d;
+        border: none;
+        border-radius: 5px;
+        opacity: 1;
+    }
+  </style>
+</head>
+<body>
+ <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg fixed-top py-3">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="https://bolehnow.tlpl.in/">
+        <img src="https://bolehnow.tlpl.in/assets/img/logo-large.svg" class="logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav align-items-lg-center ms-auto">
+
+              <!-- Products with Hover Submenu -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="productsDropdown" role="button">
+                  Products
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="productsDropdown">
+                  <li><a class="dropdown-item" href="#product1">Mutual Funds</a></li>
+                  <li><a class="dropdown-item" href="#product2">Stocks/ Equity</a></li>
+                  <li><a class="dropdown-item" href="#product3">PMS</a></li>
+                  <li><a class="dropdown-item" href="#product3">AIF/ GIFT CITY</a></li>
+                  <li><a class="dropdown-item" href="#product3">Tax</a></li>
+                  <li><a class="dropdown-item" href="#product3">Fixed Income/ FD/ NCD/ MLD</a></li>
+                  <li><a class="dropdown-item" href="#product3">Insurance</a></li>
+                </ul>
+              </li>
+
+              <!-- Accounts with Hover Submenu -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="accountsDropdown" role="button">
+                  Accounts
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="accountsDropdown">
+                  <li><a class="dropdown-item" href="#savings">Individual</a></li>
+                  <li><a class="dropdown-item" href="#current">Family</a></li>
+                  <li><a class="dropdown-item" href="#investment">NRI</a></li>
+                  <li><a class="dropdown-item" href="#investment">Foreign National</a></li>
+                </ul>
+              </li>
+              
+              <!-- About Us with Hover Submenu -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="aboutusDropdown" role="button">
+                  About Us
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="aboutusDropdown">
+                  <li><a class="dropdown-item" href="#savings">Why Moneyfrog</a></li>
+                  <li><a class="dropdown-item" href="#current">Our Story/ Journey</a></li>
+                  <li><a class="dropdown-item" href="#investment">Promotors/ KMP (Key management persons)</a></li>
+                  <li><a class="dropdown-item" href="#savings">Investors/ Compliance</a></li>
+                  <li><a class="dropdown-item" href="#savings">Testimonial</a></li>
+                </ul>
+              </li>
+
+              
+              <!-- Accounts with Hover Submenu -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="insightsDropdown" role="button">
+                  Insights
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="insightsDropdown">
+                  <li><a class="dropdown-item" href="#savings">Blog</a></li>
+                  <li><a class="dropdown-item" href="#current">FAQ</a></li>
+                  <li><a class="dropdown-item" href="#investment">Market Outlook</a></li>
+                  <li><a class="dropdown-item" href="#investment">Calculators</a></li>
+                </ul>
+              </li>
+              
+              <!-- Accounts with Hover Submenu -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="jobsDropdown" role="button">
+                  Jobs Openings
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="jobsDropdown">
+                  <li><a class="dropdown-item" href="#savings">Current openings</a></li>
+                  <li><a class="dropdown-item" href="#current">Work Culture</a></li>
+                  <li><a class="dropdown-item" href="#investment">Success stories</a></li>
+                </ul>
+              </li>
+              
+              <!-- Accounts with Hover Submenu -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="contactusDropdown" role="button">
+                  Contact us
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="contactusDropdown">
+                  <li><a class="dropdown-item" href="#savings">Savings Account</a></li>
+                  <li><a class="dropdown-item" href="#current">Current Account</a></li>
+                  <li><a class="dropdown-item" href="#investment">Investment Account</a></li>
+                </ul>
+              </li>
+            </ul>
+
+            <!-- Buttons -->
+            <div class="ms-lg-3 mt-2 mt-lg-0 d-flex gap-2">
+              <a class="btn btn-outline-secondary d-none d-lg-inline" href="#contact">Login</a>
+              
+            <button class="custom-btn2">
+              Get Started 
+              <!-- <span class="icon">⬇</span> -->
+            </button>
+
+            </div>
+          </div>
+        </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-6">
+          <!-- <span class="hero-tag mb-3"><i class="bi bi-shield-check"></i> Secure · Expert · Consistent</span> -->
+          <h1 class="display-5 mt-2">Your Investment Needs <span class="text-brand">Trust</span>. <span class="text-brand">Expertise</span>. <span class="text-brand">Consistency</span>.</h1>
+          <p class="lead mt-3">Invest with confidence — where trust meets expert guidance, every step of the way.</p>
+          <div class="d-flex flex-wrap gap-2 mt-2">
+            <button class="custom-btn">
+              Get Started 
+              <!-- <span class="icon">⬇</span> -->
+            </button>
+          </div>
+
+          <div class="row g-3 text-center text-md-start align-items-center pt5pb10" >
+            <div class="col-12 col-md-4">
+              <div class="stat justify-content-center justify-content-md-start">
+                <i class="bi bi-graph-up-arrow hero_icon"></i>
+                <div>
+                  <div class="value " data-count="23">23 Lakhs</div>
+                  <div class="label">Trusted clients</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="stat justify-content-center justify-content-md-start">
+                <i class="bi bi-cash-coin hero_icon"></i>
+                <div>
+                  <div class="value" data-count="2000">2000+ Cr</div>
+                  <div class="label">in Managed Asset</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="stat justify-content-center justify-content-md-start">
+                <i class="bi bi-award hero_icon"></i>
+                <div>
+                  <div class="value" data-count="11">11 Years</div>
+                  <div class="label">of Track Record</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-6 hero-visual">
+          <div class="hero-blob"></div>
+          <div class="consult-card p-4 p-md-4 ms-lg-auto" style="max-width:420px;">
+            <h3 class="fw-bold mb-3">Book free consultation</h3>
+            <form id="consultForm" novalidate>
+              <div class="row g-2">
+                <div class="col-12 col-sm-6">
+                  <label class="form-label">Your name</label>
+                  <input type="text" class="form-control" name="name" required>
+                </div>
+                <div class="col-12 col-sm-6">
+                  <label class="form-label">Company name</label>
+                  <input type="text" class="form-control" name="company" required>
+                </div>
+                <div class="col-12 col-sm-6">
+                  <label class="form-label">Phone number</label>
+                  <input type="tel" class="form-control" name="phone" pattern="^[0-9\-\+\s]{8,}$" required>
+                </div>
+                <div class="col-12 col-sm-6">
+                  <label class="form-label">Email address</label>
+                  <input type="email" class="form-control" name="email" required>
+                </div>
+                <div class="col-12">
+                  <button class="btn btn-brand w-100" type="submit">Submit request</button>
+                </div>
+              </div>
+            </form>
+            <div class="text-center small text-muted mt-2">We respect your privacy. No spam.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- SERVICES -->
+  <section id="services" class="section">
+    <div class="container">
+      <div class="mb-4">
+        <hr class="custom-hr">
+        <h2 class="section-title">Our Services</h2>
+        <p class="section-subtitle">From strategy and planning to taxes and investments—built for individuals and businesses.</p>
+      </div>
+      <div class="row g-3 g-lg-4 row-cols-1 row-cols-sm-2 row-cols-lg-3">
+        <div class="col">
+          <div class="service-card h-100">
+            <div class="service-icon"><i class="bi bi-diagram-3"></i></div>
+            <h6>Business Unit Strategy</h6>
+            <p>Data-informed planning and execution, supporting revenue & growth outcomes.</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="service-card h-100">
+            <div class="service-icon"><i class="bi bi-receipt"></i></div>
+            <h6>Taxes & Accounting</h6>
+            <p>Compliance-ready tax planning for professionals, SMEs and enterprises.</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="service-card h-100">
+            <div class="service-icon"><i class="bi bi-flag"></i></div>
+            <h6>Finance Planning</h6>
+            <p>Goal-based financial plans aligned to short, medium, and long-term outcomes.</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="service-card h-100">
+            <div class="service-icon"><i class="bi bi-graph-up"></i></div>
+            <h6>Trades & Stocks</h6>
+            <p>Actionable insights for diversification, equity & debt, and low-cost index strategies.</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="service-card h-100">
+            <div class="service-icon"><i class="bi bi-chat-dots"></i></div>
+            <h6>Financial Advisory</h6>
+            <p>Holistic advisory across risk, insurance, retirement, and estate planning.</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="service-card h-100">
+            <div class="service-icon"><i class="bi bi-globe2"></i></div>
+            <h6>International Finance</h6>
+            <p>NRI and cross-border wealth structuring with tax-aware strategies.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACCOUNTS -->
+  <section id="accounts" class="section bg-soft">
+    <div class="container">
+      <div class="text-center mb-4">
+        <span class="text-uppercase text-muted small">Accounts</span>
+        <h2 class="section-title">Financial control in your pocket</h2>
+        <p class="section-subtitle">Save, invest, and track—on one platform.</p>
+      </div>
+      <div class="row g-3 g-lg-4 row-cols-1 row-cols-md-3">
+        <div class="col">
+          <div class="mini-card h-100">
+            <div class="spark">Savings growth graph</div>
+            <h6 class="mt-3 mb-1">Secure your future</h6>
+            <div class="text-muted small mb-2">Savings</div>
+            <p class="mb-0">Build emergency funds and secure goals with automated savings.</p>
+            <a href="#" class="btn btn-sm btn-brand mt-3">Start saving</a>
+          </div>
+        </div>
+        <div class="col">
+          <div class="mini-card h-100">
+            <div class="spark">Allocation donut chart</div>
+            <h6 class="mt-3 mb-1">Grow your wealth</h6>
+            <div class="text-muted small mb-2">Investments</div>
+            <p class="mb-0">Diversified portfolios, SIPs, and tax-efficient investing.</p>
+            <a href="#" class="btn btn-sm btn-brand mt-3">Start investing</a>
+          </div>
+        </div>
+        <div class="col">
+          <div class="mini-card h-100">
+            <div class="spark">Budget vs actuals</div>
+            <h6 class="mt-3 mb-1">Track your expenses</h6>
+            <div class="text-muted small mb-2">Budgeting</div>
+            <p class="mb-0">Smart budgets, real-time insights, and monthly summaries.</p>
+            <a href="#" class="btn btn-sm btn-brand mt-3">Start budgeting</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES / ABOUT -->
+  <section id="features" class="section">
+    <div class="container">
+      <div class="row g-4 align-items-start">
+        <div class="col-lg-5">
+          <h2 class="section-title">Get the control you need over your finances</h2>
+          <p class="section-subtitle">Enjoy expense tracking, bill pay, invoices, and insights with powerful reports.</p>
+          <a href="#" class="btn btn-brand">Discover more</a>
+        </div>
+        <div class="col-lg-7">
+          <div class="row g-3 g-lg-4 row-cols-1 row-cols-sm-2">
+            <div class="col">
+              <div class="feature h-100">
+                <div class="d-flex align-items-center gap-2"><i class="bi bi-wallet2"></i><h6 class="mb-0">Expense management</h6></div>
+                <p class="small text-muted mt-2 mb-0">Categorize spending, set budgets, and sync transactions across banks.</p>
+              </div>
+            </div>
+            <div class="col">
+              <div class="feature h-100">
+                <div class="d-flex align-items-center gap-2"><i class="bi bi-receipt-cutoff"></i><h6 class="mb-0">Receipt tracking</h6></div>
+                <p class="small text-muted mt-2 mb-0">Upload receipts, auto-extract details, and maintain digital records.</p>
+              </div>
+            </div>
+            <div class="col">
+              <div class="feature h-100">
+                <div class="d-flex align-items-center gap-2"><i class="bi bi-credit-card"></i><h6 class="mb-0">Bill pay</h6></div>
+                <p class="small text-muted mt-2 mb-0">Schedule & pay securely—utilities, rent, credit cards, and more.</p>
+              </div>
+            </div>
+            <div class="col">
+              <div class="feature h-100">
+                <div class="d-flex align-items-center gap-2"><i class="bi bi-clipboard-data"></i><h6 class="mb-0">Expense reports</h6></div>
+                <p class="small text-muted mt-2 mb-0">Generate advanced reports, analyze patterns, and export to Excel.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials" class="section bg-soft">
+    <div class="container">
+      <div class="text-center mb-4">
+        <span class="text-uppercase text-muted small">12,864+ Happy Clients</span>
+        <h2 class="section-title">Explore genuine client feedback</h2>
+        <p class="section-subtitle">We let our clients speak for the experience and results.</p>
+      </div>
+      <div id="tCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="row g-3">
+              <div class="col-md-4"><div class="testimonial h-100"><div class="mb-2 text-warning"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div><p class="mb-3">“The right mutual funds & discipline changed how I manage money. It’s been a remarkable upgrade.”</p><div class="d-flex align-items-center gap-2"><div class="avatar">MT</div><div><strong>Mark Thompson</strong><div class="small text-muted">Senior Business Owner</div></div></div></div></div>
+              <div class="col-md-4"><div class="testimonial h-100"><div class="mb-2 text-warning"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div><p class="mb-3">“Budgeting became effortless with insightful analytics. I’ve built better habits in months.”</p><div class="d-flex align-items-center gap-2"><div class="avatar">RJ</div><div><strong>Rachel Johnson</strong><div class="small text-muted">Software Engineer</div></div></div></div></div>
+              <div class="col-md-4"><div class="testimonial h-100"><div class="mb-2 text-warning"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div><p class="mb-3">“Top-tier financial insights & helpful human advisors. I finally feel in control of my future.”</p><div class="d-flex align-items-center gap-2"><div class="avatar">SM</div><div><strong>Samantha Meir</strong><div class="small text-muted">Product Leader</div></div></div></div></div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row g-3">
+              <div class="col-md-4"><div class="testimonial h-100"><div class="mb-2 text-warning"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div><p class="mb-3">“Transparent fees, smart rebalancing, and an app that’s actually enjoyable.”</p><div class="d-flex align-items-center gap-2"><div class="avatar">AK</div><div><strong>Abhay Kapoor</strong><div class="small text-muted">Entrepreneur</div></div></div></div></div>
+              <div class="col-md-4"><div class="testimonial h-100"><div class="mb-2 text-warning"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div><p class="mb-3">“The advisory team was patient and precise—great for first-time investors.”</p><div class="d-flex align-items-center gap-2"><div class="avatar">ND</div><div><strong>Nisha Desai</strong><div class="small text-muted">Designer</div></div></div></div></div>
+              <div class="col-md-4"><div class="testimonial h-100"><div class="mb-2 text-warning"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div><p class="mb-3">“The SIP planner and budget reports helped me save 20% more within 6 months.”</p><div class="d-flex align-items-center gap-2"><div class="avatar">VK</div><div><strong>Vikram Khanna</strong><div class="small text-muted">Consultant</div></div></div></div></div>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#tCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span></button>
+        <button class="carousel-control-next" type="button" data-bs-target="#tCarousel" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next</span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACADEMY -->
+  <section id="academy" class="section">
+    <div class="container">
+      <div class="text-center mb-4">
+        <span class="text-uppercase text-muted small">Blogs & Articles</span>
+        <h2 class="section-title">Learning academy</h2>
+        <p class="section-subtitle">Actionable, insightful content to help you stay ahead.</p>
+      </div>
+      <div class="row g-3 g-lg-4 row-cols-1 row-cols-md-2 row-cols-lg-3">
+        <div class="col">
+          <article class="article-card h-100">
+            <div class="article-thumb"></div>
+            <div class="article-body">
+              <span class="badge rounded-pill badge-cat">Fintech</span>
+              <h6 class="mt-2 mb-1">The rise of digital wallets: a fintech game-changer</h6>
+              <div class="small text-muted">28 Aug 2025 · 6 min read</div>
+            </div>
+          </article>
+        </div>
+        <div class="col">
+          <article class="article-card h-100">
+            <div class="article-thumb"></div>
+            <div class="article-body">
+              <span class="badge rounded-pill badge-cat">Budget</span>
+              <h6 class="mt-2 mb-1">Saving smarter: practical tips for financial stability</h6>
+              <div class="small text-muted">27 Aug 2025 · 5 min read</div>
+            </div>
+          </article>
+        </div>
+        <div class="col">
+          <article class="article-card h-100">
+            <div class="article-thumb"></div>
+            <div class="article-body">
+              <span class="badge rounded-pill badge-cat">Blockchain</span>
+              <h6 class="mt-2 mb-1">Blockchain beyond Bitcoin: real-world use cases</h6>
+              <div class="small text-muted">26 Aug 2025 · 7 min read</div>
+            </div>
+          </article>
+        </div>
+        <div class="col">
+          <article class="article-card h-100">
+            <div class="article-thumb"></div>
+            <div class="article-body">
+              <span class="badge rounded-pill badge-cat">Investing</span>
+              <h6 class="mt-2 mb-1">The role of inflation in your investment strategy</h6>
+              <div class="small text-muted">25 Aug 2025 · 8 min read</div>
+            </div>
+          </article>
+        </div>
+        <div class="col">
+          <article class="article-card h-100">
+            <div class="article-thumb"></div>
+            <div class="article-body">
+              <span class="badge rounded-pill badge-cat">Wealth</span>
+              <h6 class="mt-2 mb-1">Building a balanced portfolio: a beginner’s guide</h6>
+              <div class="small text-muted">24 Aug 2025 · 6 min read</div>
+            </div>
+          </article>
+        </div>
+        <div class="col">
+          <article class="article-card h-100">
+            <div class="article-thumb"></div>
+            <div class="article-body">
+              <span class="badge rounded-pill badge-cat">Retirement</span>
+              <h6 class="mt-2 mb-1">Secure your future: a guide to retirement planning</h6>
+              <div class="small text-muted">23 Aug 2025 · 5 min read</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALCULATOR -->
+  <section id="calculator" class="section bg-soft">
+    <div class="container">
+      <div class="text-center mb-4">
+        <h2 class="section-title">Calculator</h2>
+      </div>
+      <ul class="nav nav-pills justify-content-center mb-4" id="calcTabs" role="tablist">
+        <li class="nav-item" role="presentation"><button class="nav-link active" id="tax-tab" data-bs-toggle="pill" data-bs-target="#tax-pane" type="button" role="tab" aria-controls="tax-pane" aria-selected="true">Tax</button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link" id="emi-tab" data-bs-toggle="pill" data-bs-target="#emi-pane" type="button" role="tab" aria-controls="emi-pane" aria-selected="false">EMI</button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link" id="sip-tab" data-bs-toggle="pill" data-bs-target="#sip-pane" type="button" role="tab" aria-controls="sip-pane" aria-selected="false">SIP</button></li>
+      </ul>
+      <div class="tab-content">
+        <!-- TAX -->
+        <div class="tab-pane fade show active" id="tax-pane" role="tabpanel" aria-labelledby="tax-tab">
+          <div class="row g-3">
+            <div class="col-lg-6">
+              <div class="calc-card h-100">
+                <h5 class="mb-3">Calculate Your Taxes (demo)</h5>
+                <form id="taxForm" class="row g-3" novalidate>
+                  <div class="col-sm-6">
+                    <label class="form-label">Annual Income (₹)</label>
+                    <input type="number" class="form-control" name="income" min="0" step="1" value="1200000" required>
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="form-label">Tax Rate (%)</label>
+                    <input type="number" class="form-control" name="rate" min="0" max="50" step="0.1" value="10">
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="form-label">Deductions (₹)</label>
+                    <input type="number" class="form-control" name="deduction" min="0" step="1" value="50000">
+                  </div>
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-brand">Compute</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="calc-card h-100">
+                <h5 class="mb-3">Total Summary</h5>
+                <ul class="list-group" id="taxSummary">
+                  <li class="list-group-item d-flex justify-content-between"><span>Taxable Income</span><strong>₹ 0</strong></li>
+                  <li class="list-group-item d-flex justify-content-between"><span>Estimated Tax</span><strong>₹ 0</strong></li>
+                  <li class="list-group-item d-flex justify-content-between"><span>Monthly Take-home</span><strong>₹ 0</strong></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- EMI -->
+        <div class="tab-pane fade" id="emi-pane" role="tabpanel" aria-labelledby="emi-tab">
+          <div class="row g-3">
+            <div class="col-lg-6">
+              <div class="calc-card h-100">
+                <h5 class="mb-3">EMI Calculator</h5>
+                <form id="emiForm" class="row g-3" novalidate>
+                  <div class="col-sm-6">
+                    <label class="form-label">Loan Amount (₹)</label>
+                    <input type="number" class="form-control" name="principal" min="0" step="1000" value="1000000" required>
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="form-label">Interest (p.a. %)</label>
+                    <input type="number" class="form-control" name="rate" min="0" step="0.1" value="9.5" required>
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="form-label">Tenure (months)</label>
+                    <input type="number" class="form-control" name="months" min="1" step="1" value="240" required>
+                  </div>
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-brand">Compute</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="calc-card h-100">
+                <h5 class="mb-3">Result</h5>
+                <ul class="list-group" id="emiSummary">
+                  <li class="list-group-item d-flex justify-content-between"><span>EMI</span><strong>₹ 0</strong></li>
+                  <li class="list-group-item d-flex justify-content-between"><span>Total Interest</span><strong>₹ 0</strong></li>
+                  <li class="list-group-item d-flex justify-content-between"><span>Total Payment</span><strong>₹ 0</strong></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- SIP -->
+        <div class="tab-pane fade" id="sip-pane" role="tabpanel" aria-labelledby="sip-tab">
+          <div class="row g-3">
+            <div class="col-lg-6">
+              <div class="calc-card h-100">
+                <h5 class="mb-3">SIP Calculator</h5>
+                <form id="sipForm" class="row g-3" novalidate>
+                  <div class="col-sm-6">
+                    <label class="form-label">Monthly Invest (₹)</label>
+                    <input type="number" class="form-control" name="monthly" min="0" step="100" value="10000" required>
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="form-label">Expected Return (p.a. %)</label>
+                    <input type="number" class="form-control" name="rate" min="0" step="0.1" value="12" required>
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="form-label">Years</label>
+                    <input type="number" class="form-control" name="years" min="1" step="1" value="10" required>
+                  </div>
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-brand">Compute</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="calc-card h-100">
+                <h5 class="mb-3">Result</h5>
+                <ul class="list-group" id="sipSummary">
+                  <li class="list-group-item d-flex justify-content-between"><span>Invested Amount</span><strong>₹ 0</strong></li>
+                  <li class="list-group-item d-flex justify-content-between"><span>Estimated Returns</span><strong>₹ 0</strong></li>
+                  <li class="list-group-item d-flex justify-content-between"><span>Future Value</span><strong>₹ 0</strong></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="pt-5">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <span class="rounded-circle d-inline-flex align-items-center justify-content-center" style="width:36px;height:36px;background:#0e1b2e;color:#9ae6b4"><i class="bi bi-coin"></i></span>
+            <h5 class="m-0">MONEYFROG</h5>
+          </div>
+          <p class="small text-secondary">Building financial confidence through simple tools, thoughtful content, and human advisors.</p>
+        </div>
+        <div class="col-6 col-md-2">
+          <h6 class="text-white">Products</h6>
+          <ul class="list-unstyled small">
+            <li><a href="#">Mutual Funds</a></li>
+            <li><a href="#">Equity</a></li>
+            <li><a href="#">ETF</a></li>
+            <li><a href="#">Insurance</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-2">
+          <h6 class="text-white">Accounts</h6>
+          <ul class="list-unstyled small">
+            <li><a href="#">Savings</a></li>
+            <li><a href="#">Investments</a></li>
+            <li><a href="#">Budgeting</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-2">
+          <h6 class="text-white">Insights</h6>
+          <ul class="list-unstyled small">
+            <li><a href="#academy">Blog</a></li>
+            <li><a href="#academy">Market Outlook</a></li>
+            <li><a href="#calculator">Calculators</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-2">
+          <h6 class="text-white">Get in touch</h6>
+          <ul class="list-unstyled small">
+            <li><a href="mailto:care@moneyfrog.example">care@moneyfrog.example</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr class="border-light border-opacity-10 mt-4" />
+      <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center py-3 small">
+        <div>© <span id="yearCopy"></span> Moneyfrog. All rights reserved.</div>
+        <div class="d-flex gap-3"><a href="#">Terms & Conditions</a><a href="#">Privacy Policy</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button id="backToTop" class="btn btn-brand btn-lg rounded-circle" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>
+
+  <!-- Toast (form submission) -->
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1055">
+    <div id="liveToast" class="toast align-items-center text-bg-success border-0" role="status" aria-live="polite" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">Thank you! We will contact you shortly.</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- jQuery & Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    (function() {
+      const $nav = $('.navbar');
+      const $backTop = $('#backToTop');
+
+      // Navbar shrink on scroll
+      const onScroll = () => {
+        if (window.scrollY > 8) { $nav.addClass('scrolled'); } else { $nav.removeClass('scrolled'); }
+        if (window.scrollY > 400) { $backTop.fadeIn(); } else { $backTop.fadeOut(); }
+      };
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      // Smooth scroll for in-page anchors
+      $(document).on('click', 'a[href^="#"]', function(e) {
+        const targetId = $(this).attr('href');
+        if (targetId.length > 1 && $(targetId).length) {
+          e.preventDefault();
+          const offset = $(targetId).offset().top - 72; // account for navbar
+          window.scrollTo({ top: offset, behavior: 'smooth' });
+        }
+      });
+
+      // Back to top
+      $backTop.on('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+      // Footer year
+      document.getElementById('yearCopy').textContent = new Date().getFullYear();
+
+      // Stats counter when in view
+      const counters = document.querySelectorAll('.value[data-count]');
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target; const end = parseInt(el.getAttribute('data-count'), 10);
+            let current = 0; const inc = Math.max(1, Math.floor(end / 80));
+            const t = setInterval(() => { current += inc; if (current >= end) { current = end; clearInterval(t); } el.textContent = current.toLocaleString('en-IN'); }, 16);
+            io.unobserve(el);
+          }
+        });
+      }, { threshold: 0.5 });
+      counters.forEach(c => io.observe(c));
+
+      // Consultation form (demo)
+      $('#consultForm').on('submit', function(e) {
+        e.preventDefault();
+        const form = this;
+        if (!form.checkValidity()) {
+          form.classList.add('was-validated');
+          return;
+        }
+        // Simulate success toast
+        const toast = new bootstrap.Toast('#liveToast');
+        toast.show();
+        form.reset();
+        form.classList.remove('was-validated');
+      });
+
+      // TAX calc (simple demo model)
+      $('#taxForm').on('submit', function(e){
+        e.preventDefault();
+        const income = +this.income.value || 0;
+        const rate = (+this.rate.value || 0) / 100;
+        const deduction = +this.deduction.value || 0;
+        const taxable = Math.max(0, income - deduction);
+        const tax = Math.round(taxable * rate);
+        const monthly = Math.round((income - tax) / 12);
+        const $s = $('#taxSummary');
+        $s.children().eq(0).find('strong').text('₹ ' + taxable.toLocaleString('en-IN'));
+        $s.children().eq(1).find('strong').text('₹ ' + tax.toLocaleString('en-IN'));
+        $s.children().eq(2).find('strong').text('₹ ' + monthly.toLocaleString('en-IN'));
+      }).trigger('submit');
+
+      // EMI calc
+      $('#emiForm').on('submit', function(e){
+        e.preventDefault();
+        const P = +this.principal.value || 0;
+        const r = (+this.rate.value || 0) / 1200; // monthly rate
+        const n = +this.months.value || 1;
+        const EMI = r === 0 ? P / n : (P * r * Math.pow(1+r, n)) / (Math.pow(1+r, n) - 1);
+        const total = EMI * n;
+        const interest = total - P;
+        const $s = $('#emiSummary');
+        $s.children().eq(0).find('strong').text('₹ ' + Math.round(EMI).toLocaleString('en-IN'));
+        $s.children().eq(1).find('strong').text('₹ ' + Math.round(interest).toLocaleString('en-IN'));
+        $s.children().eq(2).find('strong').text('₹ ' + Math.round(total).toLocaleString('en-IN'));
+      }).trigger('submit');
+
+      // SIP calc
+      $('#sipForm').on('submit', function(e){
+        e.preventDefault();
+        const m = +this.monthly.value || 0;
+        const i = (+this.rate.value || 0) / 1200; // monthly rate
+        const n = (+this.years.value || 0) * 12;
+        const fv = i === 0 ? m * n : m * (Math.pow(1+i, n) - 1) * (1 + i) / i;
+        const invested = m * n;
+        const returns = fv - invested;
+        const $s = $('#sipSummary');
+        $s.children().eq(0).find('strong').text('₹ ' + Math.round(invested).toLocaleString('en-IN'));
+        $s.children().eq(1).find('strong').text('₹ ' + Math.round(returns).toLocaleString('en-IN'));
+        $s.children().eq(2).find('strong').text('₹ ' + Math.round(
