@@ -30,12 +30,21 @@
       --radius-2xl: 1.25rem;
     }
 
-    html, body { height: 100%; }
+    html, body {
+      height: 100%;
+      overflow-x: hidden;
+    }
     body {
       font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji';
       color: var(--ink);
       scroll-behavior: smooth;
       background: #fff;
+    }
+
+    /* Prevent container overflow on mobile */
+    .container, .container-fluid {
+      max-width: 100vw;
+      box-sizing: border-box;
     }
 
     /* NAVBAR */
@@ -254,6 +263,72 @@
         border-radius: 5px;
         opacity: 1;
     }
+    /* RESPONSIVE IMPROVEMENTS */
+    @media (max-width: 991.98px) {
+      .section.section { padding: 40px 0; }
+      .service-card, .mini-card, .feature, .testimonial, .article-card, .calc-card {
+        padding: 16px;
+        border-radius: 12px;
+      }
+      .service-card, .mini-card, .feature, .testimonial, .article-card, .calc-card {
+        margin-bottom: 16px;
+      }
+      .section .section-title { font-size: 1.5rem; }
+      .section .section-subtitle { font-size: 1rem; }
+      .custom-hr { width: 20%; height: 3px; }
+      .spark { height: 80px; }
+      .article-thumb { height: 80px; }
+      .navbar { height: 56px; padding: 0 8px; }
+      .logo { width: 140px; }
+      footer .row > div { margin-bottom: 24px; }
+      footer { padding-top: 32px; }
+      .stat .value { font-size: 1.2rem; }
+      .stat .label { font-size: .8rem; }
+    }
+
+    @media (max-width: 767.98px) {
+      .section.section { padding: 28px 0; }
+      .service-card, .mini-card, .feature, .testimonial, .article-card, .calc-card {
+        padding: 12px;
+        font-size: 0.97rem;
+      }
+      .section .section-title { font-size: 1.15rem; }
+      .section .section-subtitle { font-size: .95rem; }
+      .custom-hr { width: 30%; }
+      .spark { height: 56px; }
+      .article-thumb { height: 56px; }
+      .logo { width: 110px; }
+      .navbar .nav-link { font-size: 14px; padding: 0 8px; }
+      .testimonial .avatar, .avatar { width:32px; height:32px; font-size:1rem; }
+      .calc-card { padding: 10px; }
+      .mini-card { padding: 10px; }
+      .feature { padding: 10px; }
+      .service-card { padding: 10px; }
+      .article-card { padding: 10px; }
+      .stat .value { font-size: 1rem; }
+      .stat .label { font-size: .75rem; }
+      .btn, .btn-brand, .custom-btn, .custom-btn2 { font-size: 0.95rem; padding: 8px 16px; }
+      .footer .row > div { margin-bottom: 16px; }
+    }
+
+    @media (max-width: 575.98px) {
+      .section.section { padding: 16px 0; }
+      .service-card, .mini-card, .feature, .testimonial, .article-card, .calc-card {
+        padding: 8px;
+        font-size: 0.93rem;
+      }
+      .section .section-title { font-size: 1rem; }
+      .section .section-subtitle { font-size: .9rem; }
+      .custom-hr { width: 40%; }
+      .spark { height: 36px; }
+      .article-thumb { height: 36px; }
+      .logo { width: 90px; }
+      .navbar .nav-link { font-size: 13px; padding: 0 4px; }
+      .testimonial .avatar, .avatar { width:24px; height:24px; font-size:.85rem; }
+      .btn, .btn-brand, .custom-btn, .custom-btn2 { font-size: 0.9rem; padding: 6px 10px; }
+      .footer .row > div { margin-bottom: 10px; }
+      .calc-card, .mini-card, .feature, .service-card, .article-card { padding: 6px; }
+    }
   </style>
 </head>
 <body>
@@ -263,11 +338,12 @@
       <a class="navbar-brand d-flex align-items-center gap-2" href="https://bolehnow.tlpl.in/">
         <img src="https://bolehnow.tlpl.in/assets/img/logo-large.svg" class="logo">
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileNav"
+        aria-controls="mobileNav" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="mainNav">
-            <ul class="navbar-nav align-items-lg-center ms-auto">
+      <div class="collapse navbar-collapse d-none d-lg-flex" id="mainNav">
+        <ul class="navbar-nav align-items-lg-center ms-auto">
 
               <!-- Products with Hover Submenu -->
               <li class="nav-item dropdown">
@@ -349,20 +425,97 @@
                   <li><a class="dropdown-item" href="#investment">Investment Account</a></li>
                 </ul>
               </li>
-            </ul>
-
-            <!-- Buttons -->
-            <div class="ms-lg-3 mt-2 mt-lg-0 d-flex gap-2">
-              <a class="btn btn-outline-secondary d-none d-lg-inline" href="#contact">Login</a>
-              
-            <button class="custom-btn2">
-              Get Started 
-              <!-- <span class="icon">⬇</span> -->
-            </button>
-
+        </ul>
+        <!-- Buttons (desktop only) -->
+        <div class="ms-lg-3 mt-2 mt-lg-0 d-flex gap-2">
+          <a class="btn btn-outline-secondary d-none d-lg-inline" href="#contact">Login</a>
+          <button class="custom-btn2">Get Started</button>
+          </div>
+          </div>
+          <!-- Offcanvas for mobile nav -->
+          <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="mobileNav" aria-labelledby="mobileNavLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="mobileNavLabel">Menu</h5>
+              <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav">
+                <!-- Products with Hover Submenu -->
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="productsDropdownMobile" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">Products</a>
+                  <ul class="dropdown-menu" aria-labelledby="productsDropdownMobile">
+                    <li><a class="dropdown-item" href="#product1">Mutual Funds</a></li>
+                    <li><a class="dropdown-item" href="#product2">Stocks/ Equity</a></li>
+                    <li><a class="dropdown-item" href="#product3">PMS</a></li>
+                    <li><a class="dropdown-item" href="#product3">AIF/ GIFT CITY</a></li>
+                    <li><a class="dropdown-item" href="#product3">Tax</a></li>
+                    <li><a class="dropdown-item" href="#product3">Fixed Income/ FD/ NCD/ MLD</a></li>
+                    <li><a class="dropdown-item" href="#product3">Insurance</a></li>
+                  </ul>
+                </li>
+                <!-- Accounts with Hover Submenu -->
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="accountsDropdownMobile" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">Accounts</a>
+                  <ul class="dropdown-menu" aria-labelledby="accountsDropdownMobile">
+                    <li><a class="dropdown-item" href="#savings">Individual</a></li>
+                    <li><a class="dropdown-item" href="#current">Family</a></li>
+                    <li><a class="dropdown-item" href="#investment">NRI</a></li>
+                    <li><a class="dropdown-item" href="#investment">Foreign National</a></li>
+                  </ul>
+                </li>
+                <!-- About Us with Hover Submenu -->
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="aboutusDropdownMobile" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">About Us</a>
+                  <ul class="dropdown-menu" aria-labelledby="aboutusDropdownMobile">
+                    <li><a class="dropdown-item" href="#savings">Why Moneyfrog</a></li>
+                    <li><a class="dropdown-item" href="#current">Our Story/ Journey</a></li>
+                    <li><a class="dropdown-item" href="#investment">Promotors/ KMP (Key management persons)</a></li>
+                    <li><a class="dropdown-item" href="#savings">Investors/ Compliance</a></li>
+                    <li><a class="dropdown-item" href="#savings">Testimonial</a></li>
+                  </ul>
+                </li>
+                <!-- Insights -->
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="insightsDropdownMobile" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">Insights</a>
+                  <ul class="dropdown-menu" aria-labelledby="insightsDropdownMobile">
+                    <li><a class="dropdown-item" href="#savings">Blog</a></li>
+                    <li><a class="dropdown-item" href="#current">FAQ</a></li>
+                    <li><a class="dropdown-item" href="#investment">Market Outlook</a></li>
+                    <li><a class="dropdown-item" href="#investment">Calculators</a></li>
+                  </ul>
+                </li>
+                <!-- Jobs Openings -->
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="jobsDropdownMobile" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">Jobs Openings</a>
+                  <ul class="dropdown-menu" aria-labelledby="jobsDropdownMobile">
+                    <li><a class="dropdown-item" href="#savings">Current openings</a></li>
+                    <li><a class="dropdown-item" href="#current">Work Culture</a></li>
+                    <li><a class="dropdown-item" href="#investment">Success stories</a></li>
+                  </ul>
+                </li>
+                <!-- Contact us -->
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="contactusDropdownMobile" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">Contact us</a>
+                  <ul class="dropdown-menu" aria-labelledby="contactusDropdownMobile">
+                    <li><a class="dropdown-item" href="#savings">Savings Account</a></li>
+                    <li><a class="dropdown-item" href="#current">Current Account</a></li>
+                    <li><a class="dropdown-item" href="#investment">Investment Account</a></li>
+                  </ul>
+                </li>
+              </ul>
+              <!-- Buttons (mobile only) -->
+              <div class="mt-3 d-flex gap-2">
+                <a class="btn btn-outline-secondary w-50" href="#contact">Login</a>
+                <button class="custom-btn2 w-50">Get Started</button>
+              </div>
             </div>
           </div>
-        </div>
     </div>
   </nav>
 
@@ -453,49 +606,56 @@
       <div class="mb-4">
         <hr class="custom-hr">
         <h2 class="section-title">Our Services</h2>
-        <p class="section-subtitle">From strategy and planning to taxes and investments—built for individuals and businesses.</p>
       </div>
-      <div class="row g-3 g-lg-4 row-cols-1 row-cols-sm-2 row-cols-lg-3">
-        <div class="col">
-          <div class="service-card h-100">
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col d-flex">
+          <div class="service-card flex-fill">
             <div class="service-icon"><i class="bi bi-diagram-3"></i></div>
-            <h6>Business Unit Strategy</h6>
-            <p>Data-informed planning and execution, supporting revenue & growth outcomes.</p>
+            <div class="fw-bold mt-2">Business Unit Strategy</div>
+            <div class="small text-muted">The right informed planning and execution, supporting revenue & growth outcomes, accepting
+              systems to the new era</div>
           </div>
         </div>
-        <div class="col">
-          <div class="service-card h-100">
+        <div class="col d-flex">
+          <div class="service-card flex-fill">
             <div class="service-icon"><i class="bi bi-receipt"></i></div>
-            <h6>Taxes & Accounting</h6>
-            <p>Compliance-ready tax planning for professionals, SMEs and enterprises.</p>
+            <div class="fw-bold mt-2">Taxes & Accounting</div>
+            <div class="small text-muted">Taxes & Accounting services offer compliance for individuals and businesses, with a focus
+              on strategic financial outcomes</div>
           </div>
         </div>
-        <div class="col">
-          <div class="service-card h-100">
+        <div class="col d-flex">
+          <div class="service-card flex-fill">
             <div class="service-icon"><i class="bi bi-flag"></i></div>
-            <h6>Finance Planning</h6>
-            <p>Goal-based financial plans aligned to short, medium, and long-term outcomes.</p>
+            <div class="fw-bold mt-2">Finance Planning</div>
+            <div class="small text-muted">Our Finance Planning services are tailored to strategic financial outcomes for both
+              individuals and businesses</div>
           </div>
         </div>
-        <div class="col">
-          <div class="service-card h-100">
+      </div>
+      <div class="row row-cols-1 row-cols-md-3 g-4 mt-1">
+        <div class="col d-flex">
+          <div class="service-card flex-fill">
             <div class="service-icon"><i class="bi bi-graph-up"></i></div>
-            <h6>Trades & Stocks</h6>
-            <p>Actionable insights for diversification, equity & debt, and low-cost index strategies.</p>
+            <div class="fw-bold mt-2">Trades & Stocks</div>
+            <div class="small text-muted">Trades & Stocks provide access to all elements of capital markets, with a focus on
+              security and compliance, so you can focus on what matters most</div>
           </div>
         </div>
-        <div class="col">
-          <div class="service-card h-100">
+        <div class="col d-flex">
+          <div class="service-card flex-fill">
             <div class="service-icon"><i class="bi bi-chat-dots"></i></div>
-            <h6>Financial Advisory</h6>
-            <p>Holistic advisory across risk, insurance, retirement, and estate planning.</p>
+            <div class="fw-bold mt-2">Financial Advisory</div>
+            <div class="small text-muted">Financial Advisory includes the right product selection, risk assessment, and a focus on
+              short and long-term outcomes</div>
           </div>
         </div>
-        <div class="col">
-          <div class="service-card h-100">
+        <div class="col d-flex">
+          <div class="service-card flex-fill">
             <div class="service-icon"><i class="bi bi-globe2"></i></div>
-            <h6>International Finance</h6>
-            <p>NRI and cross-border wealth structuring with tax-aware strategies.</p>
+            <div class="fw-bold mt-2">International Business</div>
+            <div class="small text-muted">International Business offers support for international markets and cross-border wealth
+              structuring, making your business truly global</div>
           </div>
         </div>
       </div>
@@ -506,36 +666,42 @@
   <section id="accounts" class="section bg-soft">
     <div class="container">
       <div class="text-center mb-4">
-        <span class="text-uppercase text-muted small">Accounts</span>
+        <span class="text-uppercase text-muted small">ACCOUNTS</span>
         <h2 class="section-title">Financial control in your pocket</h2>
-        <p class="section-subtitle">Save, invest, and track—on one platform.</p>
+        <p class="section-subtitle">Effortlessly save, invest, budget—taking control of debt has never been simpler.</p>
       </div>
-      <div class="row g-3 g-lg-4 row-cols-1 row-cols-md-3">
-        <div class="col">
-          <div class="mini-card h-100">
-            <div class="spark">Savings growth graph</div>
-            <h6 class="mt-3 mb-1">Secure your future</h6>
+      <div class="row justify-content-center align-items-stretch g-4">
+        <div class="col-md-4 d-flex">
+          <div class="mini-card flex-fill text-center">
+            <div class="spark mb-3">
+              <img src="https://img.icons8.com/ios-filled/50/90c740/money-bag.png" alt="Savings" style="height:48px;">
+            </div>
+            <h6 class="fw-bold">Secure your future</h6>
             <div class="text-muted small mb-2">Savings</div>
-            <p class="mb-0">Build emergency funds and secure goals with automated savings.</p>
-            <a href="#" class="btn btn-sm btn-brand mt-3">Start saving</a>
+            <p class="mb-0">Build savings, manage financial security for your future goals.</p>
+            <a href="#" class="btn btn-sm btn-brand mt-3">Start saving <i class="bi bi-arrow-right"></i></a>
           </div>
         </div>
-        <div class="col">
-          <div class="mini-card h-100">
-            <div class="spark">Allocation donut chart</div>
-            <h6 class="mt-3 mb-1">Grow your wealth</h6>
+        <div class="col-md-4 d-flex">
+          <div class="mini-card flex-fill text-center">
+            <div class="spark mb-3">
+              <img src="https://img.icons8.com/ios-filled/50/90c740/pie-chart.png" alt="Investments" style="height:48px;">
+            </div>
+            <h6 class="fw-bold">Grow your wealth</h6>
             <div class="text-muted small mb-2">Investments</div>
-            <p class="mb-0">Diversified portfolios, SIPs, and tax-efficient investing.</p>
-            <a href="#" class="btn btn-sm btn-brand mt-3">Start investing</a>
+            <p class="mb-0">Explore your returns and watch your wealth grow.</p>
+            <a href="#" class="btn btn-sm btn-brand mt-3">Start investing <i class="bi bi-arrow-right"></i></a>
           </div>
         </div>
-        <div class="col">
-          <div class="mini-card h-100">
-            <div class="spark">Budget vs actuals</div>
-            <h6 class="mt-3 mb-1">Track your expenses</h6>
+        <div class="col-md-4 d-flex">
+          <div class="mini-card flex-fill text-center">
+            <div class="spark mb-3">
+              <img src="https://img.icons8.com/ios-filled/50/90c740/graph-report.png" alt="Budgeting" style="height:48px;">
+            </div>
+            <h6 class="fw-bold">Track your expenses</h6>
             <div class="text-muted small mb-2">Budgeting</div>
-            <p class="mb-0">Smart budgets, real-time insights, and monthly summaries.</p>
-            <a href="#" class="btn btn-sm btn-brand mt-3">Start budgeting</a>
+            <p class="mb-0">Manage your expenses seamlessly, gaining clarity over your spending.</p>
+            <a href="#" class="btn btn-sm btn-brand mt-3">Start budgeting <i class="bi bi-arrow-right"></i></a>
           </div>
         </div>
       </div>
@@ -547,34 +713,46 @@
     <div class="container">
       <div class="row g-4 align-items-start">
         <div class="col-lg-5">
-          <h2 class="section-title">Get the control you need over your finances</h2>
-          <p class="section-subtitle">Enjoy expense tracking, bill pay, invoices, and insights with powerful reports.</p>
-          <a href="#" class="btn btn-brand">Discover more</a>
+          <div class="mb-3 text-start">
+            <span class="text-uppercase text-muted small">About Us</span>
+            <h2 class="section-title mt-2">Get the control you need over your finances</h2>
+            <p class="section-subtitle">Enjoy expense tracking, bill pay, invoices, and insightful expense reports, giving you
+              insights into your financial activities and patterns.</p>
+            <a href="#" class="btn btn-brand mt-2">Discover more</a>
+          </div>
         </div>
         <div class="col-lg-7">
           <div class="row g-3 g-lg-4 row-cols-1 row-cols-sm-2">
             <div class="col">
-              <div class="feature h-100">
-                <div class="d-flex align-items-center gap-2"><i class="bi bi-wallet2"></i><h6 class="mb-0">Expense management</h6></div>
-                <p class="small text-muted mt-2 mb-0">Categorize spending, set budgets, and sync transactions across banks.</p>
+              <div class="feature h-100 text-center">
+                <div class="mb-2"><i class="bi bi-wallet2" style="font-size:2rem;"></i></div>
+                <h6 class="fw-bold mb-1">Expense management</h6>
+                <p class="small text-muted">Categorize control expenses, categorize spending, and control transactions with multiple
+                  accounts.</p>
               </div>
             </div>
             <div class="col">
-              <div class="feature h-100">
-                <div class="d-flex align-items-center gap-2"><i class="bi bi-receipt-cutoff"></i><h6 class="mb-0">Receipt tracking</h6></div>
-                <p class="small text-muted mt-2 mb-0">Upload receipts, auto-extract details, and maintain digital records.</p>
+              <div class="feature h-100 text-center">
+                <div class="mb-2"><i class="bi bi-receipt-cutoff" style="font-size:2rem;"></i></div>
+                <h6 class="fw-bold mb-1">Receipt tracking</h6>
+                <p class="small text-muted">Organize and store receipts digitally, categorizing spending, and keeping records for
+                  financial clarity.</p>
               </div>
             </div>
             <div class="col">
-              <div class="feature h-100">
-                <div class="d-flex align-items-center gap-2"><i class="bi bi-credit-card"></i><h6 class="mb-0">Bill pay</h6></div>
-                <p class="small text-muted mt-2 mb-0">Schedule & pay securely—utilities, rent, credit cards, and more.</p>
+              <div class="feature h-100 text-center">
+                <div class="mb-2"><i class="bi bi-credit-card" style="font-size:2rem;"></i></div>
+                <h6 class="fw-bold mb-1">Bill pay</h6>
+                <p class="small text-muted">Seamlessly pay bills, recurring, utility transactions and hassle free management of
+                  recurring payments.</p>
               </div>
             </div>
             <div class="col">
-              <div class="feature h-100">
-                <div class="d-flex align-items-center gap-2"><i class="bi bi-clipboard-data"></i><h6 class="mb-0">Expense reports</h6></div>
-                <p class="small text-muted mt-2 mb-0">Generate advanced reports, analyze patterns, and export to Excel.</p>
+              <div class="feature h-100 text-center">
+                <div class="mb-2"><i class="bi bi-clipboard-data" style="font-size:2rem;"></i></div>
+                <h6 class="fw-bold mb-1">Expense reports</h6>
+                <p class="small text-muted">Generate advanced reports, giving valuable insights into your financial activities and
+                  patterns.</p>
               </div>
             </div>
           </div>
@@ -589,27 +767,58 @@
       <div class="text-center mb-4">
         <span class="text-uppercase text-muted small">12,864+ Happy Clients</span>
         <h2 class="section-title">Explore genuine client feedback</h2>
-        <p class="section-subtitle">We let our clients speak for the experience and results.</p>
-      </div>
-      <div id="tCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="row g-3">
-              <div class="col-md-4"><div class="testimonial h-100"><div class="mb-2 text-warning"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div><p class="mb-3">“The right mutual funds & discipline changed how I manage money. It’s been a remarkable upgrade.”</p><div class="d-flex align-items-center gap-2"><div class="avatar">MT</div><div><strong>Mark Thompson</strong><div class="small text-muted">Senior Business Owner</div></div></div></div></div>
-              <div class="col-md-4"><div class="testimonial h-100"><div class="mb-2 text-warning"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div><p class="mb-3">“Budgeting became effortless with insightful analytics. I’ve built better habits in months.”</p><div class="d-flex align-items-center gap-2"><div class="avatar">RJ</div><div><strong>Rachel Johnson</strong><div class="small text-muted">Software Engineer</div></div></div></div></div>
-              <div class="col-md-4"><div class="testimonial h-100"><div class="mb-2 text-warning"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div><p class="mb-3">“Top-tier financial insights & helpful human advisors. I finally feel in control of my future.”</p><div class="d-flex align-items-center gap-2"><div class="avatar">SM</div><div><strong>Samantha Meir</strong><div class="small text-muted">Product Leader</div></div></div></div></div>
+        <p class="section-subtitle">The best way to showcase our commitment is through the experiences and stories of those who
+          have partnered with us.</p>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-md-4 mb-3">
+            <div class="testimonial h-100 text-center">
+              <div class="mb-2 text-warning">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                  class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </div>
+              <p class="mb-3">“This app is truly revolutionary! It transformed the way I manage money. It’s so intuitive &
+                secure.”</p>
+              <div class="d-flex align-items-center justify-content-center gap-2">
+                <div class="avatar">MT</div>
+                <div><strong>Mark Thompson</strong>
+                  <div class="small text-muted">Small business owner</div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="carousel-item">
-            <div class="row g-3">
-              <div class="col-md-4"><div class="testimonial h-100"><div class="mb-2 text-warning"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div><p class="mb-3">“Transparent fees, smart rebalancing, and an app that’s actually enjoyable.”</p><div class="d-flex align-items-center gap-2"><div class="avatar">AK</div><div><strong>Abhay Kapoor</strong><div class="small text-muted">Entrepreneur</div></div></div></div></div>
-              <div class="col-md-4"><div class="testimonial h-100"><div class="mb-2 text-warning"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div><p class="mb-3">“The advisory team was patient and precise—great for first-time investors.”</p><div class="d-flex align-items-center gap-2"><div class="avatar">ND</div><div><strong>Nisha Desai</strong><div class="small text-muted">Designer</div></div></div></div></div>
-              <div class="col-md-4"><div class="testimonial h-100"><div class="mb-2 text-warning"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div><p class="mb-3">“The SIP planner and budget reports helped me save 20% more within 6 months.”</p><div class="d-flex align-items-center gap-2"><div class="avatar">VK</div><div><strong>Vikram Khanna</strong><div class="small text-muted">Consultant</div></div></div></div></div>
+          <div class="col-md-4 mb-3">
+            <div class="testimonial h-100 text-center">
+              <div class="mb-2 text-warning">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                  class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </div>
+              <p class="mb-3">An incredible app! Budgeting has become a breeze with its intuitive features and insightful data
+                visualizations.</p>
+              <div class="d-flex align-items-center justify-content-center gap-2">
+                <div class="avatar">Rachel Johnson</div>
+                <div><strong>Rachel Johnson</strong>
+                  <div class="small text-muted">Software engineer</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <div class="col-md-4 mb-3">
+          <div class="testimonial h-100 text-center">
+            <div class="mb-2 text-warning">
+              <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+            </div>
+            <p class="mb-3">The app transformed my financial habits remarkably! Clear, intuitive, and has resources that have
+              fostered real control.</p>
+            <div class="d-flex align-items-center justify-content-center gap-2">
+              <div class="avatar">Samantha Meir</div>
+              <div><strong>Samantha Meir</strong>
+                <div class="small text-muted">Financial analyst</div>
+              </div>
             </div>
           </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#tCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span></button>
-        <button class="carousel-control-next" type="button" data-bs-target="#tCarousel" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next</span></button>
       </div>
     </div>
   </section>
@@ -618,9 +827,10 @@
   <section id="academy" class="section">
     <div class="container">
       <div class="text-center mb-4">
-        <span class="text-uppercase text-muted small">Blogs & Articles</span>
+        <span class="text-uppercase text-muted small">BLOGS & ARTICLES</span>
         <h2 class="section-title">Learning academy</h2>
-        <p class="section-subtitle">Actionable, insightful content to help you stay ahead.</p>
+        <p class="section-subtitle">Explore insightful content that keeps you ahead of the curve and connected to the pulse of
+          what’s happening.</p>
       </div>
       <div class="row g-3 g-lg-4 row-cols-1 row-cols-md-2 row-cols-lg-3">
         <div class="col">
@@ -629,7 +839,7 @@
             <div class="article-body">
               <span class="badge rounded-pill badge-cat">Fintech</span>
               <h6 class="mt-2 mb-1">The rise of digital wallets: a fintech game-changer</h6>
-              <div class="small text-muted">28 Aug 2025 · 6 min read</div>
+              <div class="small text-muted">28 Jul 2025 · 6 min read</div>
             </div>
           </article>
         </div>
@@ -639,7 +849,7 @@
             <div class="article-body">
               <span class="badge rounded-pill badge-cat">Budget</span>
               <h6 class="mt-2 mb-1">Saving smarter: practical tips for financial stability</h6>
-              <div class="small text-muted">27 Aug 2025 · 5 min read</div>
+              <div class="small text-muted">27 Jul 2025 · 5 min read</div>
             </div>
           </article>
         </div>
@@ -649,7 +859,7 @@
             <div class="article-body">
               <span class="badge rounded-pill badge-cat">Blockchain</span>
               <h6 class="mt-2 mb-1">Blockchain beyond Bitcoin: real-world use cases</h6>
-              <div class="small text-muted">26 Aug 2025 · 7 min read</div>
+              <div class="small text-muted">26 Jul 2025 · 7 min read</div>
             </div>
           </article>
         </div>
@@ -659,7 +869,7 @@
             <div class="article-body">
               <span class="badge rounded-pill badge-cat">Investing</span>
               <h6 class="mt-2 mb-1">The role of inflation in your investment strategy</h6>
-              <div class="small text-muted">25 Aug 2025 · 8 min read</div>
+              <div class="small text-muted">25 Jul 2025 · 8 min read</div>
             </div>
           </article>
         </div>
@@ -669,7 +879,7 @@
             <div class="article-body">
               <span class="badge rounded-pill badge-cat">Wealth</span>
               <h6 class="mt-2 mb-1">Building a balanced portfolio: a beginner’s guide</h6>
-              <div class="small text-muted">24 Aug 2025 · 6 min read</div>
+              <div class="small text-muted">24 Jul 2025 · 6 min read</div>
             </div>
           </article>
         </div>
@@ -679,7 +889,7 @@
             <div class="article-body">
               <span class="badge rounded-pill badge-cat">Retirement</span>
               <h6 class="mt-2 mb-1">Secure your future: a guide to retirement planning</h6>
-              <div class="small text-muted">23 Aug 2025 · 5 min read</div>
+              <div class="small text-muted">23 Jul 2025 · 5 min read</div>
             </div>
           </article>
         </div>
@@ -817,29 +1027,39 @@
   <!-- FOOTER -->
   <footer class="pt-5">
     <div class="container">
-      <div class="row g-4">
+      <div class="row g-4 align-items-start">
         <div class="col-md-4">
           <div class="d-flex align-items-center gap-2 mb-2">
             <span class="rounded-circle d-inline-flex align-items-center justify-content-center" style="width:36px;height:36px;background:#0e1b2e;color:#9ae6b4"><i class="bi bi-coin"></i></span>
             <h5 class="m-0">MONEYFROG</h5>
           </div>
-          <p class="small text-secondary">Building financial confidence through simple tools, thoughtful content, and human advisors.</p>
+          <p class="small text-secondary mb-2">Building financial confidence through simple tools, thoughtful content, and human
+            advisors.</p>
+          <div class="d-flex gap-2 mt-2">
+            <a href="#" class="text-white"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-white"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="text-white"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
+          </div>
         </div>
         <div class="col-6 col-md-2">
           <h6 class="text-white">Products</h6>
           <ul class="list-unstyled small">
             <li><a href="#">Mutual Funds</a></li>
             <li><a href="#">Equity</a></li>
-            <li><a href="#">ETF</a></li>
+            <li><a href="#">PMS / AIF / GIFT CITY</a></li>
+            <li><a href="#">Tax</a></li>
+            <li><a href="#">Fixed Income</a></li>
             <li><a href="#">Insurance</a></li>
           </ul>
         </div>
         <div class="col-6 col-md-2">
           <h6 class="text-white">Accounts</h6>
           <ul class="list-unstyled small">
-            <li><a href="#">Savings</a></li>
-            <li><a href="#">Investments</a></li>
-            <li><a href="#">Budgeting</a></li>
+            <li><a href="#">Individual</a></li>
+            <li><a href="#">Family</a></li>
+            <li><a href="#">NRI</a></li>
+            <li><a href="#">Foreign National</a></li>
           </ul>
         </div>
         <div class="col-6 col-md-2">
@@ -853,7 +1073,7 @@
         <div class="col-6 col-md-2">
           <h6 class="text-white">Get in touch</h6>
           <ul class="list-unstyled small">
-            <li><a href="mailto:care@moneyfrog.example">care@moneyfrog.example</a></li>
+            <li><a href="mailto:care@moneyfrog.example">contact@moneyfrog.in</a></li>
             <li><a href="#">Twitter</a></li>
             <li><a href="#">LinkedIn</a></li>
           </ul>
@@ -883,4 +1103,20 @@
   <!-- jQuery & Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Fallback: Ensure offcanvas opens on toggler click
+    document.addEventListener('DOMContentLoaded', function () {
+      var toggler = document.querySelector('.navbar-toggler[data-bs-toggle="offcanvas"]');
+      var offcanvas = document.getElementById('mobileNav');
+      if (toggler && offcanvas && typeof bootstrap !== 'undefined' && bootstrap.Offcanvas) {
+        toggler.addEventListener('click', function () {
+          var bsOffcanvas = bootstrap.Offcanvas.getOrCreateInstance(offcanvas);
+          bsOffcanvas.show();
+        });
+      } else if (!window.bootstrap) {
+        console.warn('Bootstrap JS not loaded: Mobile menu will not work.');
+      }
+    });
+  </script>
 
