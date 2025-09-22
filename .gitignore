@@ -1,0 +1,33 @@
+# PHPloy
+phploy.ini
+.phploy
+
+# Deployment
+deploy.php
+deploy.bat
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Dependencies
+node_modules/
+vendor/
+
+# Environment
+.env
+.env.local
+.env.production
+
+# Temporary files
+*.tmp
+*.temp

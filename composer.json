@@ -1,0 +1,16 @@
+{
+    "name": "moneyfrog/website",
+    "description": "Moneyfrog Financial Services Website",
+    "type": "project",
+    "require-dev": {
+        "banago/phploy": "^4.0"
+    },
+    "scripts": {
+        "deploy:staging": "phploy -s staging",
+        "deploy:production": "phploy -s production",
+        "deploy:sync": "phploy -s staging --sync"
+    },
+    "config": {
+        "optimize-autoloader": true
+    }
+}

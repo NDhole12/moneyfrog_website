@@ -313,6 +313,9 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            max-width: 145px;
+            width: 100%;
+            justify-content: center;
         }
 
         .cta-button:hover {
@@ -461,13 +464,21 @@
         /* Services Section */
         .services {
             padding: 4rem 0;
-            background: var(--white);
+            background: #f4eee9;
+        }
+
+        .green-line {
+            width: 80px;
+            height: 4px;
+            background: var(--primary-green);
+            margin-bottom: 1rem;
         }
 
         .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
+            text-align: left;
+            font-size: 1.5rem;
+            line-height: 1;
+            margin-bottom: 1.5rem;
             color: var(--dark-gray);
         }
 
@@ -478,11 +489,11 @@
         }
 
         .service-card {
-            background: var(--white);
+            background: #ffffff00;
             padding: 2rem;
             border-radius: 12px;
-            box-shadow: var(--shadow);
-            text-align: center;
+            /* box-shadow: var(--shadow); */
+            text-align: left;
             transition: transform 0.3s;
         }
 
@@ -491,15 +502,265 @@
         }
 
         .service-icon {
-            font-size: 3rem;
-            color: var(--primary-green);
-            margin-bottom: 1rem;
+            width: 64px;
+            height: 64px;
+            margin-bottom: 1.5rem;
+            display: block;
+            object-fit: contain;
         }
 
         .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-gray);
+            font-weight: 500;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* Accounts Section */
+        .accounts {
+            padding: 4rem 0;
+            background: var(--white);
+        }
+
+        .accounts-label {
+            color: var(--primary-green);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            text-align: center;
+            color: #666;
+            margin-bottom: 1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .accounts-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        @media (max-width: 1200px) {
+            .accounts-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .accounts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .account-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .account-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .account-chart {
+            height: 150px;
+            background: var(--neutral-gray);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .chart-visual {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+
+        .individual-chart {
+            background: linear-gradient(135deg, #E8F5E8, #C8E6C9);
+        }
+
+        .family-chart {
+            background: linear-gradient(135deg, #E3F2FD, #BBDEFB);
+        }
+
+        .nri-chart {
+            background: linear-gradient(135deg, #F3E5F5, #E1BEE7);
+        }
+
+        .foreign-chart {
+            background: linear-gradient(135deg, #FFF3E0, #FFE0B2);
+        }
+
+        .account-category {
+            color: var(--primary-green);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .account-card h3 {
             font-size: 1.3rem;
             margin-bottom: 1rem;
             color: var(--dark-gray);
+            font-weight: 600;
+        }
+
+        .account-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .account-btn {
+            background: var(--primary-green);
+            color: var(--dark-gray);
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .account-btn:hover {
+            background: var(--light-green);
+            transform: translateY(-1px);
+        }
+
+        /* About Us Section */
+        .about-us {
+            padding: 4rem 0;
+            background: var(--neutral-gray);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-label {
+            color: var(--primary-green);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .about-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--dark-gray);
+            line-height: 1.2;
+        }
+
+        .about-description {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .about-btn {
+            background: var(--primary-green);
+            color: var(--dark-gray);
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .about-btn:hover {
+            background: var(--light-green);
+            transform: translateY(-1px);
+        }
+
+        .about-btn::after {
+            content: '→';
+            font-size: 1rem;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .feature-item {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-green);
+        }
+
+        .feature-item h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark-gray);
+        }
+
+        .feature-item p {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-title {
+                font-size: 2rem;
+            }
+
+            .about-features {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* Financial Control Section */
@@ -547,41 +808,238 @@
             background: conic-gradient(var(--primary-green) 0deg 120deg, var(--light-green) 120deg 240deg, #E0E0E0 240deg 360deg);
         }
 
-        /* Testimonials */
+        /* Testimonials Slider */
         .testimonials {
             padding: 4rem 0;
             background: var(--white);
         }
 
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+        .testimonials-slider-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+            padding: 0 60px;
+        }
+
+        .testimonials-slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .testimonial-slide {
+            min-width: 33.333%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 1rem;
         }
 
         .testimonial-card {
-            background: var(--neutral-gray);
-            padding: 2rem;
-            border-radius: 12px;
-            text-align: center;
-        }
-
-        .client-photo {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: var(--primary-green);
-            margin: 0 auto 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-size: 2rem;
+            background: var(--white);
+            padding: 2rem 1.5rem;
+            border-radius: 16px;
+            text-align: left;
+            max-width: 350px;
+            width: 100%;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid #f0f0f0;
+            margin: 0 auto;
         }
 
         .stars {
-            color: #FFD700;
-            margin-bottom: 1rem;
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            text-align: left;
+        }
+
+        .testimonial-card p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            color: #555;
+            font-style: normal;
+            text-align: left;
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .client-photo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: linear-gradient(135deg, var(--primary-green), var(--light-green));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .client-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .client-photo i {
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+
+        .client-details {
+            flex: 1;
+        }
+
+        .client-details h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+            color: var(--dark-gray);
+            font-weight: 600;
+        }
+
+        .client-details small {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* Slider Navigation */
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--white);
+            border: 2px solid var(--primary-green);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .slider-nav:hover {
+            background: var(--primary-green);
+            color: var(--white);
+        }
+
+        .slider-nav.prev {
+            left: 10px;
+        }
+
+        .slider-nav.next {
+            right: 10px;
+        }
+
+        .slider-nav i {
+            font-size: 1.2rem;
+            color: var(--primary-green);
+        }
+
+        .slider-nav:hover i {
+            color: var(--white);
+        }
+
+        /* Slider Dots */
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--primary-green);
+        }
+
+        .dot:hover {
+            background: var(--light-green);
+        }
+
+        /* Keyboard navigation support */
+        .slider-nav:focus {
+            outline: 2px solid var(--primary-green);
+            outline-offset: 2px;
+        }
+
+        .dot:focus {
+            outline: 2px solid var(--primary-green);
+            outline-offset: 2px;
+        }
+
+        /* Smooth transitions for better UX */
+        .testimonials-slider {
+            will-change: transform;
+        }
+
+        /* Accessibility improvements */
+        @media (prefers-reduced-motion: reduce) {
+            .testimonials-slider {
+                transition: none;
+            }
+        }
+
+        /* Enhanced mobile responsiveness */
+        @media (max-width: 480px) {
+            .testimonial-card {
+                padding: 1.5rem 1rem;
+                max-width: 100%;
+            }
+
+            .testimonial-card p {
+                font-size: 1rem;
+            }
+
+            .slider-nav {
+                width: 35px;
+                height: 35px;
+            }
+
+            .slider-nav.prev {
+                left: 2px;
+            }
+
+            .slider-nav.next {
+                right: 2px;
+            }
+
+            .testimonials-slider-container {
+                padding: 0 40px;
+            }
+
+            .dot {
+                width: 10px;
+                height: 10px;
+            }
+        }
+
+        /* Desktop specific adjustments */
+        @media (min-width: 769px) {
+            .testimonials-slider-container {
+                max-width: 1200px;
+            }
+
+            .testimonial-card {
+                max-width: 320px;
+            }
         }
 
         /* Learning Academy */
@@ -705,6 +1163,9 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            .cta-button {
+                max-width: 100%;
+            }
 
             .hero-content,
             .control-content {
@@ -729,9 +1190,40 @@
             }
 
             .services-grid,
-            .testimonials-grid,
             .learning-grid {
                 grid-template-columns: 1fr;
+            }
+
+            /* Mobile testimonials slider adjustments */
+            .testimonials-slider-container {
+                margin: 0 auto;
+                padding: 0 50px;
+            }
+
+            .testimonial-slide {
+                min-width: 100%;
+                padding: 0 1rem;
+            }
+
+            .testimonial-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .slider-nav {
+                width: 40px;
+                height: 40px;
+            }
+
+            .slider-nav.prev {
+                left: 5px;
+            }
+
+            .slider-nav.next {
+                right: 5px;
+            }
+
+            .slider-nav i {
+                font-size: 1rem;
             }
 
             nav {
@@ -1032,8 +1524,8 @@
                 <div class="hero-text">
                     <h1>Your Investment Needs<br>TRUST, EXPERTISE,<br>CONSISTENCY</h1>
                     <p>Build your financial future with our comprehensive investment solutions and expert guidance.</p>
-                    <a href="#services" class="cta-button">
-                        Explore Services
+                    <a href="#contact" class="cta-button">
+                        Get Started
                         <span class="arrow-icon">
                             <i class="fas fa-arrow-right"></i>
                         </span>
@@ -1080,103 +1572,265 @@
     <!-- Services Section -->
     <section class="services" id="services">
         <div class="container">
+            <div class="green-line"></div>
             <h2 class="section-title">Our Services</h2>
             <div class="services-grid">
                 <div class="service-card">
-                    <i class="fas fa-chart-line service-icon"></i>
-                    <h3>Investment Planning</h3>
-                    <p>Strategic investment solutions tailored to your financial goals and risk tolerance.</p>
+                    <img src="assets/img/mutual-funds.png" alt="Mutual Funds" class="service-icon">
+                    <h3>Mutual Funds</h3>
+                    <p>Grow your wealth with diversified mutual funds, managed by experts for long-term financial
+                        security and growth.</p>
                 </div>
                 <div class="service-card">
-                    <i class="fas fa-piggy-bank service-icon"></i>
-                    <h3>Wealth Building</h3>
-                    <p>Comprehensive wealth accumulation strategies for long-term financial success.</p>
+                    <img src="assets/img/stocks.png" alt="Stocks/Equity" class="service-icon">
+                    <h3>Stocks/ Equity</h3>
+                    <p>Maximize returns through direct equity investments, guided by expert research and proven market
+                        strategies.</p>
                 </div>
                 <div class="service-card">
-                    <i class="fas fa-university service-icon"></i>
-                    <h3>Estate & Tax Planning</h3>
-                    <p>Protect and transfer your wealth efficiently with our estate planning expertise.</p>
+                    <img src="assets/img/PMS.png" alt="PMS" class="service-icon">
+                    <h3>PMS</h3>
+                    <p>Enhance your portfolio with personalized management solutions tailored for growth,
+                        diversification, and wealth
+                        creation.</p>
                 </div>
                 <div class="service-card">
-                    <i class="fas fa-calendar-alt service-icon"></i>
-                    <h3>Retirement Planning</h3>
-                    <p>Secure your retirement with personalized planning and investment strategies.</p>
+                    <img src="assets/img/aif.png" alt="AIF/GIFT CITY" class="service-icon">
+                    <h3>AIF/ GIFT CITY</h3>
+                    <p>Access exclusive alternative investment opportunities through AIFs and GIFT City for higher
+                        growth potential.</p>
                 </div>
                 <div class="service-card">
-                    <i class="fas fa-calculator service-icon"></i>
-                    <h3>Financial Planning</h3>
-                    <p>Holistic financial planning to help you achieve all your life goals.</p>
+                    <img src="assets/img/tax.png" alt="Tax Services" class="service-icon">
+                    <h3>Tax</h3>
+                    <p>Simplify tax planning with expert advisory services that optimize savings, ensure compliance, and
+                        reduce liabilities.
+                    </p>
                 </div>
                 <div class="service-card">
-                    <i class="fas fa-shield-alt service-icon"></i>
-                    <h3>Insurance Services</h3>
-                    <p>Comprehensive insurance solutions to protect you and your family.</p>
+                    <img src="assets/img/fixed-deposits.png" alt="Fixed Income" class="service-icon">
+                    <h3>Fixed Income/ FD/ NCD/ MLD</h3>
+                    <p>Secure steady income with safe, reliable options like FDs, NCDs, and market-linked debentures.
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </section>
+                        <!-- Accounts Section -->
+                    <section class="accounts">
+                        <div class="container">
+                            <div class="text-center mb-5">
+                                <span class="accounts-label">ACCOUNTS</span>
+                                <h2 class="section-title" style="text-align: center;">Smart Tools for Smarter Account Management</h2>
+                                <p class="section-subtitle">Effortlessly save, invest, budget—taking control of debt has never been
+                                    simpler.
+                                </p>
+                            </div>
+                            <div class="accounts-grid">
+                                <div class="account-card">
+                                    <div class="account-chart individual-chart">
+                                        <img src="assets/img/individual.png" alt="Individual Account" class="chart-visual">
+                                    </div>
+                                    <div class="account-category">ACCOUNT TYPE</div>
+                                    <h3>Individual</h3>
+                                    <p>Personal investment accounts designed for individual investors seeking growth and financial
+                                        independence.</p>
+                                    <button class="account-btn">Open Account</button>
+                                </div>
+                                <div class="account-card">
+                                    <div class="account-chart family-chart">
+                                        <img src="assets/img/family.png" alt="Family Account" class="chart-visual">
+                                    </div>
+                                    <div class="account-category">ACCOUNT TYPE</div>
+                                    <h3>Family</h3>
+                                    <p>Joint family accounts that help you plan and invest together for shared financial goals and
+                                        security.
+                                    </p>
+                                    <button class="account-btn">Open Account</button>
+                                </div>
+                                <div class="account-card">
+                                    <div class="account-chart nri-chart">
+                                        <img src="assets/img/nri.png" alt="NRI Account" class="chart-visual">
+                                    </div>
+                                    <div class="account-category">ACCOUNT TYPE</div>
+                                    <h3>NRI</h3>
+                                    <p>Specialized investment solutions for Non-Resident Indians to invest in Indian markets from
+                                        abroad.
+                                    </p>
+                                    <button class="account-btn">Open Account</button>
+                                </div>
+                                <div class="account-card">
+                                    <div class="account-chart foreign-chart">
+                                        <img src="assets/img/foreign-national.png" alt="Foreign National Account" class="chart-visual">
+                                    </div>
+                                    <div class="account-category">ACCOUNT TYPE</div>
+                                    <h3>Foreign National</h3>
+                                    <p>Investment opportunities for foreign nationals looking to participate in Indian financial
+                                        markets.</p>
+                                    <button class="account-btn">Open Account</button>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Financial Control Section -->
-    <section class="financial-control">
+    <!-- About Us Section -->
+    <section class="about-us">
         <div class="container">
-            <div class="control-content">
-                <div>
-                    <h2>Financial control in your pocket</h2>
-                    <p>Monitor your investments, track performance, and make informed decisions with our advanced
-                        dashboard and mobile tools.</p>
-                    <ul style="margin-top: 1rem;">
-                        <li>Real-time portfolio tracking</li>
-                        <li>Performance analytics</li>
-                        <li>Risk assessment tools</li>
-                        <li>Mobile accessibility</li>
-                    </ul>
+            <div class="about-content">
+                <div class="about-text">
+                    <span class="about-label">ABOUT US</span>
+                    <h2 class="about-title">Get the control you need over your finances</h2>
+                    <p class="about-description">Enjoy expense tracking, bill pay, invoices, and insightful expense
+                        reports.
+                    </p>
+                    <button class="about-btn">Discover more</button>
                 </div>
-                <div class="dashboard-mockup">
-                    <div class="chart-container">
-                        <div class="chart">Portfolio: $125K</div>
-                        <div class="pie-chart"></div>
+                <div class="about-features">
+                    <div class="feature-item">
+                        <div class="feature-icon">💰</div>
+                        <h4>Expense management</h4>
+                        <p>Effortlessly control expenses, categorize spending, and track transactions with intuitive
+                            tools.
+                        </p>
                     </div>
-                    <div class="chart-container">
-                        <div class="chart">Growth: +12.5%</div>
-                        <div class="chart">Risk: Moderate</div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🧾</div>
+                        <h4>Receipt tracking</h4>
+                        <p>Organize and store receipts digitally, ensuring easy access and efficient record-keeping for
+                            financial clarity.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">💳</div>
+                        <h4>Bill pay</h4>
+                        <p>Streamline bill payments, ensuring timely transactions and hassle-free management of
+                            recurring
+                            expenses.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📊</div>
+                        <h4>Expense reports</h4>
+                        <p>Generate detailed expense reports, gaining valuable insights into your financial activities
+                            and
+                            patterns.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    >
 
     <!-- Testimonials -->
-    <section class="testimonials">
+    <section class="testimonials" id="testimonials">
         <div class="container">
             <h2 class="section-title">Explore genuine client feedback</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="client-photo">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="stars">★★★★★</div>
-                    <p>"Exceptional service and expertise. My portfolio has grown significantly under their guidance."
-                    </p>
-                    <h4>Sarah Johnson</h4>
-                    <small>Business Owner</small>
-                </div>
-                <div class="testimonial-card">
-                    <div class="client-photo">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="stars">★★★★★</div>
-                    <p>"Professional, reliable, and always available when I need advice. Highly recommended!"</p>
-                    <h4>Michael Chen</h4>
-                    <small>Software Engineer</small>
-                </div>
-                <div class="testimonial-card">
-                    <div class="client-photo">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="stars">★★★★★</div>
-                    <p>"They helped me plan for retirement with confidence. Great team and excellent results."</p>
-                    <h4>Emily Davis</h4>
-                    <small>Teacher</small>
+            <div class="testimonials-slider-container">
+                <div class="testimonials-slider" id="testimonialsSlider">
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="stars">★★★★★</div>
+                            <p>"This app is truly revolutionary! It transformed the way I manage money. It's become an
+                                invaluable asset for my
+                                financial planning and investment decisions."</p>
+                            <div class="client-info">
+                                <div class="client-photo">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
+                                        alt="Mark Thompson" />
+                                    </div>
+                                <div class="client-details">
+                                    <h4>Mark Thompson</h4>
+                                    <small>Small business owner</small>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                                <div class="testimonial-slide">
+                                    <div class="testimonial-card">
+                            <div class="stars">★★★★★</div>
+                            <p>"Professional, reliable, and always available when I need advice. Their comprehensive
+                                financial planning has given me
+                                peace of mind and confidence in my investment decisions."</p>
+                            <div class="client-info">
+                                <div class="client-photo">
+                                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face"
+                                        alt="Sarah Johnson" />
+                                </div>
+                                <div class="client-details">
+                                    <h4>Sarah Johnson</h4>
+                                    <small>Business Owner</small>
+                                </div>
+                            </div>
+                            </div>
+                            </div>
+                            <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="stars">★★★★★</div>
+                            <p>"They helped me plan for retirement with confidence. Great team and excellent results.
+                                The strategic approach to
+                                wealth building has exceeded my expectations."</p>
+                            <div class="client-info">
+                                <div class="client-photo">
+                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face"
+                                        alt="Michael Chen" />
+                                    </div>
+                                <div class="client-details">
+                                    <h4>Michael Chen</h4>
+                                    <small>Software Engineer</small>
+                                </div>
+                            </div>
+                            </div>
+                            </div>
+                            <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="stars">★★★★★</div>
+                            <p>"Outstanding investment guidance and tax planning services. Their expertise in estate
+                                planning has been invaluable
+                                for my family's financial security."</p>
+                            <div class="client-info">
+                                <div class="client-photo">
+                                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop&crop=face"
+                                        alt="Robert Martinez" />
+                                    </div>
+                                <div class="client-details">
+                                    <h4>Robert Martinez</h4>
+                                    <small>Doctor</small>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                                <div class="testimonial-slide">
+                                    <div class="testimonial-card">
+                            <div class="stars">★★★★★</div>
+                            <p>"The wealth management strategies they provided have transformed my financial outlook.
+                                Their attention to detail and
+                                commitment to client success is unmatched."</p>
+                            <div class="client-info">
+                                <div class="client-photo">
+                                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
+                                        alt="Emily Davis" />
+                                </div>
+                                <div class="client-details">
+                                    <h4>Emily Davis</h4>
+                                    <small>Teacher</small>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                                
+                                <!-- Navigation Arrows -->
+                                <button class="slider-nav prev" onclick="prevSlide(); restartAutoPlay();">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <button class="slider-nav next" onclick="nextSlide(); restartAutoPlay();">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                                
+                                <!-- Dots Indicator -->
+                                <div class="slider-dots">
+                                    <span class="dot active" onclick="goToSlide(0); restartAutoPlay();"></span>
+                                    <span class="dot" onclick="goToSlide(1); restartAutoPlay();"></span>
+                                    <span class="dot" onclick="goToSlide(2); restartAutoPlay();"></span>
+                                    <span class="dot" onclick="goToSlide(3); restartAutoPlay();"></span>
+                                    <span class="dot" onclick="goToSlide(4); restartAutoPlay();"></span>
                 </div>
             </div>
         </div>
@@ -1230,6 +1884,24 @@
                     <div class="learning-content">
                         <h3>Market Analysis</h3>
                         <p>Learn to read market trends and make informed decisions.</p>
+                    </div>
+                </div>
+                <div class="learning-card">
+                    <div class="learning-thumbnail">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="learning-content">
+                        <h3>Risk Management</h3>
+                        <p>Protect your investments with proper risk assessment.</p>
+                    </div>
+                </div>
+                <div class="learning-card">
+                    <div class="learning-thumbnail">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="learning-content">
+                        <h3>Risk Management</h3>
+                        <p>Protect your investments with proper risk assessment.</p>
                     </div>
                 </div>
                 <div class="learning-card">
@@ -1304,87 +1976,7 @@
         </div>
     </footer>
 
-    <script>
-        // Sidebar menu functionality
-        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-        const sidebarMenu = document.getElementById('sidebarMenu');
-        const sidebarOverlay = document.getElementById('sidebarOverlay');
-        const sidebarClose = document.getElementById('sidebarClose');
-
-        // Open sidebar
-        mobileMenuToggle.addEventListener('click', () => {
-            sidebarMenu.classList.add('active');
-            sidebarOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        });
-
-        // Close sidebar
-        function closeSidebar() {
-            sidebarMenu.classList.remove('active');
-            sidebarOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        sidebarClose.addEventListener('click', closeSidebar);
-        sidebarOverlay.addEventListener('click', closeSidebar);
-
-        // Close sidebar when clicking on a menu item
-        document.querySelectorAll('.sidebar-menu-item').forEach(item => {
-            item.addEventListener('click', closeSidebar);
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Calculator functionality
-        function calculate() {
-            const principal = parseFloat(document.getElementById('principal').value);
-            const rate = parseFloat(document.getElementById('rate').value) / 100;
-            const years = parseFloat(document.getElementById('years').value);
-
-            if (principal && rate && years) {
-                const amount = principal * Math.pow((1 + rate), years);
-                const profit = amount - principal;
-
-                document.getElementById('result').innerHTML =
-                    `Future Value: $${amount.toLocaleString('en-US', { maximumFractionDigits: 2 })}<br>
-                     Profit: $${profit.toLocaleString('en-US', { maximumFractionDigits: 2 })}`;
-            } else {
-                document.getElementById('result').innerHTML = 'Please fill in all fields';
-            }
-        }
-
-        // Add some interactive animations
-        window.addEventListener('scroll', () => {
-            const cards = document.querySelectorAll('.service-card, .testimonial-card, .learning-card');
-            cards.forEach(card => {
-                const cardTop = card.getBoundingClientRect().top;
-                const cardVisible = 150;
-
-                if (cardTop < window.innerHeight - cardVisible) {
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }
-            });
-        });
-
-        // Initialize cards with animation-ready state
-        document.addEventListener('DOMContentLoaded', () => {
-            const cards = document.querySelectorAll('.service-card, .testimonial-card, .learning-card');
-            cards.forEach(card => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
-                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            });
-        });
-    </script>
+    <script src="assets/js/index2.js"></script>
 </body>
 
 </html>
