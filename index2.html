@@ -6,1239 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Financial Services - Trust, Expertise, Consistency</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <link href="assets/css/index2.css" rel="stylesheet">
+    </head>
 
-        :root {
-            --primary-green: #7CB342;
-            --light-green: #AED581;
-            --dark-green: #558B2F;
-            --neutral-gray: #F5F5F5;
-            --dark-gray: #424242;
-            --white: #FFFFFF;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6;
-            color: var(--dark-gray);
-            background: linear-gradient(135deg, #E8F5E8 0%, #F0F8F0 100%);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            background: var(--white);
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-            height: 65px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            height: 50px;
-        }
-
-        .logo img {
-            height: 35px;
-            width: auto;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            position: relative;
-        }
-
-        .nav-links li {
-            position: relative;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--dark-gray);
-            font-weight: 500;
-            transition: color 0.3s;
-            padding: 0.5rem 0;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.9rem;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-green);
-        }
-
-        .nav-links .dropdown-arrow {
-            font-size: 0.7rem;
-        }
-
-        /* Desktop Dropdown Menu */
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: var(--white);
-            min-width: 250px;
-            box-shadow: var(--shadow);
-            border-radius: 8px;
-            padding: 1rem 0;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-            z-index: 1000;
-        }
-
-        .nav-links li:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .dropdown-menu a {
-            padding: 0.6rem 1rem;
-            color: var(--dark-gray);
-            font-weight: 400;
-            border-bottom: 1px solid #f0f0f0;
-            display: block;
-            font-size: 0.85rem;
-        }
-
-        .dropdown-menu a:hover {
-            background: var(--neutral-gray);
-            color: var(--primary-green);
-        }
-
-        .dropdown-menu a:last-child {
-            border-bottom: none;
-        }
-
-        .mobile-menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--dark-gray);
-            cursor: pointer;
-        }
-
-        .mobile-menu-toggle:hover {
-            color: var(--primary-green);
-        }
-
-        /* Sidebar Menu */
-        .sidebar-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .sidebar-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .sidebar-menu {
-            position: fixed;
-            top: 0;
-            left: -300px;
-            width: 300px;
-            height: 100%;
-            background: var(--white);
-            z-index: 1000;
-            transition: left 0.3s ease;
-            overflow-y: auto;
-        }
-
-        .sidebar-menu.active {
-            left: 0;
-        }
-
-        .sidebar-header {
-            background: var(--dark-green);
-            color: var(--white);
-            padding: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .sidebar-header .user-info {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .sidebar-header .user-avatar {
-            width: 30px;
-            height: 30px;
-            background: var(--white);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--dark-green);
-        }
-
-        .sidebar-close {
-            background: none;
-            border: none;
-            color: var(--white);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        .sidebar-content {
-            padding: 1rem 0;
-        }
-
-        .sidebar-section {
-            margin-bottom: 1rem;
-        }
-
-        .sidebar-section-title {
-            padding: 0.75rem 1rem;
-            font-size: 0.9rem;
-            color: #666;
-            text-transform: uppercase;
-            font-weight: 600;
-            border-bottom: 1px solid #eee;
-        }
-
-        .sidebar-menu-item {
-            display: flex;
-            align-items: center;
-            padding: 1rem;
-            color: var(--dark-gray);
-            text-decoration: none;
-            border-bottom: 1px solid #f0f0f0;
-            transition: background 0.3s;
-        }
-
-        .sidebar-menu-item:hover {
-            background: var(--neutral-gray);
-        }
-
-        .sidebar-menu-item i {
-            margin-right: 0.75rem;
-            color: var(--primary-green);
-            width: 20px;
-        }
-
-        .sidebar-menu-item .arrow {
-            margin-left: auto;
-            color: #ccc;
-        }
-
-        .sidebar-promo {
-            margin: 1rem;
-            padding: 1rem;
-            background: linear-gradient(135deg, var(--light-green), var(--primary-green));
-            border-radius: 8px;
-            color: var(--white);
-            text-align: center;
-        }
-
-        .sidebar-promo h4 {
-            margin-bottom: 0.5rem;
-        }
-
-        .sidebar-promo p {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
-        .nav-buttons {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .login-button {
-            color: var(--dark-gray);
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.45rem 1rem;
-            border: 1px solid var(--primary-green);
-            border-radius: 6px;
-            transition: all 0.3s;
-            font-size: 0.9rem;
-        }
-
-        .login-button:hover {
-            background: var(--primary-green);
-            color: var(--white);
-        }
-
-        .cta-button {
-            background: var(--primary-green);
-            color: var(--dark-gray);
-            padding: 0.45rem 1.2rem;
-            border: none;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            max-width: 145px;
-            width: 100%;
-            justify-content: center;
-        }
-
-        .cta-button:hover {
-            background: var(--light-green);
-            transform: translateY(-1px);
-        }
-
-        .cta-button .arrow-icon {
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--dark-gray);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.7rem;
-            color: var(--dark-gray);
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 4rem 0;
-            background: linear-gradient(135deg, rgba(232, 245, 232, 0.3) 0%, rgba(240, 248, 240, 0.3) 100%),
-                url('http://localhost/moneyfrog_website/assets/img/moneyfrog_hero_img.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .hero-text h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--dark-gray);
-        }
-
-        .hero-text p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            color: #666;
-        }
-
-        .hero-visual {
-            display: flex;
-            justify-content: right;
-            align-items: center;
-        }
-
-        .consultation-form {
-            background: rgb(255 255 255 / 50%);
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            width: 100%;
-        }
-
-        .consultation-form h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: var(--dark-gray);
-            text-align: center;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .form-group {
-            margin-bottom: 1rem;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            background: #f8f9fa;
-            transition: border-color 0.3s;
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: var(--primary-green);
-        }
-
-        .checkbox-group {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-            font-size: 0.85rem;
-            color: #666;
-        }
-
-        .checkbox-group input[type="checkbox"] {
-            margin-top: 0.2rem;
-        }
-
-        .submit-btn {
-            width: 100%;
-            background: var(--primary-green);
-            color: var(--dark-gray);
-            padding: 0.75rem 1.2rem;
-            border: none;
-            border-radius: 25px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-
-        .submit-btn:hover {
-            background: var(--light-green);
-            transform: translateY(-1px);
-        }
-
-        .submit-btn .arrow-icon {
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--dark-gray);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.7rem;
-            color: var(--dark-gray);
-        }
-
-        /* Services Section */
-        .services {
-            padding: 4rem 0;
-            background: #f4eee9;
-        }
-
-        .green-line {
-            width: 80px;
-            height: 4px;
-            background: var(--primary-green);
-            margin-bottom: 1rem;
-        }
-
-        .section-title {
-            text-align: left;
-            font-size: 1.5rem;
-            line-height: 1;
-            margin-bottom: 1.5rem;
-            color: var(--dark-gray);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: #ffffff00;
-            padding: 2rem;
-            border-radius: 12px;
-            /* box-shadow: var(--shadow); */
-            text-align: left;
-            transition: transform 0.3s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .service-icon {
-            width: 64px;
-            height: 64px;
-            margin-bottom: 1.5rem;
-            display: block;
-            object-fit: contain;
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--dark-gray);
-            font-weight: 500;
-        }
-
-        .service-card p {
-            color: #666;
-            line-height: 1.6;
-            font-size: 0.95rem;
-        }
-
-        /* Accounts Section */
-        .accounts {
-            padding: 4rem 0;
-            background: var(--white);
-        }
-
-        .accounts-label {
-            color: var(--primary-green);
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: block;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        .section-subtitle {
-            font-size: 1rem;
-            text-align: center;
-            color: #666;
-            margin-bottom: 1rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .accounts-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-        }
-
-        @media (max-width: 1200px) {
-            .accounts-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .accounts-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .account-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .account-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .account-chart {
-            height: 150px;
-            background: var(--neutral-gray);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-
-        .chart-visual {
-            width: 60px;
-            height: 60px;
-            object-fit: contain;
-        }
-
-        .individual-chart {
-            background: linear-gradient(135deg, #E8F5E8, #C8E6C9);
-        }
-
-        .family-chart {
-            background: linear-gradient(135deg, #E3F2FD, #BBDEFB);
-        }
-
-        .nri-chart {
-            background: linear-gradient(135deg, #F3E5F5, #E1BEE7);
-        }
-
-        .foreign-chart {
-            background: linear-gradient(135deg, #FFF3E0, #FFE0B2);
-        }
-
-        .account-category {
-            color: var(--primary-green);
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
-        }
-
-        .account-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: var(--dark-gray);
-            font-weight: 600;
-        }
-
-        .account-card p {
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
-        }
-
-        .account-btn {
-            background: var(--primary-green);
-            color: var(--dark-gray);
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .account-btn:hover {
-            background: var(--light-green);
-            transform: translateY(-1px);
-        }
-
-        /* About Us Section */
-        .about-us {
-            padding: 4rem 0;
-            background: var(--neutral-gray);
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-label {
-            color: var(--primary-green);
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: block;
-            margin-bottom: 1rem;
-        }
-
-        .about-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: var(--dark-gray);
-            line-height: 1.2;
-        }
-
-        .about-description {
-            font-size: 1.1rem;
-            color: #666;
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-
-        .about-btn {
-            background: var(--primary-green);
-            color: var(--dark-gray);
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .about-btn:hover {
-            background: var(--light-green);
-            transform: translateY(-1px);
-        }
-
-        .about-btn::after {
-            content: '→';
-            font-size: 1rem;
-        }
-
-        .about-features {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-        }
-
-        .feature-item {
-            background: var(--white);
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-        }
-
-        .feature-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: var(--primary-green);
-        }
-
-        .feature-item h4 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--dark-gray);
-        }
-
-        .feature-item p {
-            font-size: 0.9rem;
-            color: #666;
-            line-height: 1.5;
-        }
-
-        @media (max-width: 768px) {
-            .about-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .about-title {
-                font-size: 2rem;
-            }
-
-            .about-features {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Financial Control Section */
-        .financial-control {
-            padding: 4rem 0;
-            background: var(--neutral-gray);
-        }
-
-        .control-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .dashboard-mockup {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-        }
-
-        .chart-container {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .chart {
-            flex: 1;
-            height: 100px;
-            background: linear-gradient(45deg, var(--light-green), var(--primary-green));
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-weight: bold;
-        }
-
-        .pie-chart {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: conic-gradient(var(--primary-green) 0deg 120deg, var(--light-green) 120deg 240deg, #E0E0E0 240deg 360deg);
-        }
-
-        /* Testimonials Slider */
-        .testimonials {
-            padding: 4rem 0;
-            background: var(--white);
-        }
-
-        .testimonials-slider-container {
-            position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-            overflow: hidden;
-            padding: 0 60px;
-        }
-
-        .testimonials-slider {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
-
-        .testimonial-slide {
-            min-width: 33.333%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 0 1rem;
-        }
-
-        .testimonial-card {
-            background: var(--white);
-            padding: 2rem 1.5rem;
-            border-radius: 16px;
-            text-align: left;
-            max-width: 350px;
-            width: 100%;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            border: 1px solid #f0f0f0;
-            margin: 0 auto;
-        }
-
-        .stars {
-            color: var(--primary-green);
-            margin-bottom: 1.5rem;
-            font-size: 1.4rem;
-            text-align: left;
-        }
-
-        .testimonial-card p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 2rem;
-            color: #555;
-            font-style: normal;
-            text-align: left;
-        }
-
-        .client-info {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .client-photo {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            overflow: hidden;
-            flex-shrink: 0;
-            background: linear-gradient(135deg, var(--primary-green), var(--light-green));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .client-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-        }
-
-        .client-photo i {
-            color: var(--white);
-            font-size: 1.5rem;
-        }
-
-        .client-details {
-            flex: 1;
-        }
-
-        .client-details h4 {
-            font-size: 1.1rem;
-            margin-bottom: 0.25rem;
-            color: var(--dark-gray);
-            font-weight: 600;
-        }
-
-        .client-details small {
-            color: #888;
-            font-size: 0.9rem;
-        }
-
-        /* Slider Navigation */
-        .slider-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: var(--white);
-            border: 2px solid var(--primary-green);
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 10;
-        }
-
-        .slider-nav:hover {
-            background: var(--primary-green);
-            color: var(--white);
-        }
-
-        .slider-nav.prev {
-            left: 10px;
-        }
-
-        .slider-nav.next {
-            right: 10px;
-        }
-
-        .slider-nav i {
-            font-size: 1.2rem;
-            color: var(--primary-green);
-        }
-
-        .slider-nav:hover i {
-            color: var(--white);
-        }
-
-        /* Slider Dots */
-        .slider-dots {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-top: 2rem;
-        }
-
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #ddd;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        .dot.active {
-            background: var(--primary-green);
-        }
-
-        .dot:hover {
-            background: var(--light-green);
-        }
-
-        /* Keyboard navigation support */
-        .slider-nav:focus {
-            outline: 2px solid var(--primary-green);
-            outline-offset: 2px;
-        }
-
-        .dot:focus {
-            outline: 2px solid var(--primary-green);
-            outline-offset: 2px;
-        }
-
-        /* Smooth transitions for better UX */
-        .testimonials-slider {
-            will-change: transform;
-        }
-
-        /* Accessibility improvements */
-        @media (prefers-reduced-motion: reduce) {
-            .testimonials-slider {
-                transition: none;
-            }
-        }
-
-        /* Enhanced mobile responsiveness */
-        @media (max-width: 480px) {
-            .testimonial-card {
-                padding: 1.5rem 1rem;
-                max-width: 100%;
-            }
-
-            .testimonial-card p {
-                font-size: 1rem;
-            }
-
-            .slider-nav {
-                width: 35px;
-                height: 35px;
-            }
-
-            .slider-nav.prev {
-                left: 2px;
-            }
-
-            .slider-nav.next {
-                right: 2px;
-            }
-
-            .testimonials-slider-container {
-                padding: 0 40px;
-            }
-
-            .dot {
-                width: 10px;
-                height: 10px;
-            }
-        }
-
-        /* Desktop specific adjustments */
-        @media (min-width: 769px) {
-            .testimonials-slider-container {
-                max-width: 1200px;
-            }
-
-            .testimonial-card {
-                max-width: 320px;
-            }
-        }
-
-        /* Learning Academy */
-        .learning {
-            padding: 4rem 0;
-            background: var(--neutral-gray);
-        }
-
-        .learning-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .learning-card {
-            background: var(--white);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s;
-        }
-
-        .learning-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .learning-thumbnail {
-            height: 150px;
-            background: linear-gradient(45deg, var(--light-green), var(--primary-green));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-size: 2rem;
-        }
-
-        .learning-content {
-            padding: 1.5rem;
-        }
-
-        /* Calculator */
-        .calculator {
-            padding: 4rem 0;
-            background: var(--white);
-        }
-
-        .calculator-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: var(--neutral-gray);
-            padding: 2rem;
-            border-radius: 12px;
-        }
-
-        .calc-input {
-            width: 100%;
-            padding: 0.75rem;
-            margin-bottom: 1rem;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 1rem;
-        }
-
-        .calc-result {
-            background: var(--primary-green);
-            color: var(--white);
-            padding: 1rem;
-            border-radius: 6px;
-            text-align: center;
-            font-size: 1.2rem;
-            font-weight: bold;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark-gray);
-            color: var(--white);
-            padding: 3rem 0 1rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h3 {
-            margin-bottom: 1rem;
-            color: var(--light-green);
-        }
-
-        .footer-section a {
-            color: var(--white);
-            text-decoration: none;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-section a:hover {
-            color: var(--light-green);
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social-icons a {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            background: var(--primary-green);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .cta-button {
-                max-width: 100%;
-            }
-
-            .hero-content,
-            .control-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-text h1 {
-                font-size: 2rem;
-            }
-
-            .mobile-menu-toggle {
-                display: block;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .nav-buttons {
-                display: none;
-            }
-
-            .services-grid,
-            .learning-grid {
-                grid-template-columns: 1fr;
-            }
-
-            /* Mobile testimonials slider adjustments */
-            .testimonials-slider-container {
-                margin: 0 auto;
-                padding: 0 50px;
-            }
-
-            .testimonial-slide {
-                min-width: 100%;
-                padding: 0 1rem;
-            }
-
-            .testimonial-card {
-                padding: 2rem 1.5rem;
-            }
-
-            .slider-nav {
-                width: 40px;
-                height: 40px;
-            }
-
-            .slider-nav.prev {
-                left: 5px;
-            }
-
-            .slider-nav.next {
-                right: 5px;
-            }
-
-            .slider-nav i {
-                font-size: 1rem;
-            }
-
-            nav {
-                position: relative;
-            }
-
-            .logo {
-                height: 50px;
-            }
-
-            .logo img {
-                height: 30px;
-            }
-        }
-    </style>
 </head>
 
 <body>
@@ -1246,7 +16,7 @@
     <header>
         <nav class="container">
             <div class="logo">
-                <img src="https://bolehnow.tlpl.in/assets/img/logo-large.svg" alt="Company Logo">
+                <img src="assets/img/logo-large.svg" alt="Company Logo">
             </div>
             <ul class="nav-links">
                 <li>
@@ -1278,6 +48,8 @@
                         <a href="#">Promotors/ KMP</a>
                         <a href="#">Investors/ Compliance</a>
                         <a href="#testimonials">Testimonial</a>
+                        <a href="#">Careers</a>
+                        <a href="#contact">Contact Us</a>
                     </div>
                 </li>
                 <li>
@@ -1287,22 +59,6 @@
                         <a href="#">FAQ</a>
                         <a href="#">Market Outlook</a>
                         <a href="#calculator">Calculators</a>
-                    </div>
-                </li>
-                <li>
-                    <a href="#">Jobs Openings <i class="fas fa-chevron-down dropdown-arrow"></i></a>
-                    <div class="dropdown-menu">
-                        <a href="#">Current openings</a>
-                        <a href="#">Work Culture</a>
-                        <a href="#">Success stories</a>
-                    </div>
-                </li>
-                <li>
-                    <a href="#">Contact us <i class="fas fa-chevron-down dropdown-arrow"></i></a>
-                    <div class="dropdown-menu">
-                        <a href="#contact">Contact details: Phone/ Email/ WhatsApp</a>
-                        <a href="#">Location/ Branch details</a>
-                        <a href="#">Request Callback</a>
                     </div>
                 </li>
             </ul>
@@ -1442,6 +198,18 @@
                 <i class="fas fa-chevron-right arrow"></i>
             </a>
 
+            <a href="#" class="sidebar-menu-item">
+                <i class="fas fa-briefcase"></i>
+                <span>Careers</span>
+                <i class="fas fa-chevron-right arrow"></i>
+            </a>
+            
+            <a href="#contact" class="sidebar-menu-item">
+                <i class="fas fa-phone"></i>
+                <span>Contact Us</span>
+                <i class="fas fa-chevron-right arrow"></i>
+            </a>
+
             <div class="sidebar-section-title">Insights</div>
 
             <a href="#" class="sidebar-menu-item">
@@ -1468,45 +236,7 @@
                 <i class="fas fa-chevron-right arrow"></i>
             </a>
 
-            <div class="sidebar-section-title">Jobs Openings</div>
 
-            <a href="#" class="sidebar-menu-item">
-                <i class="fas fa-briefcase"></i>
-                <span>Current openings</span>
-                <i class="fas fa-chevron-right arrow"></i>
-            </a>
-
-            <a href="#" class="sidebar-menu-item">
-                <i class="fas fa-building"></i>
-                <span>Work Culture</span>
-                <i class="fas fa-chevron-right arrow"></i>
-            </a>
-
-            <a href="#" class="sidebar-menu-item">
-                <i class="fas fa-trophy"></i>
-                <span>Success stories</span>
-                <i class="fas fa-chevron-right arrow"></i>
-            </a>
-
-            <div class="sidebar-section-title">Contact Us</div>
-
-            <a href="#contact" class="sidebar-menu-item">
-                <i class="fas fa-phone"></i>
-                <span>Contact details: Phone/ Email/ WhatsApp</span>
-                <i class="fas fa-chevron-right arrow"></i>
-            </a>
-
-            <a href="#" class="sidebar-menu-item">
-                <i class="fas fa-map-marker-alt"></i>
-                <span>Location/ Branch Details</span>
-                <i class="fas fa-chevron-right arrow"></i>
-            </a>
-
-            <a href="#" class="sidebar-menu-item">
-                <i class="fas fa-phone-alt"></i>
-                <span>Request Callback</span>
-                <i class="fas fa-chevron-right arrow"></i>
-            </a>
         </div>
 
         <div class="sidebar-promo">
@@ -1566,6 +296,38 @@
                     </div>
                 </div>
             </div>
+            <!-- Statistics Section -->
+            <div class="statistics">
+                <div class="statistics-container">
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>23 Lakhs</h3>
+                            <p>Trusted clients</p>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>2000+ Cr</h3>
+                            <p>in Managed Asset</p>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>11 Years</h3>
+                            <p>of Track Record</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1611,63 +373,63 @@
                     <img src="assets/img/fixed-deposits.png" alt="Fixed Income" class="service-icon">
                     <h3>Fixed Income/ FD/ NCD/ MLD</h3>
                     <p>Secure steady income with safe, reliable options like FDs, NCDs, and market-linked debentures.
+                </div>
+                </div>
+                </div>
+                </div>
+                </section>
+                <!-- Accounts Section -->
+                <section class="accounts">
+                    <div class="container">
+                        <div class="text-center mb-5">
+                            <span class="accounts-label">ACCOUNTS</span>
+                            <h2 class="section-title" style="text-align: center;">Smart Tools for Smarter Account Management</h2>
+                            <p class="section-subtitle">Effortlessly save, invest, budget—taking control of debt has never been
+                                simpler.
+                            </p>
                         </div>
-                        </div>
-                        </div>
-                        </div>
-                        </section>
-                        <!-- Accounts Section -->
-                    <section class="accounts">
-                        <div class="container">
-                            <div class="text-center mb-5">
-                                <span class="accounts-label">ACCOUNTS</span>
-                                <h2 class="section-title" style="text-align: center;">Smart Tools for Smarter Account Management</h2>
-                                <p class="section-subtitle">Effortlessly save, invest, budget—taking control of debt has never been
-                                    simpler.
-                                </p>
+                        <div class="accounts-grid">
+                            <div class="account-card">
+                                <div class="account-chart individual-chart">
+                                    <img src="assets/img/individual.png" alt="Individual Account" class="chart-visual">
+                                </div>
+                                <div class="account-category">ACCOUNT TYPE</div>
+                                <h3>Individual</h3>
+                                <p>Personal investment accounts designed for individual investors seeking growth and financial
+                                    independence.</p>
+                                <button class="account-btn">Open Account</button>
                             </div>
-                            <div class="accounts-grid">
-                                <div class="account-card">
-                                    <div class="account-chart individual-chart">
-                                        <img src="assets/img/individual.png" alt="Individual Account" class="chart-visual">
-                                    </div>
-                                    <div class="account-category">ACCOUNT TYPE</div>
-                                    <h3>Individual</h3>
-                                    <p>Personal investment accounts designed for individual investors seeking growth and financial
-                                        independence.</p>
-                                    <button class="account-btn">Open Account</button>
+                            <div class="account-card">
+                                <div class="account-chart family-chart">
+                                    <img src="assets/img/family.png" alt="Family Account" class="chart-visual">
                                 </div>
-                                <div class="account-card">
-                                    <div class="account-chart family-chart">
-                                        <img src="assets/img/family.png" alt="Family Account" class="chart-visual">
-                                    </div>
-                                    <div class="account-category">ACCOUNT TYPE</div>
-                                    <h3>Family</h3>
-                                    <p>Joint family accounts that help you plan and invest together for shared financial goals and
-                                        security.
-                                    </p>
-                                    <button class="account-btn">Open Account</button>
+                                <div class="account-category">ACCOUNT TYPE</div>
+                                <h3>Family</h3>
+                                <p>Joint family accounts that help you plan and invest together for shared financial goals and
+                                    security.
+                                </p>
+                                <button class="account-btn">Open Account</button>
+                            </div>
+                            <div class="account-card">
+                                <div class="account-chart nri-chart">
+                                    <img src="assets/img/nri.png" alt="NRI Account" class="chart-visual">
                                 </div>
-                                <div class="account-card">
-                                    <div class="account-chart nri-chart">
-                                        <img src="assets/img/nri.png" alt="NRI Account" class="chart-visual">
-                                    </div>
-                                    <div class="account-category">ACCOUNT TYPE</div>
-                                    <h3>NRI</h3>
-                                    <p>Specialized investment solutions for Non-Resident Indians to invest in Indian markets from
-                                        abroad.
-                                    </p>
-                                    <button class="account-btn">Open Account</button>
+                                <div class="account-category">ACCOUNT TYPE</div>
+                                <h3>NRI</h3>
+                                <p>Specialized investment solutions for Non-Resident Indians to invest in Indian markets from
+                                    abroad.
+                                </p>
+                                <button class="account-btn">Open Account</button>
+                            </div>
+                            <div class="account-card">
+                                <div class="account-chart foreign-chart">
+                                    <img src="assets/img/foreign-national.png" alt="Foreign National Account" class="chart-visual">
                                 </div>
-                                <div class="account-card">
-                                    <div class="account-chart foreign-chart">
-                                        <img src="assets/img/foreign-national.png" alt="Foreign National Account" class="chart-visual">
-                                    </div>
-                                    <div class="account-category">ACCOUNT TYPE</div>
-                                    <h3>Foreign National</h3>
-                                    <p>Investment opportunities for foreign nationals looking to participate in Indian financial
-                                        markets.</p>
-                                    <button class="account-btn">Open Account</button>
+                                <div class="account-category">ACCOUNT TYPE</div>
+                                <h3>Foreign National</h3>
+                                <p>Investment opportunities for foreign nationals looking to participate in Indian financial
+                                    markets.</p>
+                                <button class="account-btn">Open Account</button>
                 </div>
             </div>
         </div>
@@ -1716,7 +478,7 @@
             </div>
         </div>
     </section>
-    >
+
 
     <!-- Testimonials -->
     <section class="testimonials" id="testimonials">
@@ -1727,110 +489,144 @@
                     <div class="testimonial-slide">
                         <div class="testimonial-card">
                             <div class="stars">★★★★★</div>
-                            <p>"This app is truly revolutionary! It transformed the way I manage money. It's become an
-                                invaluable asset for my
-                                financial planning and investment decisions."</p>
+                            <p>"Money frog has been a rock solid financial partner for me over years. Their USP includes
+                                indept financial knowledge
+                                and approachability. Even could not have asked for more from their app which helps keep
+                                track of your finances.
+                                Happy to recommend their service to all."</p>
                             <div class="client-info">
                                 <div class="client-photo">
-                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
-                                        alt="Mark Thompson" />
+                                    <img src="assets/img/testomonials/moneyfrog_ved_dhuru.jpg" alt="Ved Dhuru" />
                                     </div>
                                 <div class="client-details">
-                                    <h4>Mark Thompson</h4>
-                                    <small>Small business owner</small>
-                                </div>
-                                </div>
-                                </div>
-                                </div>
-                                <div class="testimonial-slide">
-                                    <div class="testimonial-card">
-                            <div class="stars">★★★★★</div>
-                            <p>"Professional, reliable, and always available when I need advice. Their comprehensive
-                                financial planning has given me
-                                peace of mind and confidence in my investment decisions."</p>
-                            <div class="client-info">
-                                <div class="client-photo">
-                                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face"
-                                        alt="Sarah Johnson" />
-                                </div>
-                                <div class="client-details">
-                                    <h4>Sarah Johnson</h4>
-                                    <small>Business Owner</small>
+                                    <h4>Ved Dhuru</h4>
                                 </div>
                             </div>
                             </div>
                             </div>
                             <div class="testimonial-slide">
-                        <div class="testimonial-card">
+                                <div class="testimonial-card">
                             <div class="stars">★★★★★</div>
-                            <p>"They helped me plan for retirement with confidence. Great team and excellent results.
-                                The strategic approach to
-                                wealth building has exceeded my expectations."</p>
+                            <p>"Very good financial planning and service. They have a great team in place that is always
+                                responsive with a customer
+                                focussed approach. The app is very useful in tracking and getting regular updates."</p>
                             <div class="client-info">
                                 <div class="client-photo">
-                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face"
-                                        alt="Michael Chen" />
+                                    <img src="assets/img/testomonials/moneyfrog_darrell_fernandes.jpeg" alt="Darrell Fernandes" />
+                                </div>
+                                <div class="client-details">
+                                    <h4>Darrell Fernandes</h4>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="stars">★★★★★</div>
+                            <p>"Team that takes care of your plans. Extremely professional and keep a tight watch on
+                                your financial plans. Gives you
+                                comfort that some one professional is there on it always."</p>
+                            <div class="client-info">
+                                <div class="client-photo">
+                                    <img src="assets/img/testomonials/moneyfrog_saurabh_chaterjee.jpg" alt="Saurabh Chatterjee" />
                                     </div>
                                 <div class="client-details">
-                                    <h4>Michael Chen</h4>
-                                    <small>Software Engineer</small>
+                                    <h4>Saurabh Chatterjee</h4>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="stars">★★★★★</div>
+                            <p>"A superbly constructed app that is not only easy to understand, but also a brilliant way
+                                to map your goals and
+                                constantly monitor your progress. One of the best apps you can get in this category."
+                            </p>
+                            <div class="client-info">
+                                <div class="client-photo">
+                                    <img src="assets/img/testomonials/moneyfrog_rahul_pandit.jpg" alt="Rahul Pandit" />
+                                    </div>
+                                <div class="client-details">
+                                    <h4>Rahul Pandit</h4>
                                 </div>
                             </div>
                             </div>
                             </div>
                             <div class="testimonial-slide">
-                        <div class="testimonial-card">
+                                <div class="testimonial-card">
                             <div class="stars">★★★★★</div>
-                            <p>"Outstanding investment guidance and tax planning services. Their expertise in estate
-                                planning has been invaluable
-                                for my family's financial security."</p>
+                            <p>"The services rendered by Moneyfrog advisors is quite an experience one with good
+                                knowledge of the mutual fund
+                                market, they keep tracking the fund and guide, one feels like in safe hands, can trust
+                                them fully or they are
+                                reliable. Excellent services"</p>
                             <div class="client-info">
                                 <div class="client-photo">
-                                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop&crop=face"
-                                        alt="Robert Martinez" />
+                                    <img src="assets/img/testomonials/moneyfrog_jasvinder_dhanjal.jpg" alt="Jasvinder Kaur Dhanjal" />
+                                </div>
+                                <div class="client-details">
+                                    <h4>Jasvinder Kaur Dhanjal</h4>
                                     </div>
-                                <div class="client-details">
-                                    <h4>Robert Martinez</h4>
-                                    <small>Doctor</small>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    <div class="testimonial-slide">
+                                        <div class="testimonial-card">
+                                            <div class="stars">★★★★★</div>
+                                            <p>"The financial advisors are good. The lady who has been advising me off late is brilliant
+                                                and smart and knows what to
+                                                do. Also she has been helping in goal settings and planning very well. Overall a good
+                                                financial planning firm. Ohh
+                                                and the app also shows all your funds and features and is very easy to use. good app."
+                                            </p>
+                                            <div class="client-info">
+                                                <div class="client-photo">
+                                                    <img src="assets/img/testomonials/moneyfrog_puneet_akhouri.jpeg" alt="Puneet Kumar Akhouri" />
+                                                </div>
+                                                <div class="client-details">
+                                                    <h4>Puneet Kumar Akhouri</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="testimonial-slide">
+                                        <div class="testimonial-card">
+                                            <div class="stars">★★★★★</div>
+                                            <p>"This is the best personal finance app I have ever found. All Financial goals were
+                                                thoroughly evaluated and assigned
+                                                with investment. This is a perfect example of online portfolio management service. Thank
+                                                you Pujan Jain for
+                                                extraordinary support."</p>
+                                            <div class="client-info">
+                                                <div class="client-photo">
+                                                    <img src="assets/img/testomonials/moneyfrog_amitava_bandyopadhyay.jpeg" alt="Amitava Bandyopadhyay" />
+                                                </div>
+                                                <div class="client-details">
+                                                    <h4>Amitava Bandyopadhyay</h4>
                                 </div>
-                                </div>
-                                </div>
-                                </div>
-                                <div class="testimonial-slide">
-                                    <div class="testimonial-card">
-                            <div class="stars">★★★★★</div>
-                            <p>"The wealth management strategies they provided have transformed my financial outlook.
-                                Their attention to detail and
-                                commitment to client success is unmatched."</p>
-                            <div class="client-info">
-                                <div class="client-photo">
-                                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
-                                        alt="Emily Davis" />
-                                </div>
-                                <div class="client-details">
-                                    <h4>Emily Davis</h4>
-                                    <small>Teacher</small>
-                                </div>
-                                </div>
-                                </div>
-                                </div>
-                                </div>
-                                
-                                <!-- Navigation Arrows -->
-                                <button class="slider-nav prev" onclick="prevSlide(); restartAutoPlay();">
-                                    <i class="fas fa-chevron-left"></i>
-                                </button>
-                                <button class="slider-nav next" onclick="nextSlide(); restartAutoPlay();">
-                                    <i class="fas fa-chevron-right"></i>
-                                </button>
-                                
-                                <!-- Dots Indicator -->
-                                <div class="slider-dots">
-                                    <span class="dot active" onclick="goToSlide(0); restartAutoPlay();"></span>
-                                    <span class="dot" onclick="goToSlide(1); restartAutoPlay();"></span>
-                                    <span class="dot" onclick="goToSlide(2); restartAutoPlay();"></span>
-                                    <span class="dot" onclick="goToSlide(3); restartAutoPlay();"></span>
-                                    <span class="dot" onclick="goToSlide(4); restartAutoPlay();"></span>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+                            
+                            <!-- Navigation Arrows -->
+                            <button class="slider-nav prev" onclick="prevSlide(); restartAutoPlay();">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="slider-nav next" onclick="nextSlide(); restartAutoPlay();">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            
+                            <!-- Dots Indicator -->
+                            <div class="slider-dots">
+                                <span class="dot active" onclick="goToSlide(0); restartAutoPlay();"></span>
+                                <span class="dot" onclick="goToSlide(1); restartAutoPlay();"></span>
+                                <span class="dot" onclick="goToSlide(2); restartAutoPlay();"></span>
+                                <span class="dot" onclick="goToSlide(3); restartAutoPlay();"></span>
+                                <span class="dot" onclick="goToSlide(4); restartAutoPlay();"></span>
+                    <span class="dot" onclick="goToSlide(5); restartAutoPlay();"></span>
+                    <span class="dot" onclick="goToSlide(6); restartAutoPlay();"></span>
                 </div>
             </div>
         </div>
@@ -1918,16 +714,148 @@
     </section>
 
     <!-- Calculator -->
-    <section class="calculator">
+    <section class="calculator" id="calculator">
         <div class="container">
-            <h2 class="section-title">Investment Calculator</h2>
-            <div class="calculator-container">
-                <input type="number" class="calc-input" id="principal" placeholder="Initial Investment ($)">
-                <input type="number" class="calc-input" id="rate" placeholder="Annual Interest Rate (%)">
-                <input type="number" class="calc-input" id="years" placeholder="Investment Period (Years)">
-                <button class="cta-button" onclick="calculate()"
-                    style="width: 100%; margin-bottom: 1rem;">Calculate</button>
-                <div class="calc-result" id="result">Enter values to see your potential returns</div>
+            <div style="text-align: center;">
+                <div class="green-line" style="margin: 0 auto;"></div>
+                <h2 class="section-title">Calculator</h2>
+            </div>
+            <div class="calculator-wrapper">
+                <!-- Calculator Selection -->
+                <div class="calculator-selector">
+                    <div class="calculator-buttons">
+                        <button class="calc-button active" data-calc="sip" onclick="switchCalculatorButton('sip', this)">
+                            <i class="fas fa-chart-line"></i>
+                            SIP Calculator
+                        </button>
+                        <button class="calc-button" data-calc="lumpsum" onclick="switchCalculatorButton('lumpsum', this)">
+                            <i class="fas fa-coins"></i>
+                            Lumpsum Calculator
+                        </button>
+                        <button class="calc-button" data-calc="emi" onclick="switchCalculatorButton('emi', this)">
+                            <i class="fas fa-home"></i>
+                            EMI Calculator
+                        </button>
+                        <button class="calc-button" data-calc="retirement" onclick="switchCalculatorButton('retirement', this)">
+                            <i class="fas fa-piggy-bank"></i>
+                            Retirement Calculator
+                        </button>
+                    </div>
+                </div>
+            
+                <!-- SIP Calculator -->
+                <div id="sipCalculator" class="calculator-container active">
+                    <div class="calculator-grid">
+                        <div class="calculator-inputs">
+            
+            
+                            <div class="input-group">
+                                <label for="monthlyInvestment">Monthly SIP</label>
+                                <div class="input-wrapper">
+                                    <span class="currency-symbol">₹</span>
+                                    <input type="number" id="monthlyInvestment" value="25000" min="500" max="1000000">
+                                </div>
+                            </div>
+            
+                            <div class="input-row">
+                                <div class="input-group">
+                                    <label for="expectedReturn">Expected Annual Return (%)</label>
+                                    <input type="number" id="expectedReturn" value="14" min="1" max="30" step="0.1">
+                                    <span class="input-suffix">%</span>
+                                </div>
+                                <div class="input-group">
+                                    <label for="timePeriod">Time (Years)</label>
+                                    <input type="number" id="timePeriod" value="10" min="1" max="50">
+                                    <span class="input-suffix">yrs</span>
+                                </div>
+                            </div>
+            
+                            <div class="input-group">
+                                <label for="currency">Currency</label>
+                                <select id="currency" class="currency-select">
+                                    <option value="INR">INR (₹)</option>
+                                    <option value="USD">USD ($)</option>
+                                    <option value="EUR">EUR (€)</option>
+                                </select>
+                            </div>
+            
+                            <div class="calculation-results">
+                                <div class="result-grid">
+                                    <div class="result-item">
+                                        <div class="result-label">TOTAL INVESTED</div>
+                                        <div class="result-value" id="totalInvested">₹30,00,000</div>
+                                        <div class="result-detail" id="investmentDetail">120 × ₹25,000</div>
+                                    </div>
+                                    <div class="result-item">
+                                        <div class="result-label">PROJECTED VALUE</div>
+                                        <div class="result-value projected" id="projectedValue">₹62,70,655</div>
+                                        <div class="result-detail" id="returnDetail">@ 14% p.a.</div>
+                                    </div>
+                                </div>
+            
+                                <div class="result-grid">
+                                    <div class="result-item">
+                                        <div class="result-label">ESTIMATED GAIN</div>
+                                        <div class="result-value gain" id="estimatedGain">₹32,70,655</div>
+                                        <div class="result-detail">Over Invested</div>
+                                    </div>
+                                    <div class="result-item">
+                                        <div class="result-label">NIFTY 50 VALUE</div>
+                                        <div class="result-value nifty" id="niftyValue">₹57,58,127</div>
+                                        <div class="result-detail">@ 11.8% p.a.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <div class="calculator-chart">
+                            <canvas id="sipChart" width="600" height="400"></canvas>
+                            <div class="chart-legend">
+                                <div class="legend-item">
+                                    <span class="legend-color invested"></span>
+                                    <span>Invested</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color portfolio"></span>
+                                    <span>Portfolio Value</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color nifty"></span>
+                                    <span>NIFTY 50 (11.8%)</span>
+                                </div>
+                            </div>
+                            <div class="chart-disclaimer">
+                                <small>Assumptions: monthly contributions at period end; constant annual return
+                                    compounded monthly.
+                                    Variance simulates market movement for visualization only. Projections are
+                                    illustrative, not
+                                    guaranteed.</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Placeholder for other calculators -->
+                <div id="lumpsumCalculator" class="calculator-container">
+                    <div class="coming-soon">
+                        <h3>Lumpsum Calculator</h3>
+                        <p>Coming Soon...</p>
+                    </div>
+                </div>
+            
+                <div id="emiCalculator" class="calculator-container">
+                    <div class="coming-soon">
+                        <h3>EMI Calculator</h3>
+                        <p>Coming Soon...</p>
+                    </div>
+                </div>
+            
+                <div id="retirementCalculator" class="calculator-container">
+                    <div class="coming-soon">
+                        <h3>Retirement Calculator</h3>
+                        <p>Coming Soon...</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1938,45 +866,108 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="logo" style="margin-bottom: 1rem;">
-                        <img src="https://bolehnow.tlpl.in/assets/img/logo-large.svg" alt="Company Logo"
+                        <img src="assets/img/logo-large.svg" alt="Company Logo"
                             style="height: 30px; filter: brightness(0) invert(1);">
                     </div>
                     <p>Your trusted partner in financial growth and wealth management.</p>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    <div class="social-icons" style="margin-bottom: 1.5rem;">
+                        <a href="https://www.facebook.com/moneyfrog.in" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://x.com/moneyfrog_in" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/company/moneyfrog-in" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.instagram.com/moneyfrog.in/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <div>
+                        <strong>Available On:</strong><br>
+                        <div style="display: flex; gap: 10px; margin-top: 10px;">
+                            <a href="https://play.google.com/store/apps/details?id=com.myapp.moneyfrog.moneyfrogapp&hl=en" target="_blank"
+                                style="display: inline-block;">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                                    alt="Get it on Google Play" style="height: 40px;">
+                            </a>
+                            <a href="https://apps.apple.com/us/app/moneyfrog-in/id1079405996?ls=1" target="_blank"
+                                style="display: inline-block;">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg"
+                                    alt="Download on the App Store" style="height: 40px;">
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="footer-section">
                     <h3>Services</h3>
-                    <a href="#">Investment Planning</a>
-                    <a href="#">Wealth Building</a>
-                    <a href="#">Retirement Planning</a>
-                    <a href="#">Insurance Services</a>
+                    <a href="#">Mutual Funds</a>
+                    <a href="#">Equity</a>
+                    <a href="#">Fixed Income</a>
+                    <a href="#">AIFF/GIFT City</a>
+                    <a href="#">PMS</a>
+                    <a href="#">Tax</a>
+                    <a href="#">Insurance</a>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Explore Money Frog</h3>
+                        <a href="#">Learning Academy</a>
+                        <a href="#">Blog</a>
+                        <a href="#">Our Story</a>
+                        <a href="#">Careers</a>
                 </div>
                 <div class="footer-section">
                     <h3>Resources</h3>
-                    <a href="#">Learning Academy</a>
+                    <a href="#">FAQ</a>
                     <a href="#">Market Insights</a>
+                    <a href="#">Investment Guides</a>
                     <a href="#">Financial Tools</a>
-                    <a href="#">Blog</a>
+                    <a href="#">Research Reports</a>
                 </div>
                 <div class="footer-section">
                     <h3>Contact</h3>
-                    <a href="#">Phone: (555) 123-4567</a>
-                    <a href="#">Email: info@financehub.com</a>
-                    <a href="#">Address: 123 Finance St, City, State</a>
-                </div>
-            </div>
-            <div style="text-align: center; padding-top: 2rem; border-top: 1px solid #555;">
-                <p>&copy; 2024 FinanceHub. All rights reserved.</p>
-            </div>
-        </div>
+                    <div style="margin-bottom: 1rem; font-size: 0.9rem;">
+                        <strong>Mumbai Office:</strong><br>
+                        723-724, Swastik Chambers<br>
+                        CST Road, Chembur East,<br>
+                        Mumbai - 400071<br>
+                        Mobile: <a href="tel:+919004932221">+91 90049 32221</a>
+                    </div>
+                    <div style="font-size: 0.9rem;">
+                        <strong>Pune Office:</strong><br>
+                        G-17, Sacred World<br>
+                        Wanowrie, Pune - 411040<br>
+                        Mobile: <a href="tel:+919774047487">+91 77740 47487</a>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    <div style="padding-top: 2rem; border-top: 1px solid #555;">
+                        <div style="text-align: center; font-size: 0.85rem; color: #ccc; margin-bottom: 1rem;">
+                            <p style="margin-bottom: 0.5rem;"><strong>Moneyfrog Financial Services Private Limited</strong> |
+                                CIN:
+                                U66000MH2011PTC216613 | GSTIN: 27AAJCA5151G1ZR | AMFI Registered Mutual Fund Distributor | ARN
+                                NO. 94798</p>
+                        </div>
+                        <div style="text-align: center; font-size: 0.85rem; line-height: 1.4; color: #ccc; margin-bottom: 1rem;">
+                            <p style="margin-bottom: 0.5rem;">Mutual fund investments are subject to market risks. Therefore,
+                                read the
+                                scheme information and other related documents carefully, before investing. Past performance is
+                                not
+                                indicative of future returns.</p>
+                            <p style="margin-bottom: 0.5rem;">
+                                <a href="#" style="color: #ccc; text-decoration: underline;">Customer Complaint & Grievances</a>
+                                |
+                                <a href="#" style="color: #ccc; text-decoration: underline;">Fraud Alert on Telemarketing Calls
+                                    & Email
+                                    Campaigns by Fraudsters</a>
+                            </p>
+                        </div>
+                        <div style="text-align: center; padding-top: 1rem; border-top: 1px solid #555;">
+                            <p>&copy; 2025 Moneyfrog Financial Services Private Limited. All rights reserved. V 3.0</p>
+                        </div>
+                    </div>
+                    </div>
+    </footer>
+    </div>
+    </div>
     </footer>
 
     <script src="assets/js/index2.js"></script>
+
 </body>
 
 </html>
