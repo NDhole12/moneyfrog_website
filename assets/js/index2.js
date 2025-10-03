@@ -380,7 +380,7 @@ function formatCurrency(amount) {
     }
 }
 
-function drawSIPChart() {
+function drawSIPChart(animate = true) {
     const canvas = document.getElementById('sipChart');
     if (!canvas) return;
 
@@ -395,6 +395,11 @@ function drawSIPChart() {
 
     // Clear canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Animation variables
+    let animationProgress = animate ? 0 : 1;
+    const animationDuration = 2000; // 2 seconds for slower animation
+    let animationStartTime = null;
 
     // Chart dimensions
     const padding = 60;
@@ -430,31 +435,76 @@ function drawSIPChart() {
     const volatilePortfolioData = generateVolatilityData(portfolioData);
     const volatileNiftyData = generateVolatilityData(niftyData, 0.12);
 
-    // Draw grid lines
-    ctx.strokeStyle = '#f0f0f0';
-    ctx.lineWidth = 1;
-    for (let i = 0; i <= 5; i++) {
-        const y = padding + (chartHeight / 5) * i;
-        ctx.beginPath();
-        ctx.moveTo(padding, y);
-        ctx.lineTo(canvas.width - padding, y);
-        ctx.stroke();
+    // Animation function
+    function animateChart(timestamp) {
+        if (!animationStartTime) animationStartTime = timestamp;
+        const elapsed = timestamp - animationStartTime;
+        animationProgress = Math.min(elapsed / animationDuration, 1);
+
+        // Clear canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Draw grid lines
+        ctx.strokeStyle = '#f0f0f0';
+        ctx.lineWidth = 1;
+        for (let i = 0; i <= 5; i++) {
+            const y = padding + (chartHeight / 5) * i;
+            ctx.beginPath();
+            ctx.moveTo(padding, y);
+            ctx.lineTo(canvas.width - padding, y);
+            ctx.stroke();
+        }
+
+        // Draw volatile lines with animation
+        drawVolatileLine(volatilePortfolioData, '#4CAF50', 3, animationProgress);
+        drawVolatileLine(volatileNiftyData, '#FF9800', 2, animationProgress);
+
+        // Draw straight invested line with animation
+        drawStraightLine(investedData, '#2196F3', 2, animationProgress);
+
+        // Draw Y-axis labels
+        ctx.fillStyle = '#666';
+        ctx.font = '12px Arial';
+        ctx.textAlign = 'right';
+        for (let i = 0; i <= 5; i++) {
+            const value = (maxValue / 5) * (5 - i);
+            const y = padding + (chartHeight / 5) * i;
+            ctx.fillText(formatCurrency(value), padding - 10, y + 4);
+        }
+
+        // Draw X-axis labels
+        ctx.textAlign = 'center';
+        for (let i = 0; i <= years; i++) {
+            const x = padding + (chartWidth / years) * i;
+            ctx.fillText(`${i}Y`, x, canvas.height - padding + 20);
+        }
+
+        // Continue animation if not complete
+        if (animationProgress < 1) {
+            requestAnimationFrame(animateChart);
+        } else {
+            // Animation complete, add hover functionality
+            addHoverFunctionality();
+        }
     }
 
-    // Draw volatile lines
-    drawVolatileLine(volatilePortfolioData, '#4CAF50', 3);
-    drawVolatileLine(volatileNiftyData, '#FF9800', 2);
+    // Start animation or draw immediately
+    if (animate) {
+        requestAnimationFrame(animateChart);
+    } else {
+        animationProgress = 1;
+        animateChart(animationDuration);
+    }
 
-    // Draw straight invested line
-    drawStraightLine(investedData, '#2196F3', 2);
-
-    // Helper function to draw volatile lines
-    function drawVolatileLine(data, color, lineWidth = 2) {
+    // Helper function to draw volatile lines with animation
+    function drawVolatileLine(data, color, lineWidth = 2, progress = 1) {
         ctx.strokeStyle = color;
         ctx.lineWidth = lineWidth;
         ctx.beginPath();
 
-        for (let i = 0; i < data.length; i++) {
+        const pointsToDraw = Math.floor(data.length * progress);
+
+        for (let i = 0; i < pointsToDraw; i++) {
             const x = padding + (chartWidth / (totalMonths - 1)) * i;
             const y = canvas.height - padding - ((data[i] - minValue) / (maxValue - minValue)) * chartHeight;
 
@@ -468,22 +518,24 @@ function drawSIPChart() {
         ctx.stroke();
     }
 
-    // Helper function to draw straight lines
-    function drawStraightLine(data, color, lineWidth = 2) {
+    // Helper function to draw straight lines with animation
+    function drawStraightLine(data, color, lineWidth = 2, progress = 1) {
         ctx.strokeStyle = color;
         ctx.lineWidth = lineWidth;
         ctx.beginPath();
 
-        data.forEach((value, index) => {
-            const x = padding + (chartWidth / (totalMonths - 1)) * index;
-            const y = canvas.height - padding - ((value - minValue) / (maxValue - minValue)) * chartHeight;
+        const pointsToDraw = Math.floor(data.length * progress);
 
-            if (index === 0) {
+        for (let i = 0; i < pointsToDraw; i++) {
+            const x = padding + (chartWidth / (totalMonths - 1)) * i;
+            const y = canvas.height - padding - ((data[i] - minValue) / (maxValue - minValue)) * chartHeight;
+
+            if (i === 0) {
                 ctx.moveTo(x, y);
             } else {
                 ctx.lineTo(x, y);
             }
-        });
+        }
 
         ctx.stroke();
     }
@@ -522,25 +574,9 @@ function drawSIPChart() {
         return volatileData;
     }
 
-    // Draw Y-axis labels
-    ctx.fillStyle = '#666';
-    ctx.font = '12px Arial';
-    ctx.textAlign = 'right';
-    for (let i = 0; i <= 5; i++) {
-        const value = (maxValue / 5) * (5 - i);
-        const y = padding + (chartHeight / 5) * i;
-        ctx.fillText(formatCurrency(value), padding - 10, y + 4);
-    }
-
-    // Draw X-axis labels
-    ctx.textAlign = 'center';
-    for (let i = 0; i <= years; i++) {
-        const x = padding + (chartWidth / years) * i;
-        ctx.fillText(`${i}Y`, x, canvas.height - padding + 20);
-    }
-
-    // Add mouse hover tooltip functionality
-    canvas.onmousemove = function (e) {
+    // Add hover functionality function
+    function addHoverFunctionality() {
+        canvas.onmousemove = function (e) {
         const rect = canvas.getBoundingClientRect();
         const mouseX = e.clientX - rect.left;
         const mouseY = e.clientY - rect.top;
@@ -678,6 +714,7 @@ function drawSIPChart() {
             ctx.fillText(`${i}Y`, x, canvas.height - padding + 20);
         }
     };
+    }
 }
 
 // Initialize SIP calculator when page loads
