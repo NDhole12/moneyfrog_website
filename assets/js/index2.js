@@ -538,6 +538,146 @@ function drawSIPChart() {
         const x = padding + (chartWidth / years) * i;
         ctx.fillText(`${i}Y`, x, canvas.height - padding + 20);
     }
+
+    // Add mouse hover tooltip functionality
+    canvas.onmousemove = function (e) {
+        const rect = canvas.getBoundingClientRect();
+        const mouseX = e.clientX - rect.left;
+        const mouseY = e.clientY - rect.top;
+
+        // Check if mouse is within chart area
+        if (mouseX >= padding && mouseX <= canvas.width - padding &&
+            mouseY >= padding && mouseY <= canvas.height - padding) {
+
+            // Calculate which month we're hovering over
+            const relativeX = mouseX - padding;
+            const monthIndex = Math.round((relativeX / chartWidth) * totalMonths);
+
+            if (monthIndex >= 0 && monthIndex < volatilePortfolioData.length) {
+                // Redraw chart
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                // Redraw grid
+                ctx.strokeStyle = '#f0f0f0';
+                ctx.lineWidth = 1;
+                for (let i = 0; i <= 5; i++) {
+                    const y = padding + (chartHeight / 5) * i;
+                    ctx.beginPath();
+                    ctx.moveTo(padding, y);
+                    ctx.lineTo(canvas.width - padding, y);
+                    ctx.stroke();
+                }
+
+                // Redraw lines
+                drawVolatileLine(volatilePortfolioData, '#4CAF50', 3);
+                drawVolatileLine(volatileNiftyData, '#FF9800', 2);
+                drawStraightLine(investedData, '#2196F3', 2);
+
+                // Redraw axis labels
+                ctx.fillStyle = '#666';
+                ctx.font = '12px Arial';
+                ctx.textAlign = 'right';
+                for (let i = 0; i <= 5; i++) {
+                    const value = (maxValue / 5) * (5 - i);
+                    const y = padding + (chartHeight / 5) * i;
+                    ctx.fillText(formatCurrency(value), padding - 10, y + 4);
+                }
+                ctx.textAlign = 'center';
+                for (let i = 0; i <= years; i++) {
+                    const x = padding + (chartWidth / years) * i;
+                    ctx.fillText(`${i}Y`, x, canvas.height - padding + 20);
+                }
+
+                // Draw vertical line at hover position
+                const hoverX = padding + (chartWidth / totalMonths) * monthIndex;
+                ctx.strokeStyle = '#999';
+                ctx.lineWidth = 1;
+                ctx.setLineDash([5, 5]);
+                ctx.beginPath();
+                ctx.moveTo(hoverX, padding);
+                ctx.lineTo(hoverX, canvas.height - padding);
+                ctx.stroke();
+                ctx.setLineDash([]);
+
+                // Get values at this month
+                const invested = investedData[monthIndex];
+                const portfolioValue = volatilePortfolioData[monthIndex];
+                const niftyValue = volatileNiftyData[monthIndex];
+
+                // Draw tooltip
+                const tooltipWidth = 250;
+                const tooltipHeight = 100;
+                let tooltipX = mouseX + 15;
+                let tooltipY = mouseY - tooltipHeight / 2;
+
+                // Keep tooltip within canvas bounds
+                if (tooltipX + tooltipWidth > canvas.width - padding) {
+                    tooltipX = mouseX - tooltipWidth - 15;
+                }
+                if (tooltipY < padding) tooltipY = padding;
+                if (tooltipY + tooltipHeight > canvas.height - padding) {
+                    tooltipY = canvas.height - padding - tooltipHeight;
+                }
+
+                // Draw tooltip background
+                ctx.fillStyle = 'rgba(30, 30, 30, 0.95)';
+                ctx.fillRect(tooltipX, tooltipY, tooltipWidth, tooltipHeight);
+
+                // Draw tooltip content
+                ctx.fillStyle = '#ffffff';
+                ctx.font = 'bold 14px Arial';
+                ctx.textAlign = 'left';
+                const yearNum = Math.floor(monthIndex / 12);
+                ctx.fillText(`Month ${monthIndex} (Y${yearNum})`, tooltipX + 15, tooltipY + 25);
+
+                ctx.font = '12px Arial';
+                ctx.fillStyle = '#cccccc';
+                ctx.fillText(`Invested : ${formatCurrency(invested)}`, tooltipX + 15, tooltipY + 45);
+
+                ctx.fillStyle = '#4CAF50';
+                ctx.fillText(`Portfolio Value : ${formatCurrency(portfolioValue)}`, tooltipX + 15, tooltipY + 65);
+
+                ctx.fillStyle = '#FF9800';
+                ctx.fillText(`NIFTY 50 (11.8%) : ${formatCurrency(niftyValue)}`, tooltipX + 15, tooltipY + 85);
+            }
+        }
+    };
+
+    canvas.onmouseleave = function () {
+        // Redraw chart without tooltip
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Redraw grid
+        ctx.strokeStyle = '#f0f0f0';
+        ctx.lineWidth = 1;
+        for (let i = 0; i <= 5; i++) {
+            const y = padding + (chartHeight / 5) * i;
+            ctx.beginPath();
+            ctx.moveTo(padding, y);
+            ctx.lineTo(canvas.width - padding, y);
+            ctx.stroke();
+        }
+
+        // Redraw lines
+        drawVolatileLine(volatilePortfolioData, '#4CAF50', 3);
+        drawVolatileLine(volatileNiftyData, '#FF9800', 2);
+        drawStraightLine(investedData, '#2196F3', 2);
+
+        // Redraw axis labels
+        ctx.fillStyle = '#666';
+        ctx.font = '12px Arial';
+        ctx.textAlign = 'right';
+        for (let i = 0; i <= 5; i++) {
+            const value = (maxValue / 5) * (5 - i);
+            const y = padding + (chartHeight / 5) * i;
+            ctx.fillText(formatCurrency(value), padding - 10, y + 4);
+        }
+        ctx.textAlign = 'center';
+        for (let i = 0; i <= years; i++) {
+            const x = padding + (chartWidth / years) * i;
+            ctx.fillText(`${i}Y`, x, canvas.height - padding + 20);
+        }
+    };
 }
 
 // Initialize SIP calculator when page loads
