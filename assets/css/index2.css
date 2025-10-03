@@ -876,6 +876,9 @@ nav {
 .testimonials {
     padding: 4rem 0;
     background: var(--neutral-gray);
+    display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
 }
 
 .testimonials-slider-container {
@@ -884,35 +887,63 @@ nav {
     margin: 0 auto;
     overflow: hidden;
     padding: 0 60px;
+    display: block !important;
+        visibility: visible !important;
+        min-height: 300px;
 }
 
 .testimonials-slider {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
+    display: flex !important;
+        transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        width: calc(100% / 3 * 7);
+        /* Container shows 3 slides, total 7 slides = 233.33% */
+        visibility: visible !important;
+        opacity: 1 !important;
 }
 
 .testimonial-slide {
-    width: 33.333%;
-    display: flex;
+    width: calc(100% / 7);
+        /* Each slide is 1/7th of slider width */
+        min-width: calc(100% / 7);
+        flex: 0 0 calc(100% / 7);
+        display: flex !important;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
     padding: 0 0.5rem;
-    flex-shrink: 0;
+    box-sizing: border-box;
+        visibility: visible !important;
+        opacity: 1 !important;
 }
 
+/* Mobile: show 1 slide at a time */
+@media (max-width: 768px) {
+    .testimonials-slider {
+        width: 700%;
+        /* 7 slides × 100% each for mobile */
+    }
+
+    .testimonial-slide {
+        width: 100%;
+        /* Each slide takes full container width on mobile */
+        min-width: 100%;
+        flex: 0 0 100%;
+    }
+}
 .testimonial-card {
     background: var(--white);
-    padding: 1rem 1.5rem;
+    padding: 1.5rem;
     border-radius: 16px;
     text-align: left;
     max-width: 350px;
     width: 100%;
-    height: 100%;
+    min-height: 250px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     border: 1px solid #f0f0f0;
     margin: 0 auto;
-    display: flex;
+    display: flex !important;
     flex-direction: column;
+    visibility: visible !important;
+        opacity: 1 !important;
 }
 
 .stars {
@@ -1304,12 +1335,13 @@ nav {
 .input-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
+        /* 50/50 split for Expected Return and Time */
     gap: 1rem;
 }
 
 .input-row .input-group input {
-    padding-left: 0.75rem;
-    padding-right: 2.5rem;
+    padding-left: 1.5rem;
+        padding-right: 1.5rem;
 }
 
 .currency-select {
@@ -1323,7 +1355,7 @@ nav {
 }
 
 .calculation-results {
-    margin-top: 2rem;
+    margin-top: 0rem;
 }
 
 .result-grid {
@@ -1374,18 +1406,14 @@ nav {
 }
 
 .calculator-chart {
-    padding: 2rem;
+    padding: 0px 2rem;
     background: var(--white);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 #sipChart {
     max-width: 100%;
     height: auto;
-    margin-bottom: 1rem;
+    margin-bottom: 0rem;
 }
 
 .chart-legend {
@@ -1425,6 +1453,7 @@ nav {
     text-align: center;
     max-width: 500px;
     margin-top: 1rem;
+    line-height: 1rem;
 }
 
 .chart-disclaimer small {
@@ -1583,5 +1612,294 @@ footer {
     .services-grid,
     .learning-grid {
         grid-template-columns: 1fr;
+    }
+}
+/* 
+===== FOOTER INLINE CSS CLEANUP ===== */
+
+/* Footer Logo Styling */
+.footer-logo {
+    margin-bottom: 1rem;
+}
+
+.footer-logo img {
+    height: 30px;
+    filter: brightness(0) invert(1);
+}
+
+/* Footer Social Icons */
+.footer-social {
+    margin-bottom: 1.5rem;
+}
+
+/* App Store Links */
+.app-store-links {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.app-store-badge {
+    display: inline-block;
+}
+
+.app-store-badge img {
+    height: 40px;
+}
+
+/* Office Address Styling */
+.office-address {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.office-address-last {
+    font-size: 0.9rem;
+}
+
+/* Footer Legal Section */
+.footer-legal {
+    padding-top: 2rem;
+    border-top: 1px solid #555;
+}
+
+.footer-legal-content {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.footer-legal-content p {
+    margin-bottom: 0.5rem;
+}
+
+.footer-disclaimer {
+    text-align: center;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: #ccc;
+    margin-bottom: 1rem;
+}
+
+.footer-disclaimer p {
+    margin-bottom: 0.5rem;
+}
+
+.footer-disclaimer a {
+    color: #ccc;
+    text-decoration: underline;
+}
+
+.footer-copyright {
+    text-align: center;
+    padding-top: 1rem;
+    border-top: 1px solid #555;
+}
+
+/* ===== SID
+EBAR MENU INLINE CSS CLEANUP ===== */
+
+/* Sidebar User Info */
+.sidebar-user-name {
+    font-size: 0.9rem;
+}
+
+.sidebar-user-subtitle {
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+/ *=====CALCULATOR SECTION INLINE CSS CLEANUP=====*/
+/* Calculator Header */
+.calculator-header {
+    text-align: center;
+}
+
+.calculator-green-line {
+    margin: 0 auto;
+}
+
+/ *=====ACCOUNTS SECTION INLINE CSS CLEANUP=====*/
+/* Accounts Section Title */
+.accounts-section-title {
+    text-align: center;
+}
+
+/* ====
+= TESTIMONIAL NAVIGATION ARROWS ===== */
+
+.testimonials-slider-container {
+    position: relative;
+}
+
+.testimonial-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-nav:hover {
+    background: var(--primary-green);
+    color: white;
+    border-color: var(--primary-green);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.testimonial-nav.prev {
+    left: 5px;
+}
+
+.testimonial-nav.next {
+    right: -1px;
+}
+
+.testimonial-nav i {
+    font-size: 1rem;
+}
+
+/* Hide arrows on mobile */
+@media (max-width: 768px) {
+    .testimonial-nav {
+        display: none;
+    }
+}
+
+/*
+ ===== HIDE CURRENCY SELECTOR IN CALCULATOR ===== */
+
+/* Hide the entire currency input group */
+.input-group:has(#currency),
+.input-group:has(.currency-select) {
+    display: none;
+}
+
+/* Alternative selector for better browser compatibility */
+#currency,
+.currency-select {
+    display: none;
+}
+
+/* Hide the currency label as well */
+label[for="currency"] {
+    display: none;
+}
+
+/ *=====CIRCULAR TESTIMONIAL CAROUSEL=====*/ .testimonials-slider-container.circular {
+    height: 450px;
+    perspective: 1200px;
+    overflow: visible;
+}
+
+.testimonials-slider.circular {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 1s ease-in-out;
+}
+
+.testimonial-slide.circular {
+    position: absolute;
+    width: 350px;
+    height: 300px;
+    left: 50%;
+    top: 50%;
+    transform-origin: center center;
+    transition: all 0.8s ease-in-out;
+    opacity: 0.7;
+    transform: translate(-50%, -50%) rotateY(0deg) translateZ(400px);
+}
+
+.testimonial-slide.circular.active {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotateY(0deg) translateZ(450px) scale(1.1);
+}
+
+.testimonial-slide.circular:nth-child(1) {
+    transform: translate(-50%, -50%) rotateY(0deg) translateZ(400px);
+}
+
+.testimonial-slide.circular:nth-child(2) {
+    transform: translate(-50%, -50%) rotateY(51.43deg) translateZ(400px);
+}
+
+.testimonial-slide.circular:nth-child(3) {
+    transform: translate(-50%, -50%) rotateY(102.86deg) translateZ(400px);
+}
+
+.testimonial-slide.circular:nth-child(4) {
+    transform: translate(-50%, -50%) rotateY(154.29deg) translateZ(400px);
+}
+
+.testimonial-slide.circular:nth-child(5) {
+    transform: translate(-50%, -50%) rotateY(205.72deg) translateZ(400px);
+}
+
+.testimonial-slide.circular:nth-child(6) {
+    transform: translate(-50%, -50%) rotateY(257.15deg) translateZ(400px);
+}
+
+.testimonial-slide.circular:nth-child(7) {
+    transform: translate(-50%, -50%) rotateY(308.58deg) translateZ(400px);
+}
+
+/* Circular carousel rotation */
+.testimonials-slider.circular.rotate-1 {
+    transform: rotateY(-51.43deg);
+}
+
+.testimonials-slider.circular.rotate-2 {
+    transform: rotateY(-102.86deg);
+}
+
+.testimonials-slider.circular.rotate-3 {
+    transform: rotateY(-154.29deg);
+}
+
+.testimonials-slider.circular.rotate-4 {
+    transform: rotateY(-205.72deg);
+}
+
+.testimonials-slider.circular.rotate-5 {
+    transform: rotateY(-257.15deg);
+}
+
+.testimonials-slider.circular.rotate-6 {
+    transform: rotateY(-308.58deg);
+}
+
+/*
+ Temporary visual aid for 3-slide layout - remove after testing */
+.testimonials-slider-container::before {
+    content: "Showing 3 slides at a time";
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #4CAF50;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    z-index: 10;
+}
+
+@media (max-width: 768px) {
+    .testimonials-slider-container::before {
+        content: "Showing 1 slide at a time (Mobile)";
     }
 }
