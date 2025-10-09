@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Financial Services - Trust, Expertise, Consistency</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Slick Carousel CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
     <link href="assets/css/index2.css" rel="stylesheet">
 </head>
 
@@ -327,7 +330,7 @@
     </section>
 
     <!-- Services Section -->
-    <section class="services" id="services">
+    <section class="services" id="services" style="display:none;">
         <div class="container">
             <div class="green-line"></div>
             <h2 class="section-title">Our Services</h2>
@@ -378,13 +381,366 @@
     <section class="investment-options">
         <div class="container">
             <div class="section-header-center">
-                <p class="section-label">WHAT WE OFFER?</p>
-                <h2 class="section-main-title">
-                    <span class="highlight-text">Regulated Bonds, Mutual Funds, SDIs,</span> and<br>
-                    <span class="highlight-text">Corporate FDs</span> for up to 14% returns.
-                </h2>
+                <div class="green-line"></div>
+                <h2 class="section-title">Our Services</h2>
+                </div>
+                <div class="investment-carousel">
+                    <!-- Card 1: Mutual Funds -->
+                    <div class="investment-card">
+                        <h3 class="card-title investtitle">Invest in Mutal Funds</h3>
+                        <span class="investsubtitle">
+                            <b>Curated, goal-based portfolios which are built and monitored by experts.</b>
+                        </span>
+                        <ul class="card-highlights">
+                            <li>Rigorous screening</li>
+                            <li>Goal-based allocation</li>
+                            <li>Continuous review & rebalance</li>
+                            <li>Tax-efficient for HNIs/NRIs</li>
+                        </ul>
+                        <span class="investsubtitle">
+                            <b>Top performing mutual funds (as of 6th Oct 2025):</b>
+                        </span>
+                        </br>
+                        </br>
+                        <div class="card-items">
+                            <div class="card-item">
+                                <div class="item-top">
+                                    <div class="item-logo">
+                                        <img src="assets/img/motilala_logo.jpg" alt="Akme Fintrade" class="item-icon">
+                                    </div>
+                                    <div class="item-name">
+                                        <h5 class="subsubtitle">Motilal Oswal Large Cap Fund</h5>
+                                    </div>
+                                    <a href="#" class="item-arrow">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                                <div class="item-bottom">
+                                    <div class="item-stat">
+                                        <span class="stat-label">NAV</span>
+                                        <span class="stat-value">₹ 13.79</span>
+                                    </div>
+                                    <div class="item-stat">
+                                        <span class="stat-label">1Y returns</span>
+                                        <span class="stat-value">6.82%</span>
+                                    </div>
+                                </div>
+                            </div>
+                
+                            <div class="card-item">
+                                <div class="item-top">
+                                    <div class="item-logo">
+                                        <img src="assets/img/invesco_mf_logo_blue_pos_rgb.jpg" alt="Western Capital" class="item-icon">
+                                    </div>
+                                    <div class="item-name">
+                                        <h5 class="subsubtitle">Invesco India Mid Cap Fund</h5>
+                                    </div>
+                                    <a href="#" class="item-arrow">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                                <div class="item-bottom">
+                                    <div class="item-stat">
+                                        <span class="stat-label">NAV</span>
+                                        <span class="stat-value">₹ 178.83</span>
+                                    </div>
+                                    <div class="item-stat">
+                                        <span class="stat-label">1Y returns</span>
+                                        <span class="stat-value">6.02%</span>
+                                    </div>
+                                </div>
+                            </div>
+                
+                            <div class="card-item">
+                                <div class="item-top">
+                                    <div class="item-logo">
+                                        <img src="assets/img/QNTMF.png" alt="Western Capital" class="item-icon">
+                                    </div>
+                                    <div class="item-name">
+                                        <h5 class="subsubtitle">Quantum Small Cap Fund</h5>
+                                    </div>
+                                    <a href="#" class="item-arrow">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                                <div class="item-bottom">
+                                    <div class="item-stat">
+                                        <span class="stat-label">NAV</span>
+                                        <span class="stat-value">₹ 12.56</span>
+                                    </div>
+                                    <div class="item-stat">
+                                        <span class="stat-label">1Y returns</span>
+                                        <span class="stat-value">1.70%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="card-explore">
+                            <a href="#" class="explore-link">
+                                Learn More
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                
+                    <!-- Card 2: Invest in Equity -->
+                    <div class="investment-card">
+                        <h3 class="card-title investtitle">Invest in Equity</h3>
+                        <span class="investsubtitle">
+                            <b>Blend of long-term investing & tactical swing trades.</b>
+                        </span>
+                        <ul class="card-highlights">
+                            <li>Invest in quality businesses</li>
+                            <li>Diversify across market caps</li>
+                            <li>Research-backed swing calls</li>
+                            <li>Disciplined risk management</li>
+                        </ul>
+                        <span class="investsubtitle">
+                            <b>Here are some stocks which we are keen on (as of 6th Oct 2025):</b>
+                        </span>
+                        </br>
+                        </br>
+                        <div class="card-items">
+                            <div class="card-item">
+                                <div class="item-top">
+                                    <div class="item-logo">
+                                        <img src="assets/img/max_finacial_services.png" alt="Max Financial Services Ltd"
+                                            class="item-icon">
+                                    </div>
+                                    <div class="item-name">
+                                        <h5 class="subsubtitle">Max Financial Services Ltd </h5>
+                                    </div>
+                                    <a href="#" class="item-arrow">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                                <div class="item-bottom">
+                                    <div class="item-stat">
+                                        <span class="stat-label">Current</span>
+                                        <span class="stat-value">₹ 1611</span>
+                                    </div>
+                                    <div class="item-stat">
+                                        <span class="stat-label">Target</span>
+                                        <span class="stat-value">₹ 2000</span>
+                                    </div>
+                                    <div class="item-stat">
+                                        <span class="stat-label">Tenure</span>
+                                        <span class="stat-value">12 M</span>
+                                    </div>
+                                </div>
+                            </div>
+                
+                            <div class="card-item">
+                                <div class="item-top">
+                                    <div class="item-logo">
+                                        <img src="assets/img/endurancegroup.png" alt="Endurance Technologies Ltd" class="item-icon">
+                                    </div>
+                                    <div class="item-name">
+                                        <h5 class="subsubtitle">Endurance Technologies Ltd </h5>
+                                    </div>
+                                    <a href="#" class="item-arrow">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                                <div class="item-bottom">
+                                    <div class="item-stat">
+                                        <span class="stat-label">Current</span>
+                                        <span class="stat-value">₹ 2875</span>
+                                    </div>
+                                    <div class="item-stat">
+                                        <span class="stat-label">Target</span>
+                                        <span class="stat-value">₹ 3311</span>
+                                    </div>
+                                    <div class="item-stat">
+                                        <span class="stat-label">Tenure</span>
+                                        <span class="stat-value">12 M</span>
+                                    </div>
+                                </div>
+                            </div>
+                
+                            <div class="card-item">
+                                <div class="item-top">
+                                    <div class="item-logo">
+                                        <img src="assets/img/heromotocorp.png" alt="Western Capital" class="item-icon">
+                                    </div>
+                                    <div class="item-name">
+                                        <h5 class="subsubtitle">Hero Motocorp Ltd</h5>
+                                    </div>
+                                    <a href="#" class="item-arrow">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                                <div class="item-bottom">
+                                    <div class="item-stat">
+                                        <span class="stat-label">Current</span>
+                                        <span class="stat-value">₹ 5567</span>
+                                    </div>
+                                    <div class="item-stat">
+                                        <span class="stat-label">Target</span>
+                                        <span class="stat-value">₹ 6315</span>
+                                    </div>
+                                    <div class="item-stat">
+                                        <span class="stat-label">Tenure</span>
+                                        <span class="stat-value">12 M</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                
+                
+                
+                        <div class="card-explore">
+                            <a href="#" class="explore-link">
+                                Learn More
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                
+                    <!-- Card 3: Invest in Equity -->
+                    <div class="investment-card">
+                        <h3 class="card-title investtitle">Invest in Fixed Income</h3>
+                        <span class="investsubtitle">
+                            <b>Blend of predictable returns, safety & risk adjusted performance.</b>
+                        </span>
+                        <ul class="card-highlights">
+                            <li>Invest in quality funds</li>
+                            <li>Diversify across fund houses</li>
+                            <li>Research-backed calls</li>
+                            <li>Disciplined risk management</li>
+                        </ul>
+                        <span class="investsubtitle">
+                            <b>Here are some products in this category:</b>
+                        </span>
+                        </br>
+                        </br>
+                        <ul class="card-highlights">
+                            <li>Corporate Fixed Deposits</li>
+                            <li>Bank Fixed Deposits</li>
+                            <li>Secured Non-Convertible Debentures</li>
+                            <li>Listed Bonds</li>
+                        </ul>
+                        <span class="investsubtitle">
+                            <b>More details and curated recommendations are available with our advisors</b>
+                        </span>
+                        </br>
+                        </br>
+                
+                        <div class="card-explore">
+                            <a href="#" class="explore-link">
+                                Learn More
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                
+                    <!-- Card 4: Invest in Equity -->
+                    <div class="investment-card">
+                        <h3 class="card-title investtitle">Portfolio Management Services</h3>
+                        <span class="investsubtitle">
+                            <b>Tailored, actively managed portfolios across equity, debt & alternatives. Built for HNIs who
+                                want growth with diversification.</b>
+                        </span>
+                        <ul class="card-highlights">
+                            <li>Custom strategies for your goals & risk</li>
+                            <li>Diversified across asset classes</li>
+                            <li>Active monitoring & rebalancing</li>
+                            <li>Professional reporting & transparency</li>
+                        </ul>
+                        <span class="investsubtitle">
+                            <b>More details and curated recommendations are available with our advisors</b>
+                        </span>
+                        </br>
+                        </br>
+                
+                        <div class="card-explore">
+                            <a href="#" class="explore-link">
+                                Learn More
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                
+                    <!-- Card 5: Insurance -->
+                    <div class="investment-card">
+                        <h3 class="card-title investtitle">Insurance</h3>
+                        <span class="investsubtitle">
+                            <b>Protect your wealth and secure your legacy.</b>
+                        </span>
+                        <ul class="card-highlights">
+                            <li>Term, ULIP & Endowment plans</li>
+                            <li>Health & critical illness coverage</li>
+                            <li>Tailored policies for your needs</li>
+                            <li>Integrated into your wealth plan</li>
+                        </ul>
+                        <span class="investsubtitle">
+                            <b>More details and curated recommendations are available with our advisors.</b>
+                        </span>
+                        </br>
+                        </br>
+                
+                        <div class="card-explore">
+                            <a href="#" class="explore-link">
+                                Learn More
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                
+                    <!-- Card 6: AIFs/GIFT City -->
+                    <div class="investment-card">
+                        <h3 class="card-title investtitle">AIFs/GIFT City</h3>
+                        <span class="investsubtitle">
+                            <b>Access AIFs and international opportunities through GIFT City with expert guidance.</b>
+                        </span>
+                        <ul class="card-highlights">
+                            <li>Diversification beyond equity & debt</li>
+                            <li>Private equity, VC & hedge fund exposure</li>
+                            <li>AIF Cat I, II, III, investment available</li>
+                            <li>Invest in GIFT CITY with no Indian capital gains tax</li>
+                        </ul>
+                        <span class="investsubtitle">
+                            <b>More details and curated recommendations are available with our advisors.</b>
+                        </span>
+                        </br>
+                        </br>
+                
+                        <div class="card-explore">
+                            <a href="#" class="explore-link">
+                                Learn More
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                
+                    <!-- Card 7: Tax -->
+                    <div class="investment-card">
+                        <h3 class="card-title investtitle">Tax</h3>
+                        <span class="investsubtitle">
+                            <b>Integrated tax planning + filing</b>
+                        </span>
+                        <ul class="card-highlights">
+                            <li>Capital gains & dividend optimization</li>
+                            <li>Tax harvesting to reduce liabilities</li>
+                            <li>Family-level investment planning</li>
+                            <li>Full filing support for individuals & NRIs</li>
+                
+                        </ul>
+                        <span class="investsubtitle">
+                            <b>More details and curated recommendations are available with our advisors.</b>
+                        </span>
+                        </br>
+                        </br>
+                        <div class="card-explore">
+                            <a href="#" class="explore-link">
+                                Learn More
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
             </div>
-            
         </div>
     </section>
 
@@ -639,7 +995,139 @@
             </div>
         </div>
     </section>
+    <!-- Learning Academy -->
+    <section class="learning">
+        <div class="container">
+            <h2 class="section-title">Learning academy</h2>
+            <div class="learning-grid">
+                <div class="learning-card">
+                    <a href="https://blog.moneyfrog.in/moneyfrog-school/equity-funds-classification/" target="_blank"
+                        class="blog_text_a">
+                        <div class="learning-thumbnail">
+                            <img src="assets/img/Equity_Funds_Classification.jpg" style="width: 100%;">
+                        </div>
+                        <div class="learning-content">
+                            <h5>Equity Funds Classification</h5>
+                            <p style="font-size: 12px;">An equity fund is a mutual fund scheme that invests
+                                predominantly in equity stocks. In the Indian context, as per current SEBI Mutual Fund
+                                Regulations, an equity mutual fund scheme must invest at least 65% of the scheme’s
+                                assets in equities and equity related instruments.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="learning-card">
+                    <a href="https://blog.moneyfrog.in/moneyfrog-school/understanding-debt-funds/" target="_blank"
+                        class="blog_text_a">
+                        <div class="learning-thumbnail">
+                            <img src="https://blog.moneyfrog.in/wp-content/uploads/2017/05/Risk-Ladder-1-1.png"
+                                style="width: 100%;">
+                        </div>
+                        <div class="learning-content">
+                            <h5>Equity Funds Classification</h5>
+                            <p style="font-size: 12px;">Liquid funds are debt mutual funds, that invest your money in
+                                very short-term market instruments such as treasury bills, government securities and
+                                call money, that hold least amount of risk. These funds can invest in instruments up to
+                                a maturity of 91 days. The maturity is mostly much lower than that.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="learning-card">
+                    <a href="https://blog.moneyfrog.in/moneyfrog-school/managing-risk-using-mutual-funds/" target="_blank"
+                        class="blog_text_a">
+                        <div class="learning-thumbnail">
+                            <img src="assets/img/Managing_risk_using_mutual_funds.jpg" style="width: 100%;">
+                        </div>
+                        <div class="learning-content">
+                            <h5>Managing risk using mutual funds</h5>
+                            <p style="font-size: 12px;">Managing risk using mutual funds Gold, real estate, equity
+                                prices constantly move up and down. If you seek little or no risk, returns will be low
+                                and if you are ready to take higher risk, returns could be high. However, financial
+                                planners believe, managing risk is essential and one of the best products to manage it
+                                is mutual funds.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="learning-card">
+                    <a href="https://blog.moneyfrog.in/moneyfrog-school/how-much-tax-do-you-pay-on-your-investments/"
+                        target="_blank" class="blog_text_a">
+                        <div class="learning-thumbnail">
+                            <img src="https://blog.moneyfrog.in/wp-content/uploads/2017/04/web_Tax-investment-wednesday_19_Apr1.jpg"
+                                style="width: 100%;">
+                        </div>
+                        <div class="learning-content">
+                            <h5>How much tax do you pay on your investments?</h5>
+                            <p style="font-size: 12px;">It is important to consider the taxation rules before investing
+                                Most people look only at the returns that an investment vehicle gives. It is, however,
+                                important to consider the taxation rules as well since this will reduce the overall
+                                returns. Here’s a look at some of these.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="learning-card">
+                    <a href="https://blog.moneyfrog.in/moneyfrog-school/managing-risk-using-mutual-funds/" target="_blank"
+                        class="blog_text_a">
+                        <div class="learning-thumbnail">
+                            <img src="assets/img/SIP.jpg" style="width: 100%;">
+                        </div>
+                        <div class="learning-content">
+                            <h5>Are SIPs better than lump sum investments?</h5>
+                            <p style="font-size: 12px;">Regular investing on a schedule offers better returns and a
+                                number of other advantages.Systematic Investment Plans (SIPs) are not magic. Their
+                                superiority to lump sum investments is not a matter of probability or even psychology
+                                but an absolute law.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="learning-card">
+                    <a href="https://blog.moneyfrog.in/moneyfrog-school/10-tips-for-the-successful-long-term-investor/"
+                        target="_blank" class="blog_text_a">
+                        <div class="learning-thumbnail">
+                            <img src="assets/img/Regular_investing_on.jpg" style="width: 100%;">
+                        </div>
+                        <div class="learning-content">
+                            <h5>10 Tips For the Successful Long-Term Investor</h5>
+                            <p style="font-size: 12px;">10 Tips For the Successful Long-Term Investor There may be an
+                                exception to every rule, but there are several investing principles that are tough to
+                                dispute. Here are 10 that should help investors enjoy long-term success.Sell the losers
+                                and let the winners ride.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="learning-card">
+                    <a href="https://blog.moneyfrog.in/moneyfrog-school/life-insurance-8-terms-everyone-should-know/"
+                        target="_blank" class="blog_text_a">
+                        <div class="learning-thumbnail">
+                            <img src="assets/img/Life Insurance.jpg" style="width: 100%;">
+                        </div>
+                        <div class="learning-content">
+                            <h5>Life Insurance: 8 Terms Everyone Should Know</h5>
+                            <p style="font-size: 12px;">Shopping for life insurance can feel a bit like learning a
+                                foreign language: You hear a lot of unfamiliar terms—and many of them can be confusing.
+                                So we’re here to help! Whether you’re starting your search for a policy or you just got
+                                approved for one.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="learning-card">
+                    <a href="https://blog.moneyfrog.in/national-pension-scheme-the-new-norms/" target="_blank"
+                        class="blog_text_a">
+                        <div class="learning-thumbnail" style="background: #01b2aa !important;">
+                            <img src="https://blog.moneyfrog.in/wp-content/uploads/2019/01/nps-banner.png"
+                                style="width: 100%;">
+                        </div>
+                        <div class="learning-content">
+                            <h5>National Pension Scheme – The new norms</h5>
+                            <p style="font-size: 12px;">The National Pension Scheme (NPS) is a voluntary pension scheme
+                                launched by the government of India. Investors can regularly contribute in the scheme
+                                during their work life, withdraw a part of the corpus in a lump sum and use the
+                                remaining corpus to buy an annuity to secure a regular income after retirement.</p>
+                        </div>
+                    </a>
+                </div>
 
+            </div>
+            </div>
+            </section>
     <!-- Calculator -->
     <section class="calculator" id="calculator">
         <div class="container">
@@ -668,7 +1156,7 @@
                         <i class="fas fa-piggy-bank"></i>
                         Retirement Calculator
                     </button>
-                    </div>
+                </div>
                 <div class="calculator-selector"></div>
             </div>
 
@@ -732,8 +1220,8 @@
                                     <div class="result-detail">@ 11.8% p.a.</div>
                                 </div>
                             </div>
-                            </div>
-                            </div>
+                        </div>
+                        </div>
 
                     <div class="calculator-chart">
                         <canvas id="sipChart" width="600" height="400"></canvas>
@@ -758,8 +1246,8 @@
                                 guaranteed.</small>
                         </div>
                     </div>
-                    </div>
-                    </div>
+                </div>
+                </div>
 
             <!-- Placeholder for other calculators -->
             <div id="lumpsumCalculator" class="calculator-container" style="display: none;">
@@ -769,20 +1257,124 @@
                 </div>
             </div>
 
-        <div id="emiCalculator" class="calculator-container" style="display: none;">
-            <div class="coming-soon">
-                <h3>EMI Calculator</h3>
-                <p>Coming Soon...</p>
+            <div id="emiCalculator" class="calculator-container" style="display: none;">
+                <div class="coming-soon">
+                    <h3>EMI Calculator</h3>
+                    <p>Coming Soon...</p>
+                </div>
             </div>
-        </div>
 
-        <div id="retirementCalculator" class="calculator-container" style="display: none;">
-            <div class="coming-soon">
-                <h3>Retirement Calculator</h3>
-                <p>Coming Soon...</p>
+            <div id="retirementCalculator" class="calculator-container" style="display: none;">
+                <div class="coming-soon">
+                    <h3>Retirement Calculator</h3>
+                    <p>Coming Soon...</p>
+                </div>
             </div>
         </div>
         </div>
+    </section>
+    <!-- Data Security Section -->
+    <section class="data-security" id="data-security">
+        <div class="container">
+            <div class="section-header-center">
+                <div class="green-line"></div>
+                <h2 class="section-title">DATA SECURITY</h2>
+                <p class="section-subtitle">
+                    Your data is safe & secure. Moneyfrog account is designed & developed to protect the
+                    confidentiality,
+                    integrity and security of your personal information during storage & transmission of your data.
+                </p>
+            </div>
+    
+            <!-- Security Features Grid -->
+            <div class="security-features-grid">
+                <div class="security-feature-card">
+                    <div class="security-icon" aria-hidden="true">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>256-bit Encryption</h3>
+                    <p>All your data is encrypted using bank-grade 256-bit SSL encryption during transmission and
+                        storage,
+                        ensuring maximum protection.</p>
+                </div>
+    
+                <div class="security-feature-card">
+                    <div class="security-icon" aria-hidden="true">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3>Secure Authentication</h3>
+                    <p>Multi-factor authentication and secure login protocols protect your account from unauthorized
+                        access.
+                    </p>
+                </div>
+    
+                <div class="security-feature-card">
+                    <div class="security-icon" aria-hidden="true">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Data Backup</h3>
+                    <p>Regular automated backups with disaster recovery systems ensure your data is never lost.</p>
+                </div>
+    
+                <div class="security-feature-card">
+                    <div class="security-icon" aria-hidden="true">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <h3>Access Control</h3>
+                    <p>Role-based access and permission management ensure only authorized personnel can access sensitive
+                        information.</p>
+                </div>
+    
+                <div class="security-feature-card">
+                    <div class="security-icon" aria-hidden="true">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>24/7 Monitoring</h3>
+                    <p>Continuous security monitoring and threat detection systems protect against cyber threats round
+                        the
+                        clock.</p>
+                </div>
+    
+                <div class="security-feature-card">
+                    <div class="security-icon" aria-hidden="true">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Compliance</h3>
+                    <p>SEBI registered and fully compliant with all regulatory standards and data protection laws.</p>
+                </div>
+            </div>
+    
+            <!-- Certifications & Compliance -->
+            <div class="security-certifications">
+                <h3>Our Certifications & Compliance</h3>
+                <div class="certification-badges">
+                    <div class="badge-item">
+                        <div class="badge-icon" aria-hidden="true">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <span>SSL/TLS Secured</span>
+                    </div>
+                    <div class="badge-item">
+                        <div class="badge-icon" aria-hidden="true">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <span>ISO 27001 Certified</span>
+                    </div>
+                    <div class="badge-item">
+                        <div class="badge-icon" aria-hidden="true">
+                            <i class="fas fa-landmark"></i>
+                        </div>
+                        <span>SEBI Registered</span>
+                    </div>
+                    <div class="badge-item">
+                        <div class="badge-icon" aria-hidden="true">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <span>Data Protection Compliant</span>
+                    </div>
+                </div>
+            </div>
+    
         </div>
     </section>
 
@@ -796,13 +1388,15 @@
                     </div>
                     <p>Your trusted partner in financial growth and wealth management.</p>
                     <div class="social-icons footer-social">
-                        <a href="https://www.facebook.com/moneyfrog.in" target="_blank"><i
-                                class="fab fa-facebook"></i></a>
+                        <a href="https://www.facebook.com/moneyfrog.in" target="_blank"><i class="fab fa-facebook"></i>
+                        </a>
                         <a href="https://x.com/moneyfrog_in" target="_blank"><i class="fab fa-twitter"></i></a>
                         <a href="https://www.linkedin.com/company/moneyfrog-in" target="_blank"><i
-                                class="fab fa-linkedin"></i></a>
-                        <a href="https://www.instagram.com/moneyfrog.in/" target="_blank"><i
-                                class="fab fa-instagram"></i></a>
+                                class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://www.instagram.com/moneyfrog_financial_services/" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
                     </div>
                     <div>
                         <strong>Available On:</strong><br>
@@ -884,7 +1478,55 @@
         </div>
     </footer>
 
+    <!-- jQuery (required for Slick) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- Slick Carousel JS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="assets/js/index2.js"></script>
+    <!-- Initialize Slick Carousel for Investment Cards -->
+    <script>
+        $(document).ready(function () {
+            // Check if jQuery is loaded
+            if (typeof jQuery === 'undefined') {
+                console.error('Slick Carousel requires jQuery');
+                return;
+            }
+
+            // Check if carousel element exists
+            if ($('.investment-carousel').length) {
+                $('.investment-carousel').slick({
+                    dots: true,
+                    infinite: true,
+                    speed: 500,
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    autoplay: false,
+                    arrows: true,
+                    prevArrow: '<button type="button" class="slick-prev"><i class="fas fa-chevron-left"></i></button>',
+                    nextArrow: '<button type="button" class="slick-next"><i class="fas fa-chevron-right"></i></button>',
+                    responsive: [
+                        {
+                            breakpoint: 1024,
+                            settings: {
+                                slidesToShow: 2,
+                                slidesToScroll: 1
+                            }
+                        },
+                        {
+                            breakpoint: 768,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1,
+                                arrows: true,
+                                dots: true
+                            }
+                        }
+                    ]
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>

@@ -294,7 +294,7 @@ nav {
 
 .cta-button {
     background: var(--primary-green);
-    color: var(--dark-gray);
+    color: #ffffff;
     padding: 0.45rem 1.2rem;
     border: none;
     border-radius: 25px;
@@ -305,9 +305,10 @@ nav {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    max-width: 145px;
+    min-width: 145px;
     width: 100%;
     justify-content: center;
+    max-width: 145px;
 }
 
 .cta-button:hover {
@@ -318,13 +319,13 @@ nav {
 .cta-button .arrow-icon {
     width: 20px;
     height: 20px;
-    border: 2px solid var(--dark-gray);
+    border: 2px solid #ffffff;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 0.7rem;
-    color: var(--dark-gray);
+    color: #ffffff;
 }
 
 /* ==
@@ -423,7 +424,7 @@ nav {
 .submit-btn {
     width: 100%;
     background: var(--primary-green);
-    color: var(--dark-gray);
+    color: #ffffff;
     padding: 0.75rem 1.2rem;
     border: none;
     border-radius: 25px;
@@ -445,13 +446,13 @@ nav {
 .submit-btn .arrow-icon {
     width: 20px;
     height: 20px;
-    border: 2px solid var(--dark-gray);
+    border: 2px solid #FFFFFF;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 0.7rem;
-    color: var(--dark-gray);
+    color: #FFFFFF;
 }
 
 /* ===== STATISTICS SECTION ===== */
@@ -534,6 +535,7 @@ nav {
     height: 4px;
     background: var(--primary-green);
     margin-bottom: 1rem !important;
+    margin: 0 auto;
 }
 
 .section-title {
@@ -1175,6 +1177,7 @@ nav {
     justify-content: center;
     color: var(--white);
     font-size: 2rem;
+    overflow: hidden;
 }
 
 .learning-content {
@@ -1267,7 +1270,7 @@ nav {
 .calculator-grid {
     display: grid;
     grid-template-columns: 1fr 1.2fr;
-    min-height: 600px;
+    min-height: 530px;
 }
 
 .calculator-inputs {
@@ -1711,7 +1714,7 @@ EBAR MENU INLINE CSS CLEANUP ===== */
     opacity: 0.8;
 }
 
-/ *=====CALCULATOR SECTION INLINE CSS CLEANUP=====*/
+/* =====CALCULATOR SECTION INLINE CSS CLEANUP===== */
 /* Calculator Header */
 .calculator-header {
     text-align: center;
@@ -1721,7 +1724,7 @@ EBAR MENU INLINE CSS CLEANUP ===== */
     margin: 0 auto;
 }
 
-/ *=====ACCOUNTS SECTION INLINE CSS CLEANUP=====*/
+/* =====ACCOUNTS SECTION INLINE CSS CLEANUP===== */
 /* Accounts Section Title */
 .accounts-section-title {
     text-align: center;
@@ -1798,7 +1801,8 @@ label[for="currency"] {
     display: none;
 }
 
-/ *=====CIRCULAR TESTIMONIAL CAROUSEL=====*/ .testimonials-slider-container.circular {
+/* =====CIRCULAR TESTIMONIAL CAROUSEL===== */
+.testimonials-slider-container.circular {
     height: 450px;
     perspective: 1200px;
     overflow: visible;
@@ -1907,7 +1911,7 @@ label[for="currency"] {
 ==== INVESTMENT OPTIONS GRID - 3 SECTIONS ===== */
 .investment-options {
     padding: 4rem 0;
-    background: #FFFFFF;
+    background: #f4eee9;
 }
 
 .section-header-center {
@@ -2093,13 +2097,13 @@ label[for="currency"] {
     gap: 0.5rem;
     font-size: 0.9rem;
     font-weight: 600;
-    color: #00BCD4;
+    color: #7cb342;
     text-decoration: none;
     transition: all 0.3s ease;
 }
 
 .explore-link:hover {
-    color: #0097A7;
+    color: #7cb342;
     transform: translateX(3px);
 }
 
@@ -2134,5 +2138,723 @@ label[for="currency"] {
     .item-bottom {
         flex-direction: column;
         gap: 0.75rem;
+    }
+}
+/* ===== SLICK CAROUSEL CUSTOMIZATION FOR INVESTMENT SECTION ===== */
+.investment-cards-grid.slick-initialized {
+    display: block;
+}
+
+.investment-cards-grid .slick-slide {
+    margin: 0 10px;
+}
+
+.investment-cards-grid .slick-list {
+    margin: 0 -10px;
+}
+
+/* Custom Arrow Styling */
+.investment-cards-grid .slick-prev,
+.investment-cards-grid .slick-next {
+    width: 45px;
+    height: 45px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+}
+
+.investment-cards-grid .slick-prev:hover,
+.investment-cards-grid .slick-next:hover {
+    background: var(--primary-green);
+}
+
+.investment-cards-grid .slick-prev {
+    left: -60px;
+}
+
+.investment-cards-grid .slick-next {
+    right: -60px;
+}
+
+.investment-cards-grid .slick-prev:before,
+.investment-cards-grid .slick-next:before {
+    font-size: 20px;
+    color: #1976D2;
+}
+
+.investment-cards-grid .slick-prev:hover:before,
+.investment-cards-grid .slick-next:hover:before {
+    color: white;
+}
+
+/* Custom Dots Styling */
+.investment-cards-grid .slick-dots {
+    bottom: -40px;
+}
+
+.investment-cards-grid .slick-dots li button:before {
+    font-size: 12px;
+    color: #00BCD4;
+    opacity: 0.5;
+}
+
+.investment-cards-grid .slick-dots li.slick-active button:before {
+    color: #00BCD4;
+    opacity: 1;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+
+    .investment-cards-grid .slick-prev,
+    .investment-cards-grid .slick-next {
+        display: none !important;
+    }
+
+    .investment-cards-grid .slick-dots {
+        bottom: -30px;
+    }
+}
+
+/* ===================================
+   Investment Carousel Styles
+   =================================== */
+
+.investment-carousel {
+    margin: 40px 0;
+    padding: 0 50px;
+}
+
+/* Slick Arrow Customization */
+.investment-carousel .slick-prev,
+.investment-carousel .slick-next {
+    width: 50px;
+    height: 50px;
+    background: #ffffff;
+    border: 2px solid #e0e0e0;
+    border-radius: 50%;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.investment-carousel .slick-prev:hover,
+.investment-carousel .slick-next:hover {
+    background: #7cb342;
+    border-color: #7cb342;
+}
+
+.investment-carousel .slick-prev:hover i,
+.investment-carousel .slick-next:hover i {
+    color: #ffffff;
+}
+
+.investment-carousel .slick-prev {
+    left: -25px;
+}
+
+.investment-carousel .slick-next {
+    right: -25px;
+}
+
+.investment-carousel .slick-prev i,
+.investment-carousel .slick-next i {
+    color: #333;
+    font-size: 20px;
+}
+
+.investment-carousel .slick-prev:before,
+.investment-carousel .slick-next:before {
+    content: '';
+}
+
+/* Slick Dots Customization */
+.investment-carousel .slick-dots {
+    bottom: -50px;
+}
+
+.investment-carousel .slick-dots li button:before {
+    font-size: 12px;
+    color: #cccccc;
+}
+
+.investment-carousel .slick-dots li.slick-active button:before {
+    color: #7cb342;
+}
+
+/* Card Spacing in Carousel */
+.investment-carousel .investment-card {
+    margin: 0 15px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .investment-carousel {
+        padding: 0 0px;
+    }
+
+    .investment-carousel .slick-prev {
+        left: -15px;
+    }
+
+    .investment-carousel .slick-next {
+        right: -15px;
+    }
+
+    .investment-carousel .slick-prev,
+    .investment-carousel .slick-next {
+        width: 40px;
+        height: 40px;
+    }
+
+    .investment-carousel .investment-card {
+        margin: 0 5px;
+        padding: 10px;
+    }
+
+    .item-bottom {
+        flex-direction: unset;
+        gap: 0.75rem;
+    }
+}
+
+/* Investment Card Item Arrow */
+.item-arrow {
+    background: #c0ffaa;
+    color: #7cb342;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.item-arrow:hover {
+    background: #7cb342;
+    color: #ffffff;
+    transform: translateX(3px);
+}
+
+.item-arrow i {
+    font-size: 16px;
+}
+
+
+h3.card-title.investtitle {
+    line-height: 1.5rem;
+    margin-bottom: 0.50rem;
+}
+
+.investsubtitle {
+    font-size: 0.85rem;
+    font-weight: 500;
+    line-height: 0px !important;
+}
+
+.card-highlights {
+    margin-bottom: 0.5rem;
+}
+
+h3.card-title.investtitle {
+    line-height: 1.5rem;
+    margin-bottom: 0.50rem;
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.card-highlights li {
+    color: #555;
+    margin-bottom: 0.25rem;
+    padding-left: 1rem;
+    position: relative;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+}
+
+.card-highlights {
+    margin-bottom: 0.5rem;
+    margin-top: 10px;
+}
+
+
+h5.subsubtitle {
+    font-size: 12px;
+}
+
+.stat-value {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.item-stat:first-child {
+    text-align: left !important;
+}
+
+.item-stat:nth-last-child(2) {
+    text-align: center;
+}
+
+.item-stat:last-child {
+    text-align: right !important;
+}
+
+.item-icon {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+}
+
+.item-logo {
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+}
+
+.item-bottom {
+    gap: 0rem;
+    padding-top: 0rem;
+    border-top: none;
+}
+
+.blog_text_a {
+    color: inherit;
+    text-decoration: none;
+    text-align: left;
+    font-weight: 400;
+}
+
+/*
+ ===== DATA SECURITY SECTION ===== */
+.data-security {
+    padding: 4rem 0;
+    background: var(--white);
+}
+
+.data-security .section-header-center {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.data-security .section-subtitle {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 1rem;
+}
+
+/* Security Features Grid */
+.security-features-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.security-feature-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid #f0f0f0;
+}
+
+.security-feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.security-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--primary-green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+}
+
+.security-icon i {
+    font-size: 1.8rem;
+    color: var(--white);
+}
+
+.security-feature-card h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--dark-gray);
+}
+
+.security-feature-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #666;
+}
+
+/* Certifications Section */
+.security-certifications {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.security-certifications h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--dark-gray);
+    margin-bottom: 2rem;
+}
+
+.certification-badges {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.badge-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    min-width: 120px;
+}
+
+.badge-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--light-green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.badge-icon i {
+    font-size: 1.5rem;
+    color: var(--primary-green);
+}
+
+.badge-item span {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #666;
+    text-align: center;
+    line-height: 1.3;
+}
+
+/* Security CTA */
+.security-cta {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.security-cta p {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+/* Tablet Styles */
+@media (min-width: 768px) {
+    .security-features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Desktop Styles */
+@media (min-width: 1024px) {
+    .security-features-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .data-security {
+        padding: 3rem 0;
+    }
+
+    .data-security .section-subtitle {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
+    .security-features-grid {
+        gap: 1.5rem;
+    }
+
+    .security-feature-card {
+        padding: 1.5rem;
+    }
+
+    .security-feature-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .security-feature-card p {
+        font-size: 0.9rem;
+    }
+
+    .certification-badges {
+        gap: 1.5rem;
+    }
+
+    .badge-item {
+        min-width: 100px;
+    }
+
+    .security-cta p {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+}
+
+/* Acce
+ssibility - Focus Styles for Data Security Section */
+.security-feature-card:focus-within {
+    outline: 2px solid var(--primary-green);
+    outline-offset: 2px;
+}
+
+.security-cta .cta-button:focus {
+    outline: 2px solid var(--primary-green);
+    outline-offset: 4px;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    .security-feature-card {
+        transition: none;
+    }
+
+    .security-feature-card:hover {
+        transform: none;
+    }
+}
+
+/*
+ ===== DATA SECURITY SECTION ===== */
+.data-security {
+    padding: 4rem 0;
+    background: var(--white);
+}
+
+.data-security .section-header-center {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.data-security .section-subtitle {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 1rem;
+}
+
+/* Security Features Grid */
+.security-features-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.security-feature-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid #f0f0f0;
+}
+
+.security-feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.security-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--primary-green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+}
+
+.security-icon i {
+    font-size: 1.8rem;
+    color: var(--white);
+}
+
+.security-feature-card h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--dark-gray);
+}
+
+.security-feature-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #666;
+}
+
+/* Certifications Section */
+.security-certifications {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.security-certifications h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--dark-gray);
+    margin-bottom: 2rem;
+}
+
+.certification-badges {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.badge-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    min-width: 120px;
+}
+
+.badge-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--light-green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.badge-icon i {
+    font-size: 1.5rem;
+    color: var(--primary-green);
+}
+
+.badge-item span {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #666;
+    text-align: center;
+    line-height: 1.3;
+}
+
+/* Security CTA */
+.security-cta {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.security-cta p {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+/* Accessibility - Focus Styles */
+.security-feature-card:focus-within {
+    outline: 2px solid var(--primary-green);
+    outline-offset: 2px;
+}
+
+.security-cta .cta-button:focus {
+    outline: 2px solid var(--primary-green);
+    outline-offset: 4px;
+}
+
+/* Tablet Styles */
+@media (min-width: 768px) {
+    .security-features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Desktop Styles */
+@media (min-width: 1024px) {
+    .security-features-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .data-security {
+        padding: 3rem 0;
+    }
+
+    .data-security .section-subtitle {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
+    .security-features-grid {
+        gap: 1.5rem;
+    }
+
+    .security-feature-card {
+        padding: 1.5rem;
+    }
+
+    .security-feature-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .security-feature-card p {
+        font-size: 0.9rem;
+    }
+
+    .certification-badges {
+        gap: 1.5rem;
+    }
+
+    .badge-item {
+        min-width: 100px;
+    }
+
+    .security-cta p {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    .security-feature-card {
+        transition: none;
+    }
+
+    .security-feature-card:hover {
+        transform: none;
     }
 }
