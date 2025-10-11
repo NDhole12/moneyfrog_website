@@ -1,1122 +1,1530 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Moneyfrog — Your Investment Needs Trust, Expertise, Consistency</title>
-  <meta name="description" content="Investment, wealth and budgeting platform. Effortlessly save, invest, and take control of your finances with Moneyfrog." />
-  <meta name="theme-color" content="#2fa86d" />
-
-  <!-- FONTS -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <!-- Bootstrap Icons -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
-
-  <style>
-    :root {
-      --brand: #90c740;
-      --brand-600: #25955f;
-      --brand-700: #1e7a4d;
-      --ink: #101828; /* dark text */
-      --muted: #667085; /* muted text */
-      --line: #e6efe9; /* soft borders */
-      --bg-soft: #f3faf6; /* pale green */
-      --bg-hero: url(assets/img/moneyfrog_hero_img.jpg); 
-      --radius-2xl: 1.25rem;
-    }
-
-    html, body {
-      height: 100%;
-      overflow-x: hidden;
-    }
-    body {
-      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji';
-      color: var(--ink);
-      scroll-behavior: smooth;
-      background: #fff;
-    }
-
-    /* Prevent container overflow on mobile */
-    .container, .container-fluid {
-      max-width: 100vw;
-      box-sizing: border-box;
-    }
-
-    /* NAVBAR */
-    .navbar {
-      transition: all .25s ease;
-      background: rgb(255 255 255 / 0%);
-      backdrop-filter: saturate(180%) blur(12px);
-      -webkit-backdrop-filter: saturate(180%) blur(12px);
-    }
-    .navbar.scrolled {
-      box-shadow: 0 6px 24px rgba(16,24,40,.08);
-      background: #fff;
-      padding-top: .35rem !important;
-      padding-bottom: .35rem !important;
-    }
-    .navbar .nav-link { color: #5e5e5e; font-weight: 500; }
-    .navbar .nav-link:hover { color: var(--brand); }
-    .btn-brand { background: var(--brand); border-color: var(--brand); color: #fff; }
-    .btn-brand:hover { background: var(--brand-600); border-color: var(--brand-600); color: #fff; }
-    .navbar {
-      height: 72px; /* match design */
-      padding: 0 24px;
-    }
-    .navbar-brand span.fw-bold {
-      font-size: 20px; /* adjust if design shows different */
-      letter-spacing: -0.3px;
-    }
-    .navbar .nav-link {
-      font-size: 16px;
-      padding: 0 16px;
-    }
-
-    /* HERO 
-    .hero {
-      background: var(--bg-hero);
-      padding-top: 7.5rem; 
-      padding-bottom: 3rem;
-    }*/
-    .hero {
-      background: var(--bg-hero);
-      padding-top: 9.5rem;
-      padding-bottom: 3rem;
-      background-size: cover;
-      background-repeat: no-repeat;
-    }
-
-    .hero-tag {
-      display: inline-flex; align-items: center; gap: .5rem;
-      font-size: .85rem; font-weight: 600; color: var(--brand-700);
-      background: #eaf6f0; border: 1px solid var(--line); border-radius: 999px; padding: .35rem .75rem;
-    }
-    .hero h1 { font-weight: 800;
-    letter-spacing: 0.03em;
-    color: #5e5e5e;
-    line-height: 5rem;}
-    .hero p.lead { color: var(--muted); font-size: .90rem; font-weight: 600; padding-bottom: 5%;}
-
-    .hero-visual {
-      position: relative; isolation: isolate;
-    }
-    .hero-blob {
-      position: absolute; inset: -2rem -2rem auto auto; width: 340px; height: 340px; border-radius: 50%;
-      background: radial-gradient(60% 60% at 50% 50%, rgba(47,168,109,.25) 0%, rgba(47,168,109,0) 70%);
-      z-index: 0;
-    }
-    .consult-card {
-      position: relative; z-index: 1;
-      background: #ffffffa1; border: 1px solid var(--line); border-radius: var(--radius-2xl);
-      box-shadow: 0 20px 40px rgba(16,24,40,.06);
-    }
-
-    /* STATS */
-    .stats { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: #fff; }
-    .stat { display:flex; align-items:center; gap:.75rem; }
-    .stat i { color: var(--brand); font-size: 1.25rem; }
-    .stat .value { font-size: 1.75rem;
-    font-weight: 700;
-    color: var(--brand);}
-    .stat .label { color: var(--muted); font-size: .9rem; }
-    .hero_icon{ font-size: 50px !important; width: 50px; height: 50px; }
-    /* SECTION BASE */
-    section.section { padding: 64px 0; }
-    .section .section-title { font-weight: 800; letter-spacing: -.02em; }
-    .section .section-subtitle { color: var(--muted); }
-
-    /* SERVICES */
-    .service-card {
-      background:#fff; border: 1px solid var(--line); border-radius: 16px; padding: 24px; height:100%;
-      transition: box-shadow .2s ease, transform .2s ease;
-    }
-    .service-card:hover { box-shadow: 0 16px 32px rgba(16,24,40,.08); transform: translateY(-2px); }
-    .service-icon { width:44px; height:44px; border-radius: 12px; background: #eaf6f0; color: var(--brand); display:grid; place-items:center; font-size: 20px; }
-    .service-card h6 { margin-top: 12px; font-weight: 700; }
-    .service-card p { color: var(--muted); }
-
-    /* ACCOUNTS GRID */
-    .mini-card { background:#fff; border:1px solid var(--line); border-radius:16px; padding: 20px; height:100%; }
-    .spark { width: 100%; height: 120px; background: linear-gradient(180deg,#eef6f1,#fff); border-radius: 12px; border:1px dashed #d7e7de; display:grid; place-items:center; color:#7aa88f; font-size:.9rem; }
-
-    /* FEATURES STRIP */
-    .feature {
-      background:#fff; border:1px solid var(--line); border-radius:16px; padding:18px; height:100%;
-    }
-    .feature i { color: var(--brand); font-size: 20px; }
-
-    /* TESTIMONIALS */
-    .testimonial { background:#fff; border:1px solid var(--line); border-radius:16px; padding:22px; }
-    .avatar { width:40px; height:40px; border-radius:50%; background:#e2efe7; display:inline-flex; align-items:center; justify-content:center; font-weight:700; color:var(--brand-700); }
-
-    /* ACADEMY */
-    .article-card { background:#fff; border:1px solid var(--line); border-radius:16px; overflow:hidden; height:100%; }
-    .article-thumb { background: linear-gradient(180deg,#eaf6f0,#ffffff); height:120px; }
-    .article-body { padding:16px; }
-    .badge-cat { background:#eaf6f0; color:var(--brand-700); }
-
-    /* CALCULATOR */
-    .calc-card { background:#fff; border:1px solid var(--line); border-radius:16px; padding:20px; }
-
-    /* FOOTER */
-    footer { background:#0b1320; color: #cbd5e1; }
-    footer a { color:#cbd5e1; text-decoration:none; }
-    footer a:hover { color:#fff; }
-
-    /* Back to top */
-    #backToTop { position: fixed; right: 16px; bottom: 16px; display:none; z-index:999; }
-
-    /* Utilities */
-    .text-brand { color: #5e5e5e !important;
-    text-transform: uppercase;
-    font-size: 55px;
-    font-weight: 700; }
-    .bg-soft { background: var(--bg-soft) !important; }
-
-    /*logo*/
-    .logo{width: 200px;}
-
-    @media (min-width: 992px) {
-      .navbar .dropdown:hover .dropdown-menu {
-        display: block;
-        margin-top: 0;
-      }
-    }
-
-    /* CSS */
-    .custom-btn {
-      background: #7cc83d;              /* Green background */
-      color: #000;                      /* Text color */
-      font-size: 16px;
-      font-weight: 500;
-      padding: 12px 28px;
-      border: none;
-      border-radius: 50px;              /* Pill shape */
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;                         /* Space between text & icon */
-      box-shadow: 0 3px 6px rgba(0,0,0,0.15);
-      transition: all 0.3s ease;
-    }
-
-    .custom-btn:hover {
-      background: #6ab12e;              /* Darker green on hover */
-      transform: translateY(-2px);
-    }
-
-    .icon {
-      font-size: 18px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-    /* CSS */
-    .custom-btn2 {
-      background: #7cc83d;              /* Green background */
-      color: #000;                      /* Text color */
-      font-size: 16px;
-      font-weight: 500;
-      padding: 5px 15px;
-      border: none;
-      border-radius: 50px;              /* Pill shape */
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;                         /* Space between text & icon */
-      box-shadow: 0 3px 6px rgba(0,0,0,0.15);
-      transition: all 0.3s ease;
-    }
-
-    .custom-btn2:hover {
-      background: #6ab12e;              /* Darker green on hover */
-      transform: translateY(-2px);
-    }
-
-    .icon {
-      font-size: 18px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .pt5pb10{
-      padding-top: 5%;
-      padding-bottom: 10%;
-    }
-
-    #services
-    {
-        background-color: #f4eee9;
-    }
-
-    .custom-hr {
-        width: 10%;
-        height: 5px;
-        background-color: #7cc83d;
-        border: none;
-        border-radius: 5px;
-        opacity: 1;
-    }
-    /* RESPONSIVE IMPROVEMENTS */
-    @media (max-width: 991.98px) {
-      .section.section { padding: 40px 0; }
-      .service-card, .mini-card, .feature, .testimonial, .article-card, .calc-card {
-        padding: 16px;
-        border-radius: 12px;
-      }
-      .service-card, .mini-card, .feature, .testimonial, .article-card, .calc-card {
-        margin-bottom: 16px;
-      }
-      .section .section-title { font-size: 1.5rem; }
-      .section .section-subtitle { font-size: 1rem; }
-      .custom-hr { width: 20%; height: 3px; }
-      .spark { height: 80px; }
-      .article-thumb { height: 80px; }
-      .navbar { height: 56px; padding: 0 8px; }
-      .logo { width: 140px; }
-      footer .row > div { margin-bottom: 24px; }
-      footer { padding-top: 32px; }
-      .stat .value { font-size: 1.2rem; }
-      .stat .label { font-size: .8rem; }
-    }
-
-    @media (max-width: 767.98px) {
-      .section.section { padding: 28px 0; }
-      .service-card, .mini-card, .feature, .testimonial, .article-card, .calc-card {
-        padding: 12px;
-        font-size: 0.97rem;
-      }
-      .section .section-title { font-size: 1.15rem; }
-      .section .section-subtitle { font-size: .95rem; }
-      .custom-hr { width: 30%; }
-      .spark { height: 56px; }
-      .article-thumb { height: 56px; }
-      .logo { width: 110px; }
-      .navbar .nav-link { font-size: 14px; padding: 0 8px; }
-      .testimonial .avatar, .avatar { width:32px; height:32px; font-size:1rem; }
-      .calc-card { padding: 10px; }
-      .mini-card { padding: 10px; }
-      .feature { padding: 10px; }
-      .service-card { padding: 10px; }
-      .article-card { padding: 10px; }
-      .stat .value { font-size: 1rem; }
-      .stat .label { font-size: .75rem; }
-      .btn, .btn-brand, .custom-btn, .custom-btn2 { font-size: 0.95rem; padding: 8px 16px; }
-      .footer .row > div { margin-bottom: 16px; }
-    }
-
-    @media (max-width: 575.98px) {
-      .section.section { padding: 16px 0; }
-      .service-card, .mini-card, .feature, .testimonial, .article-card, .calc-card {
-        padding: 8px;
-        font-size: 0.93rem;
-      }
-      .section .section-title { font-size: 1rem; }
-      .section .section-subtitle { font-size: .9rem; }
-      .custom-hr { width: 40%; }
-      .spark { height: 36px; }
-      .article-thumb { height: 36px; }
-      .logo { width: 90px; }
-      .navbar .nav-link { font-size: 13px; padding: 0 4px; }
-      .testimonial .avatar, .avatar { width:24px; height:24px; font-size:.85rem; }
-      .btn, .btn-brand, .custom-btn, .custom-btn2 { font-size: 0.9rem; padding: 6px 10px; }
-      .footer .row > div { margin-bottom: 10px; }
-      .calc-card, .mini-card, .feature, .service-card, .article-card { padding: 6px; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Services - Trust, Expertise, Consistency</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Slick Carousel CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+    <link href="assets/css/index2.css" rel="stylesheet">
 </head>
+
 <body>
- <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-lg fixed-top py-3">
-    <div class="container">
-      <a class="navbar-brand d-flex align-items-center gap-2" href="https://bolehnow.tlpl.in/">
-        <img src="https://bolehnow.tlpl.in/assets/img/logo-large.svg" class="logo">
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileNav"
-        aria-controls="mobileNav" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse d-none d-lg-flex" id="mainNav">
-        <ul class="navbar-nav align-items-lg-center ms-auto">
-
-              <!-- Products with Hover Submenu -->
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="productsDropdown" role="button">
-                  Products
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="productsDropdown">
-                  <li><a class="dropdown-item" href="#product1">Mutual Funds</a></li>
-                  <li><a class="dropdown-item" href="#product2">Stocks/ Equity</a></li>
-                  <li><a class="dropdown-item" href="#product3">PMS</a></li>
-                  <li><a class="dropdown-item" href="#product3">AIF/ GIFT CITY</a></li>
-                  <li><a class="dropdown-item" href="#product3">Tax</a></li>
-                  <li><a class="dropdown-item" href="#product3">Fixed Income/ FD/ NCD/ MLD</a></li>
-                  <li><a class="dropdown-item" href="#product3">Insurance</a></li>
-                </ul>
-              </li>
-
-              <!-- Accounts with Hover Submenu -->
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="accountsDropdown" role="button">
-                  Accounts
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="accountsDropdown">
-                  <li><a class="dropdown-item" href="#savings">Individual</a></li>
-                  <li><a class="dropdown-item" href="#current">Family</a></li>
-                  <li><a class="dropdown-item" href="#investment">NRI</a></li>
-                  <li><a class="dropdown-item" href="#investment">Foreign National</a></li>
-                </ul>
-              </li>
-              
-              <!-- About Us with Hover Submenu -->
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="aboutusDropdown" role="button">
-                  About Us
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="aboutusDropdown">
-                  <li><a class="dropdown-item" href="#savings">Why Moneyfrog</a></li>
-                  <li><a class="dropdown-item" href="#current">Our Story/ Journey</a></li>
-                  <li><a class="dropdown-item" href="#investment">Promotors/ KMP (Key management persons)</a></li>
-                  <li><a class="dropdown-item" href="#savings">Investors/ Compliance</a></li>
-                  <li><a class="dropdown-item" href="#savings">Testimonial</a></li>
-                </ul>
-              </li>
-
-              
-              <!-- Accounts with Hover Submenu -->
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="insightsDropdown" role="button">
-                  Insights
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="insightsDropdown">
-                  <li><a class="dropdown-item" href="#savings">Blog</a></li>
-                  <li><a class="dropdown-item" href="#current">FAQ</a></li>
-                  <li><a class="dropdown-item" href="#investment">Market Outlook</a></li>
-                  <li><a class="dropdown-item" href="#investment">Calculators</a></li>
-                </ul>
-              </li>
-              
-              <!-- Accounts with Hover Submenu -->
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="jobsDropdown" role="button">
-                  Jobs Openings
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="jobsDropdown">
-                  <li><a class="dropdown-item" href="#savings">Current openings</a></li>
-                  <li><a class="dropdown-item" href="#current">Work Culture</a></li>
-                  <li><a class="dropdown-item" href="#investment">Success stories</a></li>
-                </ul>
-              </li>
-              
-              <!-- Accounts with Hover Submenu -->
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="contactusDropdown" role="button">
-                  Contact us
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="contactusDropdown">
-                  <li><a class="dropdown-item" href="#savings">Savings Account</a></li>
-                  <li><a class="dropdown-item" href="#current">Current Account</a></li>
-                  <li><a class="dropdown-item" href="#investment">Investment Account</a></li>
-                </ul>
-              </li>
-        </ul>
-        <!-- Buttons (desktop only) -->
-        <div class="ms-lg-3 mt-2 mt-lg-0 d-flex gap-2">
-          <a class="btn btn-outline-secondary d-none d-lg-inline" href="#contact">Login</a>
-          <button class="custom-btn2">Get Started</button>
-          </div>
-          </div>
-          <!-- Offcanvas for mobile nav -->
-          <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="mobileNav" aria-labelledby="mobileNavLabel">
-            <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="mobileNavLabel">Menu</h5>
-              <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <img src="assets/img/logo-large.svg" alt="Company Logo">
             </div>
-            <div class="offcanvas-body">
-              <ul class="navbar-nav">
-                <!-- Products with Hover Submenu -->
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="productsDropdownMobile" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">Products</a>
-                  <ul class="dropdown-menu" aria-labelledby="productsDropdownMobile">
-                    <li><a class="dropdown-item" href="#product1">Mutual Funds</a></li>
-                    <li><a class="dropdown-item" href="#product2">Stocks/ Equity</a></li>
-                    <li><a class="dropdown-item" href="#product3">PMS</a></li>
-                    <li><a class="dropdown-item" href="#product3">AIF/ GIFT CITY</a></li>
-                    <li><a class="dropdown-item" href="#product3">Tax</a></li>
-                    <li><a class="dropdown-item" href="#product3">Fixed Income/ FD/ NCD/ MLD</a></li>
-                    <li><a class="dropdown-item" href="#product3">Insurance</a></li>
-                  </ul>
+            <ul class="nav-links">
+                <li>
+                    <a href="#">Products <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="#">Mutual Funds</a>
+                        <a href="#">Stocks/ Equity</a>
+                        <a href="#">PMS</a>
+                        <a href="#">AIF/ GIFT CITY</a>
+                        <a href="#">Tax</a>
+                        <a href="#">Fixed Income/ FD/ NCD/ MLD</a>
+                        <a href="#">Insurance</a>
+                    </div>
                 </li>
-                <!-- Accounts with Hover Submenu -->
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="accountsDropdownMobile" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">Accounts</a>
-                  <ul class="dropdown-menu" aria-labelledby="accountsDropdownMobile">
-                    <li><a class="dropdown-item" href="#savings">Individual</a></li>
-                    <li><a class="dropdown-item" href="#current">Family</a></li>
-                    <li><a class="dropdown-item" href="#investment">NRI</a></li>
-                    <li><a class="dropdown-item" href="#investment">Foreign National</a></li>
-                  </ul>
+                <li>
+                    <a href="#">Accounts <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="#">Individual</a>
+                        <a href="#">Family</a>
+                        <a href="#">NRI</a>
+                        <a href="#">Foreign National</a>
+                    </div>
                 </li>
-                <!-- About Us with Hover Submenu -->
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="aboutusDropdownMobile" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">About Us</a>
-                  <ul class="dropdown-menu" aria-labelledby="aboutusDropdownMobile">
-                    <li><a class="dropdown-item" href="#savings">Why Moneyfrog</a></li>
-                    <li><a class="dropdown-item" href="#current">Our Story/ Journey</a></li>
-                    <li><a class="dropdown-item" href="#investment">Promotors/ KMP (Key management persons)</a></li>
-                    <li><a class="dropdown-item" href="#savings">Investors/ Compliance</a></li>
-                    <li><a class="dropdown-item" href="#savings">Testimonial</a></li>
-                  </ul>
+                <li>
+                    <a href="#">About Us <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="#">Why Moneyfrog</a>
+                        <a href="#">Our Story/ Journey</a>
+                        <a href="#">Promotors/ KMP</a>
+                        <a href="#">Investors/ Compliance</a>
+                        <a href="#testimonials">Testimonial</a>
+                        <a href="#">Careers</a>
+                        <a href="#contact">Contact Us</a>
+                    </div>
                 </li>
-                <!-- Insights -->
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="insightsDropdownMobile" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">Insights</a>
-                  <ul class="dropdown-menu" aria-labelledby="insightsDropdownMobile">
-                    <li><a class="dropdown-item" href="#savings">Blog</a></li>
-                    <li><a class="dropdown-item" href="#current">FAQ</a></li>
-                    <li><a class="dropdown-item" href="#investment">Market Outlook</a></li>
-                    <li><a class="dropdown-item" href="#investment">Calculators</a></li>
-                  </ul>
+                <li>
+                    <a href="#">Insights <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="#">Blog</a>
+                        <a href="#">FAQ</a>
+                        <a href="#">Market Outlook</a>
+                        <a href="#calculator">Calculators</a>
+                    </div>
                 </li>
-                <!-- Jobs Openings -->
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="jobsDropdownMobile" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">Jobs Openings</a>
-                  <ul class="dropdown-menu" aria-labelledby="jobsDropdownMobile">
-                    <li><a class="dropdown-item" href="#savings">Current openings</a></li>
-                    <li><a class="dropdown-item" href="#current">Work Culture</a></li>
-                    <li><a class="dropdown-item" href="#investment">Success stories</a></li>
-                  </ul>
-                </li>
-                <!-- Contact us -->
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="contactusDropdownMobile" role="button"
-                    data-bs-toggle="dropdown" aria-expanded="false">Contact us</a>
-                  <ul class="dropdown-menu" aria-labelledby="contactusDropdownMobile">
-                    <li><a class="dropdown-item" href="#savings">Savings Account</a></li>
-                    <li><a class="dropdown-item" href="#current">Current Account</a></li>
-                    <li><a class="dropdown-item" href="#investment">Investment Account</a></li>
-                  </ul>
-                </li>
-              </ul>
-              <!-- Buttons (mobile only) -->
-              <div class="mt-3 d-flex gap-2">
-                <a class="btn btn-outline-secondary w-50" href="#contact">Login</a>
-                <button class="custom-btn2 w-50">Get Started</button>
-              </div>
+            </ul>
+            <div class="nav-buttons">
+                <a href="#" class="login-button">Login</a>
+                <a href="#contact" class="cta-button">
+                    Get Started
+                    <span class="arrow-icon">
+                        <i class="fas fa-arrow-right"></i>
+                    </span>
+                </a>
             </div>
-          </div>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <header class="hero">
-    <div class="container">
-      <div class="row align-items-center g-4">
-        <div class="col-lg-6">
-          <!-- <span class="hero-tag mb-3"><i class="bi bi-shield-check"></i> Secure · Expert · Consistent</span> -->
-          <h1 class="display-5 mt-2">Your Investment Needs <span class="text-brand">Trust</span>. <span class="text-brand">Expertise</span>. <span class="text-brand">Consistency</span>.</h1>
-          <p class="lead mt-3">Invest with confidence — where trust meets expert guidance, every step of the way.</p>
-          <div class="d-flex flex-wrap gap-2 mt-2">
-            <button class="custom-btn">
-              Get Started 
-              <!-- <span class="icon">⬇</span> -->
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <i class="fas fa-bars"></i>
             </button>
-          </div>
+        </nav>
+    </header>
 
-          <div class="row g-3 text-center text-md-start align-items-center pt5pb10" >
-            <div class="col-12 col-md-4">
-              <div class="stat justify-content-center justify-content-md-start">
-                <i class="bi bi-graph-up-arrow hero_icon"></i>
+    <!-- Sidebar Menu -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <div class="sidebar-menu" id="sidebarMenu">
+        <div class="sidebar-header">
+            <div class="user-info">
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
                 <div>
-                  <div class="value " data-count="23">23 Lakhs</div>
-                  <div class="label">Trusted clients</div>
+                    <div class="sidebar-user-name">Guest User</div>
+                    <div class="sidebar-user-subtitle">Tap to Login / Sign Up</div>
                 </div>
-              </div>
             </div>
-            <div class="col-12 col-md-4">
-              <div class="stat justify-content-center justify-content-md-start">
-                <i class="bi bi-cash-coin hero_icon"></i>
-                <div>
-                  <div class="value" data-count="2000">2000+ Cr</div>
-                  <div class="label">in Managed Asset</div>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-4">
-              <div class="stat justify-content-center justify-content-md-start">
-                <i class="bi bi-award hero_icon"></i>
-                <div>
-                  <div class="value" data-count="11">11 Years</div>
-                  <div class="label">of Track Record</div>
-                </div>
-              </div>
-            </div>
-          </div>
+            <button class="sidebar-close" id="sidebarClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
 
+        <div class="sidebar-content">
+            <div class="sidebar-section-title">Products</div>
+
+            <a href="#" class="sidebar-menu-item">
+                <i class="fas fa-chart-pie"></i>
+                <span>Mutual Funds</span>
+                <i class="fas fa-chevron-right arrow"></i>
+            </a>
+
+            <a href="#" class="sidebar-menu-item">
+                <i class="fas fa-chart-line"></i>
+                <span>Stocks/ Equity</span>
+                <i class="fas fa-chevron-right arrow"></i>
+            </a>
+
+            <a href="#" class="sidebar-menu-item">
+                <i class="fas fa-briefcase"></i>
+                <span>PMS</span>
+                <i class="fas fa-chevron-right arrow"></i>
+            </a>
+
+            <a href="#" class="sidebar-menu-item">
+                <i class="fas fa-building"></i>
+                <span>AIF/ GIFT CITY</span>
+                <i class="fas fa-chevron-right arrow"></i>
+            </a>
+
+            <a href="#" class="sidebar-menu-item">
+                <i class="fas fa-receipt"></i>
+                <span>Tax</span>
+                <i class="fas fa-chevron-right arrow"></i>
+            </a>
+
+            <a href="#" class="sidebar-menu-item">
+                <i class="fas fa-university"></i>
+                <span>Fixed Income/ FD/ NCD/ MLD</span>
+                <i class="fas fa-chevron-right arrow"></i>
+            </a>
+
+            <a href="#" class="sidebar-menu-item">
+                <i class="fas fa-shield-alt"></i>
+                <span>Insurance</span>
+                <i class="fas fa-chevron-right arrow"></i>
+            </a>
+
+            <div class="sidebar-section-title">Accounts</div>
+
+            <a href="#" class="sidebar-menu-item">
+                <i class="fas fa-user"></i>
+                <span>Individual</span>
+                <i class="fas fa-chevron-right arrow"></i>
+            </a>
+
+            <a href="#" class="sidebar-menu-item">
+                <i class="fas fa-users"></i>
+                <span>Family</span>
+                <i class="fas fa-chevron-right arrow"></i>
+            </a>
+
+            <a href="#" class="sidebar-menu-item">
+                <i class="fas fa-passport"></i>
+                <span>NRI</span>
+                <i class="fas fa-chevron-right arrow"></i>
+            </a>
+
+            <a href="#" class="sidebar-menu-item">
+                <i class="fas fa-globe"></i>
+                <span>Foreign National</span>
+                <i class="fas fa-chevron-right arrow"></i>
+            </a>
+
+            <div class="sidebar-section-title">About Us</div>
+
+            <a href="#" class="sidebar-menu-item">
+                <i class="fas fa-question-circle"></i>
+                <span>Why Moneyfrog</span>
+                <i class="fas fa-chevron-right arrow"></i>
+            </a>
+
+            <a href="#" class="sidebar-menu-item">
+                <i class="fas fa-history"></i>
+                <span>Our Story/ Journey</span>
+                <i class="fas fa-chevron-right arrow"></i>
+            </a>
+
+            <a href="#" class="sidebar-menu-item">
+                <i class="fas fa-user-tie"></i>
+                <span>Promotors/ KMP</span>
+                <i class="fas fa-chevron-right arrow"></i>
+            </a>
+
+            <a href="#" class="sidebar-menu-item">
+                <i class="fas fa-handshake"></i>
+                <span>Investors/ Compliance</span>
+                <i class="fas fa-chevron-right arrow"></i>
+            </a>
+
+            <a href="#testimonials" class="sidebar-menu-item">
+                <i class="fas fa-star"></i>
+                <span>Testimonial</span>
+                <i class="fas fa-chevron-right arrow"></i>
+            </a>
+
+            <a href="#" class="sidebar-menu-item">
+                <i class="fas fa-briefcase"></i>
+                <span>Careers</span>
+                <i class="fas fa-chevron-right arrow"></i>
+            </a>
+
+            <a href="#contact" class="sidebar-menu-item">
+                <i class="fas fa-phone"></i>
+                <span>Contact Us</span>
+                <i class="fas fa-chevron-right arrow"></i>
+            </a>
+
+            <div class="sidebar-section-title">Insights</div>
+
+            <a href="#" class="sidebar-menu-item">
+                <i class="fas fa-blog"></i>
+                <span>Blog</span>
+                <i class="fas fa-chevron-right arrow"></i>
+            </a>
+
+            <a href="#" class="sidebar-menu-item">
+                <i class="fas fa-question"></i>
+                <span>FAQ</span>
+                <i class="fas fa-chevron-right arrow"></i>
+            </a>
+
+            <a href="#" class="sidebar-menu-item">
+                <i class="fas fa-chart-area"></i>
+                <span>Market Outlook</span>
+                <i class="fas fa-chevron-right arrow"></i>
+            </a>
+
+            <a href="#calculator" class="sidebar-menu-item">
+                <i class="fas fa-calculator"></i>
+                <span>Calculators</span>
+                <i class="fas fa-chevron-right arrow"></i>
+            </a>
         </div>
-        <div class="col-lg-6 hero-visual">
-          <div class="hero-blob"></div>
-          <div class="consult-card p-4 p-md-4 ms-lg-auto" style="max-width:420px;">
-            <h3 class="fw-bold mb-3">Book free consultation</h3>
-            <form id="consultForm" novalidate>
-              <div class="row g-2">
-                <div class="col-12 col-sm-6">
-                  <label class="form-label">Your name</label>
-                  <input type="text" class="form-control" name="name" required>
-                </div>
-                <div class="col-12 col-sm-6">
-                  <label class="form-label">Company name</label>
-                  <input type="text" class="form-control" name="company" required>
-                </div>
-                <div class="col-12 col-sm-6">
-                  <label class="form-label">Phone number</label>
-                  <input type="tel" class="form-control" name="phone" pattern="^[0-9\-\+\s]{8,}$" required>
-                </div>
-                <div class="col-12 col-sm-6">
-                  <label class="form-label">Email address</label>
-                  <input type="email" class="form-control" name="email" required>
-                </div>
-                <div class="col-12">
-                  <button class="btn btn-brand w-100" type="submit">Submit request</button>
-                </div>
-              </div>
-            </form>
-            <div class="text-center small text-muted mt-2">We respect your privacy. No spam.</div>
-          </div>
+
+        <div class="sidebar-promo">
+            <h4>MoneyFrog Premium</h4>
+            <p>Unlock exclusive investment opportunities and personalized financial guidance</p>
         </div>
-      </div>
     </div>
-  </header>
 
-
-  <!-- SERVICES -->
-  <section id="services" class="section">
-    <div class="container">
-      <div class="mb-4">
-        <hr class="custom-hr">
-        <h2 class="section-title">Our Services</h2>
-      </div>
-      <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col d-flex">
-          <div class="service-card flex-fill">
-            <div class="service-icon"><i class="bi bi-diagram-3"></i></div>
-            <div class="fw-bold mt-2">Business Unit Strategy</div>
-            <div class="small text-muted">The right informed planning and execution, supporting revenue & growth outcomes, accepting
-              systems to the new era</div>
-          </div>
-        </div>
-        <div class="col d-flex">
-          <div class="service-card flex-fill">
-            <div class="service-icon"><i class="bi bi-receipt"></i></div>
-            <div class="fw-bold mt-2">Taxes & Accounting</div>
-            <div class="small text-muted">Taxes & Accounting services offer compliance for individuals and businesses, with a focus
-              on strategic financial outcomes</div>
-          </div>
-        </div>
-        <div class="col d-flex">
-          <div class="service-card flex-fill">
-            <div class="service-icon"><i class="bi bi-flag"></i></div>
-            <div class="fw-bold mt-2">Finance Planning</div>
-            <div class="small text-muted">Our Finance Planning services are tailored to strategic financial outcomes for both
-              individuals and businesses</div>
-          </div>
-        </div>
-      </div>
-      <div class="row row-cols-1 row-cols-md-3 g-4 mt-1">
-        <div class="col d-flex">
-          <div class="service-card flex-fill">
-            <div class="service-icon"><i class="bi bi-graph-up"></i></div>
-            <div class="fw-bold mt-2">Trades & Stocks</div>
-            <div class="small text-muted">Trades & Stocks provide access to all elements of capital markets, with a focus on
-              security and compliance, so you can focus on what matters most</div>
-          </div>
-        </div>
-        <div class="col d-flex">
-          <div class="service-card flex-fill">
-            <div class="service-icon"><i class="bi bi-chat-dots"></i></div>
-            <div class="fw-bold mt-2">Financial Advisory</div>
-            <div class="small text-muted">Financial Advisory includes the right product selection, risk assessment, and a focus on
-              short and long-term outcomes</div>
-          </div>
-        </div>
-        <div class="col d-flex">
-          <div class="service-card flex-fill">
-            <div class="service-icon"><i class="bi bi-globe2"></i></div>
-            <div class="fw-bold mt-2">International Business</div>
-            <div class="small text-muted">International Business offers support for international markets and cross-border wealth
-              structuring, making your business truly global</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ACCOUNTS -->
-  <section id="accounts" class="section bg-soft">
-    <div class="container">
-      <div class="text-center mb-4">
-        <span class="text-uppercase text-muted small">ACCOUNTS</span>
-        <h2 class="section-title">Financial control in your pocket</h2>
-        <p class="section-subtitle">Effortlessly save, invest, budget—taking control of debt has never been simpler.</p>
-      </div>
-      <div class="row justify-content-center align-items-stretch g-4">
-        <div class="col-md-4 d-flex">
-          <div class="mini-card flex-fill text-center">
-            <div class="spark mb-3">
-              <img src="https://img.icons8.com/ios-filled/50/90c740/money-bag.png" alt="Savings" style="height:48px;">
-            </div>
-            <h6 class="fw-bold">Secure your future</h6>
-            <div class="text-muted small mb-2">Savings</div>
-            <p class="mb-0">Build savings, manage financial security for your future goals.</p>
-            <a href="#" class="btn btn-sm btn-brand mt-3">Start saving <i class="bi bi-arrow-right"></i></a>
-          </div>
-        </div>
-        <div class="col-md-4 d-flex">
-          <div class="mini-card flex-fill text-center">
-            <div class="spark mb-3">
-              <img src="https://img.icons8.com/ios-filled/50/90c740/pie-chart.png" alt="Investments" style="height:48px;">
-            </div>
-            <h6 class="fw-bold">Grow your wealth</h6>
-            <div class="text-muted small mb-2">Investments</div>
-            <p class="mb-0">Explore your returns and watch your wealth grow.</p>
-            <a href="#" class="btn btn-sm btn-brand mt-3">Start investing <i class="bi bi-arrow-right"></i></a>
-          </div>
-        </div>
-        <div class="col-md-4 d-flex">
-          <div class="mini-card flex-fill text-center">
-            <div class="spark mb-3">
-              <img src="https://img.icons8.com/ios-filled/50/90c740/graph-report.png" alt="Budgeting" style="height:48px;">
-            </div>
-            <h6 class="fw-bold">Track your expenses</h6>
-            <div class="text-muted small mb-2">Budgeting</div>
-            <p class="mb-0">Manage your expenses seamlessly, gaining clarity over your spending.</p>
-            <a href="#" class="btn btn-sm btn-brand mt-3">Start budgeting <i class="bi bi-arrow-right"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FEATURES / ABOUT -->
-  <section id="features" class="section">
-    <div class="container">
-      <div class="row g-4 align-items-start">
-        <div class="col-lg-5">
-          <div class="mb-3 text-start">
-            <span class="text-uppercase text-muted small">About Us</span>
-            <h2 class="section-title mt-2">Get the control you need over your finances</h2>
-            <p class="section-subtitle">Enjoy expense tracking, bill pay, invoices, and insightful expense reports, giving you
-              insights into your financial activities and patterns.</p>
-            <a href="#" class="btn btn-brand mt-2">Discover more</a>
-          </div>
-        </div>
-        <div class="col-lg-7">
-          <div class="row g-3 g-lg-4 row-cols-1 row-cols-sm-2">
-            <div class="col">
-              <div class="feature h-100 text-center">
-                <div class="mb-2"><i class="bi bi-wallet2" style="font-size:2rem;"></i></div>
-                <h6 class="fw-bold mb-1">Expense management</h6>
-                <p class="small text-muted">Categorize control expenses, categorize spending, and control transactions with multiple
-                  accounts.</p>
-              </div>
-            </div>
-            <div class="col">
-              <div class="feature h-100 text-center">
-                <div class="mb-2"><i class="bi bi-receipt-cutoff" style="font-size:2rem;"></i></div>
-                <h6 class="fw-bold mb-1">Receipt tracking</h6>
-                <p class="small text-muted">Organize and store receipts digitally, categorizing spending, and keeping records for
-                  financial clarity.</p>
-              </div>
-            </div>
-            <div class="col">
-              <div class="feature h-100 text-center">
-                <div class="mb-2"><i class="bi bi-credit-card" style="font-size:2rem;"></i></div>
-                <h6 class="fw-bold mb-1">Bill pay</h6>
-                <p class="small text-muted">Seamlessly pay bills, recurring, utility transactions and hassle free management of
-                  recurring payments.</p>
-              </div>
-            </div>
-            <div class="col">
-              <div class="feature h-100 text-center">
-                <div class="mb-2"><i class="bi bi-clipboard-data" style="font-size:2rem;"></i></div>
-                <h6 class="fw-bold mb-1">Expense reports</h6>
-                <p class="small text-muted">Generate advanced reports, giving valuable insights into your financial activities and
-                  patterns.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section id="testimonials" class="section bg-soft">
-    <div class="container">
-      <div class="text-center mb-4">
-        <span class="text-uppercase text-muted small">12,864+ Happy Clients</span>
-        <h2 class="section-title">Explore genuine client feedback</h2>
-        <p class="section-subtitle">The best way to showcase our commitment is through the experiences and stories of those who
-          have partnered with us.</p>
-        </div>
-        <div class="row justify-content-center">
-          <div class="col-md-4 mb-3">
-            <div class="testimonial h-100 text-center">
-              <div class="mb-2 text-warning">
-                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                  class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-              </div>
-              <p class="mb-3">“This app is truly revolutionary! It transformed the way I manage money. It’s so intuitive &
-                secure.”</p>
-              <div class="d-flex align-items-center justify-content-center gap-2">
-                <div class="avatar">MT</div>
-                <div><strong>Mark Thompson</strong>
-                  <div class="small text-muted">Small business owner</div>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Your Investment Needs<br>TRUST, EXPERTISE,<br>CONSISTENCY</h1>
+                    <p>Build your financial future with our comprehensive investment solutions and expert guidance.</p>
+                    <a href="#contact" class="cta-button">
+                        Get Started
+                        <span class="arrow-icon">
+                            <i class="fas fa-arrow-right"></i>
+                        </span>
+                    </a>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 mb-3">
-            <div class="testimonial h-100 text-center">
-              <div class="mb-2 text-warning">
-                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                  class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-              </div>
-              <p class="mb-3">An incredible app! Budgeting has become a breeze with its intuitive features and insightful data
-                visualizations.</p>
-              <div class="d-flex align-items-center justify-content-center gap-2">
-                <div class="avatar">Rachel Johnson</div>
-                <div><strong>Rachel Johnson</strong>
-                  <div class="small text-muted">Software engineer</div>
+                <div class="hero-visual">
+                    <div class="consultation-form">
+                        <h3>Book free consultation</h3>
+                        <form>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <input type="text" class="form-input" placeholder="Your name *" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-input" placeholder="Location">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <input type="tel" class="form-input" placeholder="Phone number *" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-input" placeholder="Email address *" required>
+                                </div>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="privacy" required>
+                                <label for="privacy">I understand and agree to the <strong>privacy
+                                        policy</strong>.</label>
+                            </div>
+                            <button type="submit" class="submit-btn">
+                                Submit request
+                                <span class="arrow-icon">
+                                    <i class="fas fa-arrow-right"></i>
+                                </span>
+                            </button>
+                        </form>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
-        <div class="col-md-4 mb-3">
-          <div class="testimonial h-100 text-center">
-            <div class="mb-2 text-warning">
-              <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-            </div>
-            <p class="mb-3">The app transformed my financial habits remarkably! Clear, intuitive, and has resources that have
-              fostered real control.</p>
-            <div class="d-flex align-items-center justify-content-center gap-2">
-              <div class="avatar">Samantha Meir</div>
-              <div><strong>Samantha Meir</strong>
-                <div class="small text-muted">Financial analyst</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ACADEMY -->
-  <section id="academy" class="section">
-    <div class="container">
-      <div class="text-center mb-4">
-        <span class="text-uppercase text-muted small">BLOGS & ARTICLES</span>
-        <h2 class="section-title">Learning academy</h2>
-        <p class="section-subtitle">Explore insightful content that keeps you ahead of the curve and connected to the pulse of
-          what’s happening.</p>
-      </div>
-      <div class="row g-3 g-lg-4 row-cols-1 row-cols-md-2 row-cols-lg-3">
-        <div class="col">
-          <article class="article-card h-100">
-            <div class="article-thumb"></div>
-            <div class="article-body">
-              <span class="badge rounded-pill badge-cat">Fintech</span>
-              <h6 class="mt-2 mb-1">The rise of digital wallets: a fintech game-changer</h6>
-              <div class="small text-muted">28 Jul 2025 · 6 min read</div>
+            <!-- Statistics Section -->
+            <div class="statistics">
+                <div class="statistics-container">
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="fas fa-inr"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>2000+ Cr</h3>
+                            <p>in Managed Asset</p>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Pramoters</h3>
+                            <p>With Credentials and Expertise</p>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>11 Years</h3>
+                            <p>of Track Record</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </article>
         </div>
-        <div class="col">
-          <article class="article-card h-100">
-            <div class="article-thumb"></div>
-            <div class="article-body">
-              <span class="badge rounded-pill badge-cat">Budget</span>
-              <h6 class="mt-2 mb-1">Saving smarter: practical tips for financial stability</h6>
-              <div class="small text-muted">27 Jul 2025 · 5 min read</div>
-            </div>
-          </article>
-        </div>
-        <div class="col">
-          <article class="article-card h-100">
-            <div class="article-thumb"></div>
-            <div class="article-body">
-              <span class="badge rounded-pill badge-cat">Blockchain</span>
-              <h6 class="mt-2 mb-1">Blockchain beyond Bitcoin: real-world use cases</h6>
-              <div class="small text-muted">26 Jul 2025 · 7 min read</div>
-            </div>
-          </article>
-        </div>
-        <div class="col">
-          <article class="article-card h-100">
-            <div class="article-thumb"></div>
-            <div class="article-body">
-              <span class="badge rounded-pill badge-cat">Investing</span>
-              <h6 class="mt-2 mb-1">The role of inflation in your investment strategy</h6>
-              <div class="small text-muted">25 Jul 2025 · 8 min read</div>
-            </div>
-          </article>
-        </div>
-        <div class="col">
-          <article class="article-card h-100">
-            <div class="article-thumb"></div>
-            <div class="article-body">
-              <span class="badge rounded-pill badge-cat">Wealth</span>
-              <h6 class="mt-2 mb-1">Building a balanced portfolio: a beginner’s guide</h6>
-              <div class="small text-muted">24 Jul 2025 · 6 min read</div>
-            </div>
-          </article>
-        </div>
-        <div class="col">
-          <article class="article-card h-100">
-            <div class="article-thumb"></div>
-            <div class="article-body">
-              <span class="badge rounded-pill badge-cat">Retirement</span>
-              <h6 class="mt-2 mb-1">Secure your future: a guide to retirement planning</h6>
-              <div class="small text-muted">23 Jul 2025 · 5 min read</div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CALCULATOR -->
-  <section id="calculator" class="section bg-soft">
-    <div class="container">
-      <div class="text-center mb-4">
-        <h2 class="section-title">Calculator</h2>
-      </div>
-      <ul class="nav nav-pills justify-content-center mb-4" id="calcTabs" role="tablist">
-        <li class="nav-item" role="presentation"><button class="nav-link active" id="tax-tab" data-bs-toggle="pill" data-bs-target="#tax-pane" type="button" role="tab" aria-controls="tax-pane" aria-selected="true">Tax</button></li>
-        <li class="nav-item" role="presentation"><button class="nav-link" id="emi-tab" data-bs-toggle="pill" data-bs-target="#emi-pane" type="button" role="tab" aria-controls="emi-pane" aria-selected="false">EMI</button></li>
-        <li class="nav-item" role="presentation"><button class="nav-link" id="sip-tab" data-bs-toggle="pill" data-bs-target="#sip-pane" type="button" role="tab" aria-controls="sip-pane" aria-selected="false">SIP</button></li>
-      </ul>
-      <div class="tab-content">
-        <!-- TAX -->
-        <div class="tab-pane fade show active" id="tax-pane" role="tabpanel" aria-labelledby="tax-tab">
-          <div class="row g-3">
-            <div class="col-lg-6">
-              <div class="calc-card h-100">
-                <h5 class="mb-3">Calculate Your Taxes (demo)</h5>
-                <form id="taxForm" class="row g-3" novalidate>
-                  <div class="col-sm-6">
-                    <label class="form-label">Annual Income (₹)</label>
-                    <input type="number" class="form-control" name="income" min="0" step="1" value="1200000" required>
-                  </div>
-                  <div class="col-sm-6">
-                    <label class="form-label">Tax Rate (%)</label>
-                    <input type="number" class="form-control" name="rate" min="0" max="50" step="0.1" value="10">
-                  </div>
-                  <div class="col-sm-6">
-                    <label class="form-label">Deductions (₹)</label>
-                    <input type="number" class="form-control" name="deduction" min="0" step="1" value="50000">
-                  </div>
-                  <div class="col-12">
-                    <button type="submit" class="btn btn-brand">Compute</button>
-                  </div>
-                </form>
-              </div>
+    <!-- Services Section -->
+    <section class="services" id="services" style="display:none;">
+        <div class="container">
+            <div class="green-line"></div>
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="assets/img/mutual-funds.png" alt="Mutual Funds" class="service-icon">
+                    <h3>Mutual Funds</h3>
+                    <p>Grow your wealth with diversified mutual funds, managed by experts for long-term financial
+                        security and growth.</p>
+                </div>
+                <div class="service-card">
+                    <img src="assets/img/stocks.png" alt="Stocks/Equity" class="service-icon">
+                    <h3>Stocks/ Equity</h3>
+                    <p>Maximize returns through direct equity investments, guided by expert research and proven market
+                        strategies.</p>
+                </div>
+                <div class="service-card">
+                    <img src="assets/img/PMS.png" alt="PMS" class="service-icon">
+                    <h3>PMS</h3>
+                    <p>Enhance your portfolio with personalized management solutions tailored for growth,
+                        diversification, and wealth
+                        creation.</p>
+                </div>
+                <div class="service-card">
+                    <img src="assets/img/aif.png" alt="AIF/GIFT CITY" class="service-icon">
+                    <h3>AIF/ GIFT CITY</h3>
+                    <p>Access exclusive alternative investment opportunities through AIFs and GIFT City for higher
+                        growth potential.</p>
+                </div>
+                <div class="service-card">
+                    <img src="assets/img/tax.png" alt="Tax Services" class="service-icon">
+                    <h3>Tax</h3>
+                    <p>Simplify tax planning with expert advisory services that optimize savings, ensure compliance, and
+                        reduce liabilities.
+                    </p>
+                </div>
+                <div class="service-card">
+                    <img src="assets/img/fixed-deposits.png" alt="Fixed Income" class="service-icon">
+                    <h3>Fixed Income/ FD/ NCD/ MLD</h3>
+                    <p>Secure steady income with safe, reliable options like FDs, NCDs, and market-linked debentures.
+                    </p>
+                </div>
             </div>
-            <div class="col-lg-6">
-              <div class="calc-card h-100">
-                <h5 class="mb-3">Total Summary</h5>
-                <ul class="list-group" id="taxSummary">
-                  <li class="list-group-item d-flex justify-content-between"><span>Taxable Income</span><strong>₹ 0</strong></li>
-                  <li class="list-group-item d-flex justify-content-between"><span>Estimated Tax</span><strong>₹ 0</strong></li>
-                  <li class="list-group-item d-flex justify-content-between"><span>Monthly Take-home</span><strong>₹ 0</strong></li>
-                </ul>
-              </div>
-            </div>
-          </div>
         </div>
-        <!-- EMI -->
-        <div class="tab-pane fade" id="emi-pane" role="tabpanel" aria-labelledby="emi-tab">
-          <div class="row g-3">
-            <div class="col-lg-6">
-              <div class="calc-card h-100">
-                <h5 class="mb-3">EMI Calculator</h5>
-                <form id="emiForm" class="row g-3" novalidate>
-                  <div class="col-sm-6">
-                    <label class="form-label">Loan Amount (₹)</label>
-                    <input type="number" class="form-control" name="principal" min="0" step="1000" value="1000000" required>
-                  </div>
-                  <div class="col-sm-6">
-                    <label class="form-label">Interest (p.a. %)</label>
-                    <input type="number" class="form-control" name="rate" min="0" step="0.1" value="9.5" required>
-                  </div>
-                  <div class="col-sm-6">
-                    <label class="form-label">Tenure (months)</label>
-                    <input type="number" class="form-control" name="months" min="1" step="1" value="240" required>
-                  </div>
-                  <div class="col-12">
-                    <button type="submit" class="btn btn-brand">Compute</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="calc-card h-100">
-                <h5 class="mb-3">Result</h5>
-                <ul class="list-group" id="emiSummary">
-                  <li class="list-group-item d-flex justify-content-between"><span>EMI</span><strong>₹ 0</strong></li>
-                  <li class="list-group-item d-flex justify-content-between"><span>Total Interest</span><strong>₹ 0</strong></li>
-                  <li class="list-group-item d-flex justify-content-between"><span>Total Payment</span><strong>₹ 0</strong></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- SIP -->
-        <div class="tab-pane fade" id="sip-pane" role="tabpanel" aria-labelledby="sip-tab">
-          <div class="row g-3">
-            <div class="col-lg-6">
-              <div class="calc-card h-100">
-                <h5 class="mb-3">SIP Calculator</h5>
-                <form id="sipForm" class="row g-3" novalidate>
-                  <div class="col-sm-6">
-                    <label class="form-label">Monthly Invest (₹)</label>
-                    <input type="number" class="form-control" name="monthly" min="0" step="100" value="10000" required>
-                  </div>
-                  <div class="col-sm-6">
-                    <label class="form-label">Expected Return (p.a. %)</label>
-                    <input type="number" class="form-control" name="rate" min="0" step="0.1" value="12" required>
-                  </div>
-                  <div class="col-sm-6">
-                    <label class="form-label">Years</label>
-                    <input type="number" class="form-control" name="years" min="1" step="1" value="10" required>
-                  </div>
-                  <div class="col-12">
-                    <button type="submit" class="btn btn-brand">Compute</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="calc-card h-100">
-                <h5 class="mb-3">Result</h5>
-                <ul class="list-group" id="sipSummary">
-                  <li class="list-group-item d-flex justify-content-between"><span>Invested Amount</span><strong>₹ 0</strong></li>
-                  <li class="list-group-item d-flex justify-content-between"><span>Estimated Returns</span><strong>₹ 0</strong></li>
-                  <li class="list-group-item d-flex justify-content-between"><span>Future Value</span><strong>₹ 0</strong></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FOOTER -->
-  <footer class="pt-5">
-    <div class="container">
-      <div class="row g-4 align-items-start">
-        <div class="col-md-4">
-          <div class="d-flex align-items-center gap-2 mb-2">
-            <span class="rounded-circle d-inline-flex align-items-center justify-content-center" style="width:36px;height:36px;background:#0e1b2e;color:#9ae6b4"><i class="bi bi-coin"></i></span>
-            <h5 class="m-0">MONEYFROG</h5>
-          </div>
-          <p class="small text-secondary mb-2">Building financial confidence through simple tools, thoughtful content, and human
-            advisors.</p>
-          <div class="d-flex gap-2 mt-2">
-            <a href="#" class="text-white"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="text-white"><i class="bi bi-twitter"></i></a>
-            <a href="#" class="text-white"><i class="bi bi-linkedin"></i></a>
-            <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
-          </div>
-        </div>
-        <div class="col-6 col-md-2">
-          <h6 class="text-white">Products</h6>
-          <ul class="list-unstyled small">
-            <li><a href="#">Mutual Funds</a></li>
-            <li><a href="#">Equity</a></li>
-            <li><a href="#">PMS / AIF / GIFT CITY</a></li>
-            <li><a href="#">Tax</a></li>
-            <li><a href="#">Fixed Income</a></li>
-            <li><a href="#">Insurance</a></li>
-          </ul>
-        </div>
-        <div class="col-6 col-md-2">
-          <h6 class="text-white">Accounts</h6>
-          <ul class="list-unstyled small">
-            <li><a href="#">Individual</a></li>
-            <li><a href="#">Family</a></li>
-            <li><a href="#">NRI</a></li>
-            <li><a href="#">Foreign National</a></li>
-          </ul>
-        </div>
-        <div class="col-6 col-md-2">
-          <h6 class="text-white">Insights</h6>
-          <ul class="list-unstyled small">
-            <li><a href="#academy">Blog</a></li>
-            <li><a href="#academy">Market Outlook</a></li>
-            <li><a href="#calculator">Calculators</a></li>
-          </ul>
-        </div>
-        <div class="col-6 col-md-2">
-          <h6 class="text-white">Get in touch</h6>
-          <ul class="list-unstyled small">
-            <li><a href="mailto:care@moneyfrog.example">contact@moneyfrog.in</a></li>
-            <li><a href="#">Twitter</a></li>
-            <li><a href="#">LinkedIn</a></li>
-          </ul>
-        </div>
-      </div>
-      <hr class="border-light border-opacity-10 mt-4" />
-      <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center py-3 small">
-        <div>© <span id="yearCopy"></span> Moneyfrog. All rights reserved.</div>
-        <div class="d-flex gap-3"><a href="#">Terms & Conditions</a><a href="#">Privacy Policy</a></div>
-      </div>
-    </div>
-  </footer>
+    <!-- Investment Options - 3 Cards Side by Side -->
+    <section class="investment-options">
+        <div class="container">
+            <div class="section-header-center">
+                <div class="green-line"></div>
+                <h2 class="section-title">Our Services</h2>
+                </div>
+                <div class="investment-carousel">
+                    <!-- Card 1: Mutual Funds -->
+                    <div class="investment-card">
+                        <h3 class="card-title investtitle">Mutal Funds</h3>
+                        <span class="investsubtitle">
+                            <b>Curated, goal-based portfolios which are built and monitored by experts.</b>
+                        </span>
+                        <ul class="card-highlights">
+                            <li>Rigorous screening</li>
+                            <li>Goal-based allocation</li>
+                            <li>Continuous review & rebalance</li>
+                            <li>Tax-efficient for HNIs/NRIs</li>
+                        </ul>
+                        <span class="investsubtitle">
+                            <b>Top performing mutual funds (as of 6th Oct 2025):</b>
+                        </span>
+                        </br>
+                        </br>
+                        <div class="card-items">
+                            <div class="card-item">
+                                <div class="item-top">
+                                    <div class="item-logo">
+                                        <img src="assets/img/motilala_logo.jpg" alt="Akme Fintrade" class="item-icon">
+                                    </div>
+                                    <div class="item-name">
+                                        <h5 class="subsubtitle">Motilal Oswal Large Cap Fund</h5>
+                                    </div>
+                                    <a href="#" class="item-arrow">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                                <div class="item-bottom">
+                                    <div class="item-stat">
+                                        <span class="stat-label">NAV</span>
+                                        <span class="stat-value">₹ 13.79</span>
+                                    </div>
+                                    <div class="item-stat">
+                                        <span class="stat-label">1Y returns</span>
+                                        <span class="stat-value">6.82%</span>
+                                    </div>
+                                </div>
+                            </div>
+                
+                            <div class="card-item">
+                                <div class="item-top">
+                                    <div class="item-logo">
+                                        <img src="assets/img/invesco_mf_logo_blue_pos_rgb.jpg" alt="Western Capital" class="item-icon">
+                                    </div>
+                                    <div class="item-name">
+                                        <h5 class="subsubtitle">Invesco India Mid Cap Fund</h5>
+                                    </div>
+                                    <a href="#" class="item-arrow">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                                <div class="item-bottom">
+                                    <div class="item-stat">
+                                        <span class="stat-label">NAV</span>
+                                        <span class="stat-value">₹ 178.83</span>
+                                    </div>
+                                    <div class="item-stat">
+                                        <span class="stat-label">1Y returns</span>
+                                        <span class="stat-value">6.02%</span>
+                                    </div>
+                                </div>
+                            </div>
+                <!-- 
+                            <div class="card-item">
+                                <div class="item-top">
+                                    <div class="item-logo">
+                                        <img src="assets/img/QNTMF.png" alt="Western Capital" class="item-icon">
+                                    </div>
+                                    <div class="item-name">
+                                        <h5 class="subsubtitle">Quantum Small Cap Fund</h5>
+                                    </div>
+                                    <a href="#" class="item-arrow">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                                <div class="item-bottom">
+                                    <div class="item-stat">
+                                        <span class="stat-label">NAV</span>
+                                        <span class="stat-value">₹ 12.56</span>
+                                    </div>
+                                    <div class="item-stat">
+                                        <span class="stat-label">1Y returns</span>
+                                        <span class="stat-value">1.70%</span>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                
+                        <div class="card-explore">
+                            <a href="#" class="explore-link">
+                                Learn More
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                
+                    <!-- Card 2: Invest in Equity -->
+                    <div class="investment-card">
+                        <h3 class="card-title investtitle">Equity</h3>
+                        <span class="investsubtitle">
+                            <b>Blend of long-term investing & tactical swing trades.</b>
+                        </span>
+                        <ul class="card-highlights">
+                            <li>Invest in quality businesses</li>
+                            <li>Diversify across market caps</li>
+                            <li>Research-backed swing calls</li>
+                            <li>Disciplined risk management</li>
+                        </ul>
+                        <span class="investsubtitle">
+                            <b>Here are some stocks which we are keen on (as of 6th Oct 2025):</b>
+                        </span>
+                        </br>
+                        </br>
+                        <div class="card-items">
+                            <div class="card-item">
+                                <div class="item-top">
+                                    <div class="item-logo">
+                                        <img src="assets/img/max_finacial_services.png" alt="Max Financial Services Ltd"
+                                            class="item-icon">
+                                    </div>
+                                    <div class="item-name">
+                                        <h5 class="subsubtitle">Max Financial Services Ltd </h5>
+                                    </div>
+                                    <a href="#" class="item-arrow">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                                <div class="item-bottom">
+                                    <div class="item-stat">
+                                        <span class="stat-label">Current</span>
+                                        <span class="stat-value">₹ 1611</span>
+                                    </div>
+                                    <div class="item-stat">
+                                        <span class="stat-label">Target</span>
+                                        <span class="stat-value">₹ 2000</span>
+                                    </div>
+                                    <div class="item-stat">
+                                        <span class="stat-label">Tenure</span>
+                                        <span class="stat-value">12 M</span>
+                                    </div>
+                                </div>
+                            </div>
+                
+                            <div class="card-item">
+                                <div class="item-top">
+                                    <div class="item-logo">
+                                        <img src="assets/img/endurancegroup.png" alt="Endurance Technologies Ltd" class="item-icon">
+                                    </div>
+                                    <div class="item-name">
+                                        <h5 class="subsubtitle">Endurance Technologies Ltd </h5>
+                                    </div>
+                                    <a href="#" class="item-arrow">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                                <div class="item-bottom">
+                                    <div class="item-stat">
+                                        <span class="stat-label">Current</span>
+                                        <span class="stat-value">₹ 2875</span>
+                                    </div>
+                                    <div class="item-stat">
+                                        <span class="stat-label">Target</span>
+                                        <span class="stat-value">₹ 3311</span>
+                                    </div>
+                                    <div class="item-stat">
+                                        <span class="stat-label">Tenure</span>
+                                        <span class="stat-value">12 M</span>
+                                    </div>
+                                </div>
+                            </div>
+                
+<!--                             <div class="card-item">
+                                <div class="item-top">
+                                    <div class="item-logo">
+                                        <img src="assets/img/heromotocorp.png" alt="Western Capital" class="item-icon">
+                                    </div>
+                                    <div class="item-name">
+                                        <h5 class="subsubtitle">Hero Motocorp Ltd</h5>
+                                    </div>
+                                    <a href="#" class="item-arrow">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                                <div class="item-bottom">
+                                    <div class="item-stat">
+                                        <span class="stat-label">Current</span>
+                                        <span class="stat-value">₹ 5567</span>
+                                    </div>
+                                    <div class="item-stat">
+                                        <span class="stat-label">Target</span>
+                                        <span class="stat-value">₹ 6315</span>
+                                    </div>
+                                    <div class="item-stat">
+                                        <span class="stat-label">Tenure</span>
+                                        <span class="stat-value">12 M</span>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                
+                
+                
+                        <div class="card-explore">
+                            <a href="#" class="explore-link">
+                                Learn More
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                
+                    <!-- Card 3: Invest in Equity -->
+                    <div class="investment-card">
+                        <h3 class="card-title investtitle">Fixed Income</h3>
+                        <span class="investsubtitle">
+                            <b>Blend of predictable returns, safety & risk adjusted performance.</b>
+                        </span>
+                        <ul class="card-highlights">
+                            <li>Invest in quality funds</li>
+                            <li>Diversify across fund houses</li>
+                            <li>Research-backed calls</li>
+                            <li>Disciplined risk management</li>
+                        </ul>
+                        <span class="investsubtitle">
+                            <b>Here are some products in this category:</b>
+                        </span>
+                        </br>
+                        </br>
+                        <ul class="card-highlights">
+                            <li>Corporate Fixed Deposits</li>
+                            <li>Bank Fixed Deposits</li>
+                            <li>Secured Non-Convertible Debentures</li>
+                            <li>Listed Bonds</li>
+                        </ul>
+                        <span class="investsubtitle">
+                            <b>More details and curated recommendations are available with our advisors</b>
+                        </span>
+                        </br>
+                        </br>
+                
+                        <div class="card-explore">
+                            <a href="#" class="explore-link">
+                                Learn More
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                
+                    <!-- Card 4: Invest in Equity -->
+                    <div class="investment-card">
+                        <h3 class="card-title investtitle">Portfolio Management Services</h3>
+                        <span class="investsubtitle">
+                            <b>Tailored, actively managed portfolios across equity, debt & alternatives. Built for HNIs who
+                                want growth with diversification.</b>
+                        </span>
+                        <ul class="card-highlights">
+                            <li>Custom strategies for your goals & risk</li>
+                            <li>Diversified across asset classes</li>
+                            <li>Active monitoring & rebalancing</li>
+                            <li>Professional reporting & transparency</li>
+                        </ul>
+                        <span class="investsubtitle">
+                            <b>More details and curated recommendations are available with our advisors</b>
+                        </span>
+                        </br>
+                        </br>
+                
+                        <div class="card-explore">
+                            <a href="#" class="explore-link">
+                                Learn More
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                
+                    <!-- Card 5: Insurance -->
+                    <div class="investment-card">
+                        <h3 class="card-title investtitle">Insurance</h3>
+                        <span class="investsubtitle">
+                            <b>Protect your wealth and secure your legacy.</b>
+                        </span>
+                        <ul class="card-highlights">
+                            <li>Term, ULIP & Endowment plans</li>
+                            <li>Health & critical illness coverage</li>
+                            <li>Tailored policies for your needs</li>
+                            <li>Integrated into your wealth plan</li>
+                        </ul>
+                        <span class="investsubtitle">
+                            <b>More details and curated recommendations are available with our advisors.</b>
+                        </span>
+                        </br>
+                        </br>
+                
+                        <div class="card-explore">
+                            <a href="#" class="explore-link">
+                                Learn More
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                
+                    <!-- Card 6: AIFs/GIFT City -->
+                    <div class="investment-card">
+                        <h3 class="card-title investtitle">AIFs/GIFT City</h3>
+                        <span class="investsubtitle">
+                            <b>Access AIFs and international opportunities through GIFT City with expert guidance.</b>
+                        </span>
+                        <ul class="card-highlights">
+                            <li>Diversification beyond equity & debt</li>
+                            <li>Private equity, VC & hedge fund exposure</li>
+                            <li>AIF Cat I, II, III, investment available</li>
+                            <li>Invest in GIFT CITY with no Indian capital gains tax</li>
+                        </ul>
+                        <span class="investsubtitle">
+                            <b>More details and curated recommendations are available with our advisors.</b>
+                        </span>
+                        </br>
+                        </br>
+                
+                        <div class="card-explore">
+                            <a href="#" class="explore-link">
+                                Learn More
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                
+                    <!-- Card 7: Tax -->
+                    <div class="investment-card">
+                        <h3 class="card-title investtitle">Tax</h3>
+                        <span class="investsubtitle">
+                            <b>Integrated tax planning + filing</b>
+                        </span>
+                        <ul class="card-highlights">
+                            <li>Capital gains & dividend optimization</li>
+                            <li>Tax harvesting to reduce liabilities</li>
+                            <li>Family-level investment planning</li>
+                            <li>Full filing support for individuals & NRIs</li>
+                
+                        </ul>
+                        <span class="investsubtitle">
+                            <b>More details and curated recommendations are available with our advisors.</b>
+                        </span>
+                        </br>
+                        </br>
+                        <div class="card-explore">
+                            <a href="#" class="explore-link">
+                                Learn More
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
 
-  <!-- Back to top -->
-  <button id="backToTop" class="btn btn-brand btn-lg rounded-circle" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>
+            </div>
+        </div>
+    </section>
 
-  <!-- Toast (form submission) -->
-  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1055">
-    <div id="liveToast" class="toast align-items-center text-bg-success border-0" role="status" aria-live="polite" aria-atomic="true">
-      <div class="d-flex">
-        <div class="toast-body">Thank you! We will contact you shortly.</div>
-        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-      </div>
-    </div>
-  </div>
+    <!-- Accounts Section -->
+    <section class="accounts">
+        <div class="container">
+            <div class="text-center mb-5">      
+                <div class="green-line"></div>
+                <h2 class="section-title">ACCOUNTS</h2>
+                <h2 class="section-title accounts-section-title">Smart Tools for Smarter Account Management</h2>
+                <p class="section-subtitle">Effortlessly save, invest, budget—taking control of debt has never been
+                    simpler.</p>
+            </div>
+            <div class="accounts-grid">
+                <div class="account-card">
+                    <div class="account-chart individual-chart">
+                        <img src="assets/img/individual.jpg" alt="Individual Account" class="chart-visual">
+                    </div>
+                    <div class="account-category">ACCOUNT TYPE</div>
+                    <h3>Individual</h3>
+                    <p>Personal investment accounts designed for individual investors seeking growth and financial
+                        independence.</p>
+                    <button class="account-btn">Open Account</button>
+                </div>
+                <div class="account-card">
+                    <div class="account-chart family-chart">
+                        <img src="assets/img/family.jpg" alt="Family Account" class="chart-visual">
+                    </div>
+                    <div class="account-category">ACCOUNT TYPE</div>
+                    <h3>Family</h3>
+                    <p>Joint family accounts that help you plan and invest together for shared financial goals and
+                        security.</p>
+                    <button class="account-btn">Open Account</button>
+                </div>
+                <div class="account-card">
+                    <div class="account-chart nri-chart">
+                        <img src="assets/img/NRI.jpg" alt="NRI Account" class="chart-visual">
+                    </div>
+                    <div class="account-category">ACCOUNT TYPE</div>
+                    <h3>NRI</h3>
+                    <p>Specialized investment solutions for Non-Resident Indians to invest in Indian markets from
+                        abroad.</p>
+                    <button class="account-btn">Open Account</button>
+                </div>
+                <div class="account-card">
+                    <div class="account-chart foreign-chart">
+                        <img src="assets/img/foreign national.jpeg" alt="Foreign National Account" class="chart-visual">
+                    </div>
+                    <div class="account-category">ACCOUNT TYPE</div>
+                    <h3>Foreign National</h3>
+                    <p>Investment opportunities for foreign nationals looking to participate in Indian financial
+                        markets.</p>
+                    <button class="account-btn">Comming Soon</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- jQuery & Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- About Us Section -->
+    <section class="about-us">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                <div class="green-line"></div>
+                <h2 class="section-title">ABOUT US</h2>
+                    <h2 class="about-title">Get the control you need over your finances</h2>
+                    <p class="about-description">Enjoy expense tracking, bill pay, invoices, and insightful expense
+                        reports.</p>
+                    <button class="about-btn">Discover more</button>
+                </div>
+                <div class="about-features">
+                    <div class="feature-item">
+                        <div class="feature-icon">💰</div>
+                        <h4>Expense management</h4>
+                        <p>Effortlessly control expenses, categorize spending, and track transactions with intuitive
+                            tools.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🧾</div>
+                        <h4>Receipt tracking</h4>
+                        <p>Organize and store receipts digitally, ensuring easy access and efficient record-keeping for
+                            financial clarity.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">💳</div>
+                        <h4>Bill pay</h4>
+                        <p>Streamline bill payments, ensuring timely transactions and hassle-free management of
+                            recurring expenses.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📊</div>
+                        <h4>Expense reports</h4>
+                        <p>Generate detailed expense reports, gaining valuable insights into your financial activities
+                            and patterns.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <script>
-    // Fallback: Ensure offcanvas opens on toggler click
-    document.addEventListener('DOMContentLoaded', function () {
-      var toggler = document.querySelector('.navbar-toggler[data-bs-toggle="offcanvas"]');
-      var offcanvas = document.getElementById('mobileNav');
-      if (toggler && offcanvas && typeof bootstrap !== 'undefined' && bootstrap.Offcanvas) {
-        toggler.addEventListener('click', function () {
-          var bsOffcanvas = bootstrap.Offcanvas.getOrCreateInstance(offcanvas);
-          bsOffcanvas.show();
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="green-line"></div>
+            <h2 class="section-title">Client Testimonials</h2>
+            <div class="testimonials-slider-container">
+                <div class="testimonials-slider" id="testimonialsSlider">
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="stars">★★★★★</div>
+                            <p>"Money frog has been a rock solid financial partner for me over years. Their USP includes
+                                indept financial knowledge
+                                and approachability. Even could not have asked for more from their app which helps keep
+                                track of your finances.
+                                Happy to recommend their service to all."</p>
+                            <div class="client-info">
+                                <div class="client-photo">
+                                    <img src="assets/img/testomonials/moneyfrog_ved_dhuru.jpg" alt="Ved Dhuru" />
+                                </div>
+                                <div class="client-details">
+                                    <h4>Ved Dhuru</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="stars">★★★★★</div>
+                            <p>"Very good financial planning and service. They have a great team in place that is always
+                                responsive with a customer
+                                focussed approach. The app is very useful in tracking and getting regular updates."</p>
+                            <div class="client-info">
+                                <div class="client-photo">
+                                    <img src="assets/img/testomonials/moneyfrog_darrell_fernandes.jpeg"
+                                        alt="Darrell Fernandes" />
+                                </div>
+                                <div class="client-details">
+                                    <h4>Darrell Fernandes</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="stars">★★★★★</div>
+                            <p>"Team that takes care of your plans. Extremely professional and keep a tight watch on
+                                your financial plans. Gives you
+                                comfort that some one professional is there on it always."</p>
+                            <div class="client-info">
+                                <div class="client-photo">
+                                    <img src="assets/img/testomonials/moneyfrog_saurabh_chaterjee.jpg"
+                                        alt="Saurabh Chatterjee" />
+                                </div>
+                                <div class="client-details">
+                                    <h4>Saurabh Chatterjee</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="stars">★★★★★</div>
+                            <p>"A superbly constructed app that is not only easy to understand, but also a brilliant way
+                                to map your goals and
+                                constantly monitor your progress. One of the best apps you can get in this category."
+                            </p>
+                            <div class="client-info">
+                                <div class="client-photo">
+                                    <img src="assets/img/testomonials/moneyfrog_rahul_pandit.jpg" alt="Rahul Pandit" />
+                                </div>
+                                <div class="client-details">
+                                    <h4>Rahul Pandit</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="stars">★★★★★</div>
+                            <p>"The services rendered by Moneyfrog advisors is quite an experience one with good
+                                knowledge of the mutual fund
+                                market, they keep tracking the fund and guide, one feels like in safe hands, can trust
+                                them fully or they are
+                                reliable. Excellent services"</p>
+                            <div class="client-info">
+                                <div class="client-photo">
+                                    <img src="assets/img/testomonials/moneyfrog_jasvinder_dhanjal.jpg"
+                                        alt="Jasvinder Kaur Dhanjal" />
+                                </div>
+                                <div class="client-details">
+                                    <h4>Jasvinder Kaur Dhanjal</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="stars">★★★★★</div>
+                            <p>"The financial advisors are good. The lady who has been advising me off late is brilliant
+                                and smart and knows what to
+                                do. Also she has been helping in goal settings and planning very well. Overall a good
+                                financial planning firm. Ohh
+                                and the app also shows all your funds and features and is very easy to use. good app."
+                            </p>
+                            <div class="client-info">
+                                <div class="client-photo">
+                                    <img src="assets/img/testomonials/moneyfrog_puneet_akhouri.jpeg"
+                                        alt="Puneet Kumar Akhouri" />
+                                </div>
+                                <div class="client-details">
+                                    <h4>Puneet Kumar Akhouri</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="stars">★★★★★</div>
+                            <p>"This is the best personal finance app I have ever found. All Financial goals were
+                                thoroughly evaluated and assigned
+                                with investment. This is a perfect example of online portfolio management service. Thank
+                                you Pujan Jain for
+                                extraordinary support."</p>
+                            <div class="client-info">
+                                <div class="client-photo">
+                                    <img src="assets/img/testomonials/moneyfrog_amitava_bandyopadhyay.jpeg"
+                                        alt="Amitava Bandyopadhyay" />
+                                </div>
+                                <div class="client-details">
+                                    <h4>Amitava Bandyopadhyay</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Dots -->
+                <div class="testimonial-dots">
+                    <span class="dot active" onclick="goToSlide(0)"></span>
+                    <span class="dot" onclick="goToSlide(1)"></span>
+                    <span class="dot" onclick="goToSlide(2)"></span>
+                    <span class="dot" onclick="goToSlide(3)"></span>
+                    <span class="dot" onclick="goToSlide(4)"></span>
+                    <span class="dot" onclick="goToSlide(5)"></span>
+                    <span class="dot" onclick="goToSlide(6)"></span>
+                </div>
+
+                <!-- Navigation Arrows -->
+                <button class="testimonial-nav prev" onclick="prevSlide()">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="testimonial-nav next" onclick="nextSlide()">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- Learning Academy -->
+    <section class="learning">
+        <div class="container">
+                <div class="green-line"></div>
+                <h2 class="section-title">Learning academy</h2>
+            <div class="learning-grid">
+                <div class="learning-card">
+                    <a href="https://blog.moneyfrog.in/moneyfrog-school/equity-funds-classification/" target="_blank"
+                        class="blog_text_a">
+                        <div class="learning-thumbnail">
+                            <img src="assets/img/Equity_Funds_Classification.jpg" style="width: 100%;">
+                        </div>
+                        <div class="learning-content">
+                            <h5>Equity Funds Classification</h5>
+                            <p style="font-size: 12px;">An equity fund is a mutual fund scheme that invests
+                                predominantly in equity stocks. In the Indian context, as per current SEBI Mutual Fund
+                                Regulations, an equity mutual fund scheme must invest at least 65% of the scheme’s
+                                assets in equities and equity related instruments.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="learning-card">
+                    <a href="https://blog.moneyfrog.in/moneyfrog-school/understanding-debt-funds/" target="_blank"
+                        class="blog_text_a">
+                        <div class="learning-thumbnail">
+                            <img src="https://blog.moneyfrog.in/wp-content/uploads/2017/05/Risk-Ladder-1-1.png"
+                                style="width: 100%;">
+                        </div>
+                        <div class="learning-content">
+                            <h5>Equity Funds Classification</h5>
+                            <p style="font-size: 12px;">Liquid funds are debt mutual funds, that invest your money in
+                                very short-term market instruments such as treasury bills, government securities and
+                                call money, that hold least amount of risk. These funds can invest in instruments up to
+                                a maturity of 91 days. The maturity is mostly much lower than that.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="learning-card">
+                    <a href="https://blog.moneyfrog.in/moneyfrog-school/managing-risk-using-mutual-funds/" target="_blank"
+                        class="blog_text_a">
+                        <div class="learning-thumbnail">
+                            <img src="assets/img/Managing_risk_using_mutual_funds.jpg" style="width: 100%;">
+                        </div>
+                        <div class="learning-content">
+                            <h5>Managing risk using mutual funds</h5>
+                            <p style="font-size: 12px;">Managing risk using mutual funds Gold, real estate, equity
+                                prices constantly move up and down. If you seek little or no risk, returns will be low
+                                and if you are ready to take higher risk, returns could be high. However, financial
+                                planners believe, managing risk is essential and one of the best products to manage it
+                                is mutual funds.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="learning-card">
+                    <a href="https://blog.moneyfrog.in/moneyfrog-school/how-much-tax-do-you-pay-on-your-investments/"
+                        target="_blank" class="blog_text_a">
+                        <div class="learning-thumbnail">
+                            <img src="https://blog.moneyfrog.in/wp-content/uploads/2017/04/web_Tax-investment-wednesday_19_Apr1.jpg"
+                                style="width: 100%;">
+                        </div>
+                        <div class="learning-content">
+                            <h5>How much tax do you pay on your investments?</h5>
+                            <p style="font-size: 12px;">It is important to consider the taxation rules before investing
+                                Most people look only at the returns that an investment vehicle gives. It is, however,
+                                important to consider the taxation rules as well since this will reduce the overall
+                                returns. Here’s a look at some of these.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="learning-card">
+                    <a href="https://blog.moneyfrog.in/moneyfrog-school/managing-risk-using-mutual-funds/" target="_blank"
+                        class="blog_text_a">
+                        <div class="learning-thumbnail">
+                            <img src="assets/img/SIP.jpg" style="width: 100%;">
+                        </div>
+                        <div class="learning-content">
+                            <h5>Are SIPs better than lump sum investments?</h5>
+                            <p style="font-size: 12px;">Regular investing on a schedule offers better returns and a
+                                number of other advantages.Systematic Investment Plans (SIPs) are not magic. Their
+                                superiority to lump sum investments is not a matter of probability or even psychology
+                                but an absolute law.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="learning-card">
+                    <a href="https://blog.moneyfrog.in/moneyfrog-school/10-tips-for-the-successful-long-term-investor/"
+                        target="_blank" class="blog_text_a">
+                        <div class="learning-thumbnail">
+                            <img src="assets/img/Regular_investing_on.jpg" style="width: 100%;">
+                        </div>
+                        <div class="learning-content">
+                            <h5>10 Tips For the Successful Long-Term Investor</h5>
+                            <p style="font-size: 12px;">10 Tips For the Successful Long-Term Investor There may be an
+                                exception to every rule, but there are several investing principles that are tough to
+                                dispute. Here are 10 that should help investors enjoy long-term success.Sell the losers
+                                and let the winners ride.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="learning-card">
+                    <a href="https://blog.moneyfrog.in/moneyfrog-school/life-insurance-8-terms-everyone-should-know/"
+                        target="_blank" class="blog_text_a">
+                        <div class="learning-thumbnail">
+                            <img src="assets/img/Life Insurance.jpg" style="width: 100%;">
+                        </div>
+                        <div class="learning-content">
+                            <h5>Life Insurance: 8 Terms Everyone Should Know</h5>
+                            <p style="font-size: 12px;">Shopping for life insurance can feel a bit like learning a
+                                foreign language: You hear a lot of unfamiliar terms—and many of them can be confusing.
+                                So we’re here to help! Whether you’re starting your search for a policy or you just got
+                                approved for one.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="learning-card">
+                    <a href="https://blog.moneyfrog.in/national-pension-scheme-the-new-norms/" target="_blank"
+                        class="blog_text_a">
+                        <div class="learning-thumbnail" style="background: #01b2aa !important;">
+                            <img src="https://blog.moneyfrog.in/wp-content/uploads/2019/01/nps-banner.png"
+                                style="width: 100%;">
+                        </div>
+                        <div class="learning-content">
+                            <h5>National Pension Scheme – The new norms</h5>
+                            <p style="font-size: 12px;">The National Pension Scheme (NPS) is a voluntary pension scheme
+                                launched by the government of India. Investors can regularly contribute in the scheme
+                                during their work life, withdraw a part of the corpus in a lump sum and use the
+                                remaining corpus to buy an annuity to secure a regular income after retirement.</p>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+            </div>
+            </section>
+    <!-- Calculator -->
+    <section class="calculator" id="calculator">
+        <div class="container">
+            <div class="calculator-header">
+                <div class="green-line calculator-green-line"></div>
+                <h2 class="section-title">Calculator</h2>
+            </div>
+            <div class="calculator-wrapper">
+                <!-- Calculator Selection -->
+                <div class="calculator-buttons">
+                    <button class="calc-button active" data-calc="sip" onclick="switchCalculatorButton('sip', this)">
+                        <i class="fas fa-chart-line"></i>
+                        SIP Calculator
+                    </button>
+                    <button class="calc-button" data-calc="lumpsum" onclick="switchCalculatorButton('lumpsum', this)"
+                        style="display: none;">
+                        <i class="fas fa-coins"></i>
+                        Lumpsum Calculator
+                    </button>
+                    <button class="calc-button" data-calc="emi" onclick="switchCalculatorButton('emi', this)" style="display: none;">
+                        <i class="fas fa-home"></i>
+                        EMI Calculator
+                    </button>
+                    <button class="calc-button" data-calc="retirement" onclick="switchCalculatorButton('retirement', this)"
+                        style="display: none;">
+                        <i class="fas fa-piggy-bank"></i>
+                        Retirement Calculator
+                    </button>
+                </div>
+                <div class="calculator-selector"></div>
+            </div>
+
+            <!-- SIP Calculator -->
+            <div id="sipCalculator" class="calculator-container active">
+                <div class="calculator-grid">
+                    <div class="calculator-inputs">
+                        <div class="input-group">
+                            <label for="monthlyInvestment">Monthly SIP</label>
+                            <div class="input-wrapper">
+                                <span class="currency-symbol">₹</span>
+                                <input type="number" id="monthlyInvestment" value="25000" min="500" max="1000000">
+                            </div>
+                        </div>
+
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label for="expectedReturn">Expected Annual Return (%)</label>
+                                <input type="number" id="expectedReturn" value="14" min="1" max="30" step="0.1">
+                                <!-- <span class="input-suffix">%</span> -->
+                            </div>
+                            <div class="input-group">
+                                <label for="timePeriod">Time (Years)</label>
+                                <input type="number" id="timePeriod" value="10" min="1" max="50">
+                                <!-- <span class="input-suffix">yrs</span> -->
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="currency">Currency</label>
+                            <select id="currency" class="currency-select">
+                                <option value="INR">INR (₹)</option>
+                                <option value="USD">USD ($)</option>
+                                <option value="EUR">EUR (€)</option>
+                            </select>
+                        </div>
+
+                        <div class="calculation-results">
+                            <div class="result-grid">
+                                <div class="result-item">
+                                    <div class="result-label">TOTAL INVESTED</div>
+                                    <div class="result-value" id="totalInvested">₹30,00,000</div>
+                                    <div class="result-detail" id="investmentDetail">120 × ₹25,000</div>
+                                </div>
+                                <div class="result-item">
+                                    <div class="result-label">PROJECTED VALUE</div>
+                                    <div class="result-value projected" id="projectedValue">₹62,70,655</div>
+                                    <div class="result-detail" id="returnDetail">@ 14% p.a.</div>
+                                </div>
+                            </div>
+
+                            <div class="result-grid">
+                                <div class="result-item">
+                                    <div class="result-label">ESTIMATED GAIN</div>
+                                    <div class="result-value gain" id="estimatedGain">₹32,70,655</div>
+                                    <div class="result-detail">Over Invested</div>
+                                </div>
+                                <div class="result-item">
+                                    <div class="result-label">NIFTY 50 VALUE</div>
+                                    <div class="result-value nifty" id="niftyValue">₹57,58,127</div>
+                                    <div class="result-detail">@ 11.8% p.a.</div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+
+                    <div class="calculator-chart">
+                        <canvas id="sipChart" width="600" height="400"></canvas>
+                        <div class="chart-legend">
+                            <div class="legend-item">
+                                <span class="legend-color invested"></span>
+                                <span>Invested</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color portfolio"></span>
+                                <span>Portfolio Value</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color nifty"></span>
+                                <span>NIFTY 50 (11.8%)</span>
+                            </div>
+                        </div>
+                        <div class="chart-disclaimer">
+                            <small>Assumptions: monthly contributions at period end; constant annual return
+                                compounded monthly. Variance simulates
+                                market movement for visualization only. Projections are illustrative, not
+                                guaranteed.</small>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+            <!-- Placeholder for other calculators -->
+            <div id="lumpsumCalculator" class="calculator-container" style="display: none;">
+                <div class="coming-soon">
+                    <h3>Lumpsum Calculator</h3>
+                    <p>Coming Soon...</p>
+                </div>
+            </div>
+
+            <div id="emiCalculator" class="calculator-container" style="display: none;">
+                <div class="coming-soon">
+                    <h3>EMI Calculator</h3>
+                    <p>Coming Soon...</p>
+                </div>
+            </div>
+
+            <div id="retirementCalculator" class="calculator-container" style="display: none;">
+                <div class="coming-soon">
+                    <h3>Retirement Calculator</h3>
+                    <p>Coming Soon...</p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <!-- Data Security Section -->
+    <section class="data-security" id="data-security">
+        <div class="container">
+            <div class="section-header-center">
+                <div class="green-line"></div>
+                <h2 class="section-title">DATA SECURITY</h2>
+                <p class="section-subtitle">
+                    Your data is safe & secure. Moneyfrog account is designed & developed to protect the
+                    confidentiality,
+                    integrity and security of your personal information during storage & transmission of your data.
+                </p>
+            </div>
+    
+            <!-- Security Features Grid -->
+            <div class="security-features-grid">
+                <div class="security-feature-card">
+                    <div class="security-icon" aria-hidden="true">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>256-bit Encryption</h3>
+                    <p>All your data is encrypted using bank-grade 256-bit SSL encryption during transmission and
+                        storage,
+                        ensuring maximum protection.</p>
+                </div>
+    
+                <div class="security-feature-card">
+                    <div class="security-icon" aria-hidden="true">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3>Secure Authentication</h3>
+                    <p>Multi-factor authentication and secure login protocols protect your account from unauthorized
+                        access.
+                    </p>
+                </div>
+    
+                <div class="security-feature-card">
+                    <div class="security-icon" aria-hidden="true">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Data Backup</h3>
+                    <p>Regular automated backups with disaster recovery systems ensure your data is never lost.</p>
+                </div>
+    
+                <div class="security-feature-card">
+                    <div class="security-icon" aria-hidden="true">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <h3>Access Control</h3>
+                    <p>Role-based access and permission management ensure only authorized personnel can access sensitive
+                        information.</p>
+                </div>
+    
+                <div class="security-feature-card">
+                    <div class="security-icon" aria-hidden="true">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>24/7 Monitoring</h3>
+                    <p>Continuous security monitoring and threat detection systems protect against cyber threats round
+                        the
+                        clock.</p>
+                </div>
+    
+                <div class="security-feature-card">
+                    <div class="security-icon" aria-hidden="true">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Compliance</h3>
+                    <p>SEBI registered and fully compliant with all regulatory standards and data protection laws.</p>
+                </div>
+            </div>
+    
+            <!-- Certifications & Compliance -->
+            <div class="security-certifications">
+                <h3>Our Certifications & Compliance</h3>
+                <div class="certification-badges">
+                    <div class="badge-item">
+                        <div class="badge-icon" aria-hidden="true">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <span>SSL/TLS Secured</span>
+                    </div>
+                    <div class="badge-item">
+                        <div class="badge-icon" aria-hidden="true">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <span>ISO 27001 Certified</span>
+                    </div>
+                    <div class="badge-item">
+                        <div class="badge-icon" aria-hidden="true">
+                            <i class="fas fa-landmark"></i>
+                        </div>
+                        <span>SEBI Registered</span>
+                    </div>
+                    <div class="badge-item">
+                        <div class="badge-icon" aria-hidden="true">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <span>Data Protection Compliant</span>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="assets/img/logo-large.svg" alt="Company Logo">
+                    </div>
+                    <p>Your trusted partner in financial growth and wealth management.</p>
+                    <div class="social-icons footer-social">
+                        <a href="https://www.linkedin.com/company/moneyfrog-in" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://x.com/moneyfrog_in" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.facebook.com/moneyfrog.in" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/moneyfrog_financial_services/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <div>
+                        <strong>Available On:</strong><br>
+                        <div class="app-store-links">
+                            <a href="https://play.google.com/store/apps/details?id=com.myapp.moneyfrog.moneyfrogapp&hl=en"
+                                target="_blank" class="app-store-badge">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                                    alt="Get it on Google Play">
+                            </a>
+                            <a href="https://apps.apple.com/us/app/moneyfrog-in/id1079405996?ls=1" target="_blank"
+                                class="app-store-badge">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg"
+                                    alt="Download on the App Store">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <a href="#">Mutual Funds</a>
+                    <a href="#">Equity</a>
+                    <a href="#">Fixed Income</a>
+                    <a href="#">AIFF/GIFT City</a>
+                    <a href="#">PMS</a>
+                    <a href="#">Tax</a>
+                    <a href="#">Insurance</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <a href="#">FAQ</a>
+                    <a href="#">Market Insights</a>
+                    <a href="#">Investment Guides</a>
+                    <a href="#">Financial Tools</a>
+                    <a href="#">Research Reports</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Explore Money Frog</h3>
+                    <a href="#">Learning Academy</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Our Story</a>
+                    <a href="#">Careers</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <div class="office-address">
+                        <strong>Mumbai Office:</strong><br>
+                        723-724, Swastik Chambers<br>
+                        CST Road, Chembur East,<br>
+                        Mumbai - 400071<br>
+                        Mobile: <a href="tel:+919004932221">+91 90049 32221</a>
+                    </div>
+                    <div class="office-address-last">
+                        <strong>Pune Office:</strong><br>
+                        G-17, Sacred World<br>
+                        Wanowrie, Pune - 411040<br>
+                        Mobile: <a href="tel:+919774047487">+91 77740 47487</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-legal">
+                <div class="footer-legal-content">
+                    <p><strong>Moneyfrog Financial Services Private Limited</strong> | CIN: U66000MH2011PTC216613 |
+                        GSTIN:
+                        27AAJCA5151G1ZR</p> <p>AMFI Registered Mutual Fund Distributor | ARN NO. 94798</p>
+                </div>
+                <div class="footer-disclaimer">
+                    <p>Mutual fund investments are subject to market risks. Therefore, read the scheme information and
+                        other related documents carefully, before investing.</p> <p>Past performance is not indicative of future returns.</p>
+                    <p>
+                        <a href="#">Customer Complaint & Grievances</a> |
+                        <a href="#" style="display:none;">Fraud Alert on Telemarketing Calls & Email Campaigns by Fraudsters</a>
+                    </p>
+                </div>
+                <div class="footer-copyright">
+                    <p>&copy; 2025 Moneyfrog Financial Services Private Limited. All rights reserved. Version 3.0</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery (required for Slick) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- Slick Carousel JS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="assets/js/index2.js"></script>
+    <!-- Initialize Slick Carousel for Investment Cards -->
+    <script>
+        $(document).ready(function () {
+            // Check if jQuery is loaded
+            if (typeof jQuery === 'undefined') {
+                console.error('Slick Carousel requires jQuery');
+                return;
+            }
+
+            // Check if carousel element exists
+            if ($('.investment-carousel').length) {
+                $('.investment-carousel').slick({
+                    dots: true,
+                    infinite: true,
+                    speed: 500,
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    autoplay: false,
+                    arrows: true,
+                    prevArrow: '<button type="button" class="slick-prev"><i class="fas fa-chevron-left"></i></button>',
+                    nextArrow: '<button type="button" class="slick-next"><i class="fas fa-chevron-right"></i></button>',
+                    responsive: [
+                        {
+                            breakpoint: 1024,
+                            settings: {
+                                slidesToShow: 2,
+                                slidesToScroll: 1
+                            }
+                        },
+                        {
+                            breakpoint: 768,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1,
+                                arrows: true,
+                                dots: true
+                            }
+                        }
+                    ]
+                });
+            }
         });
-      } else if (!window.bootstrap) {
-        console.warn('Bootstrap JS not loaded: Mobile menu will not work.');
-      }
-    });
-  </script>
+    </script>
+</body>
 
+</html>

@@ -659,8 +659,7 @@ nav {
 }
 
 .chart-visual {
-    width: 60px;
-    height: 60px;
+    width: 100%;
     object-fit: contain;
 }
 
@@ -1671,11 +1670,11 @@ footer {
     font-size: 14px;
     font-weight: 700;
     color: #ffffff;
-    margin-bottom: 1rem;
+    margin-bottom: 0rem;
 }
 
 .footer-legal-content p {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.1rem;
 }
 
 .footer-disclaimer {

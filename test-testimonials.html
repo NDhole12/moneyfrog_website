@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonials Test</title>
+    <style>
+        :root {
+            --primary-green: #4CAF50;
+            --neutral-gray: #F5F5F5;
+            --white: #FFFFFF;
+        }
+        
+        .testimonials {
+            padding: 4rem 0;
+            background: var(--neutral-gray);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: #333;
+        }
+        
+        .testimonials-slider-container {
+            position: relative;
+            max-width: 1170px;
+            margin: 0 auto;
+            overflow: hidden;
+            padding: 0 60px;
+        }
+        
+        .testimonials-slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 700%;
+        }
+        
+        .testimonial-slide {
+            width: 33.333%;
+            min-width: 33.333%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 0.5rem;
+            flex-shrink: 0;
+        }
+        
+        .testimonial-card {
+            background: var(--white);
+            padding: 1rem 1.5rem;
+            border-radius: 16px;
+            text-align: left;
+            max-width: 350px;
+            width: 100%;
+            height: 100%;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid #f0f0f0;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .stars {
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+            text-align: left;
+        }
+        
+        .testimonial-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            color: #555;
+            font-style: normal;
+            text-align: left;
+        }
+        
+        .client-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: auto;
+        }
+        
+        .client-photo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        
+        .client-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .testimonial-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+        }
+        
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .dot.active {
+            background: var(--primary-green);
+        }
+    </style>
+</head>
+<body>
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">Explore genuine client feedback</h2>
+            <div class="testimonials-slider-container">
+                <div class="testimonials-slider" id="testimonialsSlider">
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="stars">★★★★★</div>
+                            <p>"Money frog has been a rock solid financial partner for me over years. Their USP includes indept financial knowledge and approachability."</p>
+                            <div class="client-info">
+                                <div class="client-photo">
+                                    <div style="width: 50px; height: 50px; background: #ccc; border-radius: 50%;"></div>
+                                </div>
+                                <div class="client-details">
+                                    <h4>Ved Dhuru</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="stars">★★★★★</div>
+                            <p>"Very good financial planning and service. They have a great team in place that is always responsive with a customer focussed approach."</p>
+                            <div class="client-info">
+                                <div class="client-photo">
+                                    <div style="width: 50px; height: 50px; background: #ccc; border-radius: 50%;"></div>
+                                </div>
+                                <div class="client-details">
+                                    <h4>Darrell Fernandes</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="stars">★★★★★</div>
+                            <p>"Team that takes care of your plans. Extremely professional and keep a tight watch on your financial plans."</p>
+                            <div class="client-info">
+                                <div class="client-photo">
+                                    <div style="width: 50px; height: 50px; background: #ccc; border-radius: 50%;"></div>
+                                </div>
+                                <div class="client-details">
+                                    <h4>Saurabh Chatterjee</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-dots">
+                    <span class="dot active" onclick="goToSlide(0)"></span>
+                    <span class="dot" onclick="goToSlide(1)"></span>
+                    <span class="dot" onclick="goToSlide(2)"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        var currentSlide = 0;
+        var totalSlides = 3;
+
+        function moveSlider() {
+            const slider = document.getElementById('testimonialsSlider');
+            const dots = document.querySelectorAll('.dot');
+            
+            if (slider) {
+                slider.style.transform = 'translateX(-' + (currentSlide * 33.333) + '%)';
+                
+                for (var i = 0; i < dots.length; i++) {
+                    dots[i].className = i === currentSlide ? 'dot active' : 'dot';
+                }
+            }
+        }
+
+        function goToSlide(slideIndex) {
+            currentSlide = slideIndex;
+            moveSlider();
+        }
+
+        // Initialize
+        window.addEventListener('load', function() {
+            moveSlider();
+        });
+    </script>
+</body>
+</html>
